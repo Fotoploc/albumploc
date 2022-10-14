@@ -1,4 +1,4 @@
 class Album < ApplicationRecord
-  belongs_to :user
-  has_and_belongs_to_many :photos
+  has_and_belongs_to_many :user
+  has_many :photos
 end
