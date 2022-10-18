@@ -1,0 +1,43 @@
+.btn {
+  display: inline-block;
+  padding: var(--space-xxs) var(--space-m);
+  border-radius: var(--border-radius);
+  background-origin: border-box; // Invisible borders with linear gradients
+  background-color: transparent;
+  border: solid 2px transparent;
+  font-weight: bold;
+  text-decoration: none;
+  cursor: pointer;
+  outline: none;
+  transition: filter 400ms, color 200ms;
+
+  &:disabled {
+    cursor: not-allowed;
+    filter: grayscale(100%);
+  }
+
+  &-primary {
+    border-color: var(--color-primary-light);
+    color: var(--color-white);
+    background-color: var(--color-primary);
+    &:hover,
+    &:focus,
+    &:focus-within,
+    &:active {
+      filter: brightness(1.2);
+    }
+  }
+
+  &--secondary {
+    border-color: var(--color-secondary-light);
+    color: var(--color-white);
+    background-color: var(--color-secondary);
+    &:hover,
+    &:focus,
+    &:focus-within,
+    &:active {
+      filter: brightness(1.1);
+    }
+  }
+
+}
