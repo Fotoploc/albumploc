@@ -1,0 +1,34 @@
+.container {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  
+  &--xs {
+    max-width: 25rem;
+  }
+  &--s {
+    max-width: 37.5rem;
+  }
+
+  &--m {
+    max-width: 50rem;
+  }
+
+  &--l {
+    max-width: 62.5rem;
+  }
+
+  &--xl {
+    max-width: 75rem;
+  }
+
+  &--xxl {
+    max-width: 87.5rem;
+  }
+
+  &--fluid {
+    max-width: 100%;
+  }
+
+
+}
