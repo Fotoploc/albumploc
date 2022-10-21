@@ -1,0 +1,16 @@
+.header {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-s);
+  justify-content: center;
+  margin-top: var(--space-m);
+  margin-bottom: var(--space-xl);
+  width: 100%;
+  font-family: var(--font-family-sans-serif);
+
+  &--title {
+    font-size: var(--font-size-xxl);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-primary);
+  }
+}

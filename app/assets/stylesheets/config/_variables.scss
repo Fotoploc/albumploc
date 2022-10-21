@@ -1,0 +1,83 @@
+:root {
+  //Main Colors
+  --color-primary: #3B38B4;
+  --color-primary-light: #5c5ce2;
+  --color-secondary: #FF5F69;
+  --color-secondary-light: #ff6b6b;
+  --color-tertiary: #FFC300;
+  --color-tertiary-light: #ffcd3a;
+  --color-background: #F5F5F5;
+  --color-text: #000000;
+  --color-text-light: #FFFFFF;
+  --color-text-header: #000000;
+  --color-text-footer: #a3a2a2;
+
+  // Neutral Colors
+  --color-white: #FFFFFF;
+  --color-black: #000000;
+  --color-gray: #F5F5F5;
+  --color-gray-dark: #333333;
+  --color-gray-light: #999999;
+  // Status Colors
+  --color-success: #00D1B2;
+  --color-warning: #FFDD57;
+  --color-danger: #FF3860;
+  --color-info: #209CEE;
+  
+  // Font Familys
+  --font-family-sans-serif: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-family-monospace: "SFMono-Regular", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  
+  // Font Sizes
+  --font-size-xs: 0.75rem;   // 12px
+  --font-size-s: 0.875rem;   // 14px
+  --font-size-m: 1rem;       // 16px
+  --font-size-l: 1.125rem;   // 18px
+  --font-size-xl: 1.25rem;   // 20px
+  --font-size-xxl: 1.5rem;   // 24px
+  --font-size-xxxl: 2rem;    // 32px
+  --font-size-xxxxl: 2.5rem; // 40px
+
+  // Font Weights
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-bold: 700;
+
+  // Line Heights
+  --line-height-headers: 1.2;
+  --line-height-body: 1.5;
+  --line-height-s: 1.25;
+  --line-height-m: 1.5;
+  --line-height-l: 1.75;
+
+  // Border Radius
+  --border-radius: 0.25rem;
+  --border-radius-circle: 50%;
+  --border-radius-pill: 50rem;
+
+  // Shadows
+  --box-shadow: 0 0.5rem 1rem rgba(10, 10, 10, 0.1);
+  --box-shadow-lg: 0 1rem 3rem rgba(10, 10, 10, 0.1);
+  --box-shadow-inset: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06);
+
+  // Transitions
+  --transition: all 0.2s ease-in-out;
+  --transition-fast: all 0.1s ease-in-out;
+
+  // Border
+  --border: solid 2px var(--color-gray-light);
+
+  // Spacing
+  --space-xxs: 0.25rem; // 4px
+  --space-xs: 0.5rem;   // 8px
+  --space-s: 0.75rem;   // 12px
+  --space-m: 1rem;      // 16px
+  --space-l: 1.25rem;   // 20px
+  --space-xl: 1.5rem;   // 24px
+  --space-xxl: 2rem;    // 32px
+  --space-xxxl: 2.5rem; // 40px
+  --space-xxxxl: 3rem;  // 48px
+
+
+
+}
