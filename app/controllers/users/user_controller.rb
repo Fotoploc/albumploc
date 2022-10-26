@@ -1,4 +1,4 @@
-class UserController < ApplicationController
+class Users::UserController < ApplicationController
   before_action :authenticate_user!, only: [:profile]
 
   def all
