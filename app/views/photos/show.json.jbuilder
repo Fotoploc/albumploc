@@ -1,1 +1,1 @@
-json.partial! "photos/photo", photo: @photo
+json.partial! "stickers/sticker", sticker: @sticker
