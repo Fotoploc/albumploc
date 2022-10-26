@@ -39,9 +39,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_14_140410) do
   end
 
   create_table "stickers_users", id: false, force: :cascade do |t|
-    t.bigint "photo_id", null: false
+    t.bigint "sticker_id", null: false
     t.bigint "user_id", null: false
-    t.index ["photo_id"], name: "index_stickers_users_on_photo_id"
+    t.index ["sticker_id"], name: "index_stickers_users_on_sticker_id"
     t.index ["user_id"], name: "index_stickers_users_on_user_id"
   end
 
