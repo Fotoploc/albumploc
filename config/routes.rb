@@ -2,7 +2,6 @@ Rails.application.routes.draw do
 
   resources :stickers
   resources :albums
-  devise_for :views
   get 'user/profile' => 'users/user#profile'
   devise_for :users, controllers: {
     sessions: 'users/sessions'
