@@ -8,7 +8,11 @@
 
   &__action {
     margin-bottom: var(--space-xl);
+    &--spaced {
+      margin-top: var(--space-xl);
+    }
   }
+
 
   &__group {
     flex: 1;

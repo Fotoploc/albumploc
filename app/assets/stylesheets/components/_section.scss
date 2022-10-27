@@ -9,6 +9,11 @@
   background-color: var(--color-background);
   
   @media (min-width: 768px) {
-    height: 75vh;
+    height: 100%;
+    width: 100%;
+  }
+
+  &--f-start {
+    justify-content: flex-start;
   }
 }

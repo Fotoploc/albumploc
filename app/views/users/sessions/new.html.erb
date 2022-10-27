@@ -5,7 +5,7 @@
   <div class="container container--xs">
     <div class="container">
       <button class="btn btn--nav btn--nav--active">Login</button>
-      <button class="btn btn--nav">SignUp</button>
+      <%= link_to "SignUp", new_user_registration_path, method: :get, class: "btn btn--nav"%>
     </div>
     <%= form_for(resource, as: resource_name, url: session_path(resource_name),:html => {:class => "form"}) do |f| %>
       <div class="field form__field">
@@ -25,7 +25,7 @@
         </div>
       <% end %>
 
-      <div class="actions  form__action">
+      <div class="actions form__action">
         <%= f.submit "Log in" , class:"btn btn--primary"%>
       </div>
     <% end %>
