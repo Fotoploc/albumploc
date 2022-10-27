@@ -1,6 +1,6 @@
-class CreatePhotos < ActiveRecord::Migration[7.0]
+class CreateStickers < ActiveRecord::Migration[7.0]
   def change
-    create_table :photos do |t|
+    create_table :stickers do |t|
       t.integer :code
       t.text :description
       t.string :picture

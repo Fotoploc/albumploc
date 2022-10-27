@@ -30,7 +30,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_14_140410) do
     t.index ["user_id"], name: "index_albums_users_on_user_id"
   end
 
-  create_table "photos", force: :cascade do |t|
+  create_table "stickers", force: :cascade do |t|
     t.integer "code"
     t.text "description"
     t.string "picture"
@@ -38,11 +38,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_14_140410) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "photos_users", id: false, force: :cascade do |t|
-    t.bigint "photo_id", null: false
+  create_table "stickers_users", id: false, force: :cascade do |t|
+    t.bigint "sticker_id", null: false
     t.bigint "user_id", null: false
-    t.index ["photo_id"], name: "index_photos_users_on_photo_id"
-    t.index ["user_id"], name: "index_photos_users_on_user_id"
+    t.index ["sticker_id"], name: "index_stickers_users_on_sticker_id"
+    t.index ["user_id"], name: "index_stickers_users_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
