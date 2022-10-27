@@ -30,9 +30,19 @@
     &:focus {
       box-shadow: 0 0 0 2px var(--color-glint);
     }
-
+    
     &--invalid {
       border-color: var(--color-primary);
     }
+  }
+
+  &__error {
+    display: flex;
+    color: var(--color-danger);
+    width: 100%;
+    justify-content: flex-end;
+    font-size: var(--font-size-xs);
+    line-height: 0;
+    margin-top: 0.5rem;
   }
 }
