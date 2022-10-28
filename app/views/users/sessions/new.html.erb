@@ -4,8 +4,6 @@
   </header>
   <div class="container container--xs">
     <%= render "users/shared/error_messages", resource: resource %>
-    <%= devise_error_messages! %>
-    <%= render "users/shared/notice_messages"%>
     <div class="container">
       <button class="btn btn--nav btn--nav--active">Login</button>
       <%= link_to "SignUp", new_user_registration_path, method: :get, class: "btn btn--nav"%>

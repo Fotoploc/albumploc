@@ -3,13 +3,12 @@
     <h1> AlbumPloc  </h1>
   </header>
   <div class="container container--xs">
-
-    <%= render "users/shared/error_messages", resource: resource %>
     <div class="container">
       <%= link_to "Login", new_user_session_path, method: :get, class: "btn btn--nav"%>
       <button class="btn btn--nav btn--nav--active">SignUp</button>
     </div>
-    <%= form_for(resource, as: resource_name, url: registration_path(resource_name),  data: { turbo: false }, local: true, :html => {:class => "form"}) do |f| %>
+    <%= turbo_frame_tag "first_turbo_frame" do %>
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), :html => {:class => "form"}) do |f| %>
       <%= render "users/shared/error_messages", resource: resource %>
 
       <div class="field form__field">
@@ -36,23 +35,10 @@
         <%= f.submit "Sign up", class:"btn btn--primary", id:"form__action__submit"%>
       </div>
     <% end %>
+    <% end %>
     <%= render "users/shared/links" %>
   </div>
 </section>
 <%= render "users/shared/footer-basic"%>
+<%= javascript_include_tag("helpers/password_confirmation.js") %>
 
-<script>
-const passwordConfirmationField = document.getElementById("form__field__password__confirmation");
-const passwordField = document.getElementById("form__field__password");
-
-passwordConfirmationField.addEventListener("input", function() {
-  if (passwordConfirmationField.value !== passwordField.value) {
-    passwordConfirmationField.setCustomValidity("Passwords do not match");
-    document.querySelector("#form__action__submit").disabled = true;
-    document.getElementById("password_confirmation").innerHTML = passwordConfirmationField.validationMessage;
-  } else {
-    passwordConfirmationField.setCustomValidity("");
-    document.querySelector("#form__action__submit").disabled = false;
-  }
-});
-</script>
