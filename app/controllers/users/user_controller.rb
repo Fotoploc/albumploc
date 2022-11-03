@@ -10,7 +10,7 @@ class Users::UserController < ApplicationController
   end
 
   def stickers
-    @stickers = @user_sticker.where(user_id: current_user.id)
+    @user = User.find(current_user.id)
+    @stickers = @user.stickers.all
   end
-
 end
