@@ -1,19 +1,9 @@
 <container class="container container--list effect-shadow-1">
+  <div class="header" style="justify-content: space-between">
   <h4> Stickers </h4>
+  <%= link_to "See all stickers", stickers_path, class: "btn btn--primary" %>
+  </div>
   <div class="sticker">
-  
-  <div>
-    <%= render "stickers/sticker" %>
+      <%= render "stickers/sticker" %>
   </div>
-  <div>
-    <%= render "stickers/sticker" %>
-  </div>
-  <div>
-    <%= render "stickers/sticker" %>
-  </div>
-  <div>
-    <%= render "stickers/sticker" %>
-  </div>
-</div> 
-
 </container>
