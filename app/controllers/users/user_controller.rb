@@ -13,4 +13,9 @@ class Users::UserController < ApplicationController
     @user = User.find(current_user.id)
     @stickers = @user.stickers.all
   end
+
+  def albums
+    @user = User.find(current_user.id)
+    @albums = @user.albums.all
+  end
 end

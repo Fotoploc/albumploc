@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :albums
   get 'user/profile' => 'users/user#profile'
   get 'user/stickers' => 'users/user#stickers'
+  get 'user/albums' => 'users/user#albums'
   devise_for :users, controllers: {
     sessions: 'users/sessions'
   }

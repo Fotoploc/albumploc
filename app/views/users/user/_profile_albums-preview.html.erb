@@ -1,0 +1,9 @@
+<container class="container container--list effect-shadow-1">
+  <div class="header" style="justify-content: space-between">
+    <h4> Albums </h4>
+    <%= link_to "See all albums", user_albums_path, class: "btn btn--primary" %>
+  </div>
+  <div class="album">
+      <%= render "albums/album" %>
+  </div>
+</container>

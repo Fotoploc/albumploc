@@ -1,5 +1,7 @@
 class User < ApplicationRecord
   has_and_belongs_to_many :stickers, join_table: 'user_stickers'
+  has_and_belongs_to_many :albums, join_table: 'user_albums'
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
