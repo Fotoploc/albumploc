@@ -24,8 +24,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_14_140410) do
   end
 
   create_table "albums_users", id: false, force: :cascade do |t|
-    t.bigint "album_id", null: false
     t.bigint "user_id", null: false
+    t.bigint "album_id", null: false
     t.index ["album_id"], name: "index_albums_users_on_album_id"
     t.index ["user_id"], name: "index_albums_users_on_user_id"
   end
@@ -39,8 +39,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_14_140410) do
   end
 
   create_table "stickers_users", id: false, force: :cascade do |t|
-    t.bigint "sticker_id", null: false
     t.bigint "user_id", null: false
+    t.bigint "sticker_id", null: false
     t.index ["sticker_id"], name: "index_stickers_users_on_sticker_id"
     t.index ["user_id"], name: "index_stickers_users_on_user_id"
   end
@@ -55,18 +55,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_14_140410) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-  end
-
-  create_table "views", force: :cascade do |t|
-    t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["email"], name: "index_views_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_views_on_reset_password_token", unique: true
   end
 
 end

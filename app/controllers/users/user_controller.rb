@@ -9,4 +9,8 @@ class Users::UserController < ApplicationController
     @user = User.find(current_user.id)
   end
 
+  def stickers
+    @user = User.find(current_user.id)
+    @stickers = @user.stickers.all
+  end
 end
