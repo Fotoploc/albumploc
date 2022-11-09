@@ -8,11 +8,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   validates :email, presence: true, uniqueness: true
   validates :password, presence: true, length: { minimum: 6 }
-  # validate :passwords_match
 
-  # def passwords_match
-  #   return if password == password_confirmation
-
-  #   errors.add :password_confirmation, 'Passwords do not match'
-  # end
 end
