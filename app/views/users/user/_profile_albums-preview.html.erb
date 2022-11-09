@@ -4,6 +4,8 @@
     <%= link_to "See all albums", user_albums_path, class: "btn btn--primary" %>
   </div>
   <div class="album">
-      <%= render "albums/album" %>
+    <% @albums.each do |album| %>
+      <%= render "albums/album", album: album %>
+    <% end %>
   </div>
 </container>

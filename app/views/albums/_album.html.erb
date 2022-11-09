@@ -1,10 +1,9 @@
 <div class="album__card">
   <div class="album__card__picture">
-    <img src="https://i.imgur.com/4ZQZfZy.jpg" alt="Album Image" class="album__card__picture__img">
+    <%= image_tag album.picture, alt:"Album Image", class:"album__card__picture__img"%>
   </div>
   <p class="album__card_code">
-    <strong>Name:</strong>z
-    1
+    <strong>Name:</strong>
+    <%= link_to album.name, user_album_url(album.id), album: album%>
   </p>
-
 </div>

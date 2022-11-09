@@ -5,6 +5,8 @@
     <div></div>
   </div>
   <div class="sticker">
-      <%= render "stickers/sticker" %>
+    <% @stickers.each do |sticker| %>
+      <%= render "stickers/sticker", sticker: sticker %>
+    <% end %>
   </div>
 </container>
