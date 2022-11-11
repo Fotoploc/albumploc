@@ -3,10 +3,11 @@
     <%= image_tag album.picture, alt:"Album Image", class:"album__card__picture album__card__picture__img"%>
   </div>
   <div class="album__card__infos gap-05">
-    <div class="album__card__infos__title border-radius-05 border-box">
+    <div class="album__card__infos__title border-radius-05 border-box padding-05">
       <h4><%= album.name %></h4>
     </div>
-    <div class="album__card__infos__description border-radius-05">
+    <div class="album__card__infos__description border-radius-05 padding-1 position-relative">
+      <h5 class="text text-top-left">Descrição:</h5>
       <%= album.description %>
     </div>
   </div>
