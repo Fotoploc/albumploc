@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_14_140410) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_09_143106) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -21,6 +21,13 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_14_140410) do
     t.string "picture"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "albums_stickers", id: false, force: :cascade do |t|
+    t.bigint "album_id", null: false
+    t.bigint "sticker_id", null: false
+    t.index ["album_id"], name: "index_albums_stickers_on_album_id"
+    t.index ["sticker_id"], name: "index_albums_stickers_on_sticker_id"
   end
 
   create_table "albums_users", id: false, force: :cascade do |t|

@@ -1,5 +1,6 @@
 .container {
   width: 100%;
+  height: fit-content;
   
   &--list {
     padding: var(--space-l);
@@ -10,6 +11,9 @@
     max-width: 400px;
   }
 
+  &--xxs {
+    max-width: 20rem;
+  }
   &--xs {
     max-width: 25rem;
   }

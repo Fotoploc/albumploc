@@ -1,22 +1,9 @@
-<div id="<%= dom_id album %>">
-  <p>
+<div class="album__card">
+  <div class="album__card__picture">
+    <%= image_tag album.picture, alt:"Album Image", class:"album__card__picture__img"%>
+  </div>
+  <p class="album__card_code">
     <strong>Name:</strong>
-    <%= album.name %>
+    <%= link_to album.name, user_album_url(album.id), album: album%>
   </p>
-
-  <p>
-    <strong>Code:</strong>
-    <%= album.code %>
-  </p>
-
-  <p>
-    <strong>Description:</strong>
-    <%= album.description %>
-  </p>
-
-  <p>
-    <strong>Picture:</strong>
-    <%= album.picture %>
-  </p>
-
 </div>
