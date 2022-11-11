@@ -3,7 +3,7 @@
     <h4> Stickers </h4>
     <%= link_to "See all stickers", user_stickers_path, class: "btn btn--primary" %>
   </div>
-  <div class="sticker">
+  <div class="container__cards">
     <% @stickers.each do |sticker| %>
       <%= render "stickers/sticker", sticker: sticker %>
     <% end %>

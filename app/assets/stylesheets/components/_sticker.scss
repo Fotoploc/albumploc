@@ -1,17 +1,8 @@
 .sticker{
-  display: flex;
-    gap: var(--space-xs);
-    height: 100%;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-content: flex-start;
   &__card {
     border-radius:  var(--border-radius);
-    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
-    border: var(--border);
     width: 10rem;
     height: 12rem;
-    padding: 0.1rem;
     &__picture{
       height: 100%;
       border-top-left-radius:  var(--border-radius);

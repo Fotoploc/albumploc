@@ -4,6 +4,10 @@
   box-shadow: -2px 2px 12px -1px rgba(0,0,0,0.75);
 }
 
+.effect-border-1 {
+  border: var(--border);
+}
+
 .gap-035 {
   gap: 0.35rem;
 }
@@ -22,6 +26,10 @@
 
 .gap-3 {
   gap: 3rem;
+}
+
+.padding-01 {
+  padding: 0.1rem;
 }
 
 .padding-05 {

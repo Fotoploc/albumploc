@@ -1,6 +1,14 @@
 .container {
   width: 100%;
   height: fit-content;
+  &__cards{
+    display: flex;
+    gap: var(--space-xs);
+    height: 100%;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: flex-start;
+  }
   
   &--list {
     padding: var(--space-l);

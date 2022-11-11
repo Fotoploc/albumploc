@@ -1,6 +1,6 @@
 class Users::UserController < ApplicationController
-  before_action :authenticate_user!, only: [:profile]
-
+  before_action :authenticate_user!
+  
   def all
     @users = User.all
   end
