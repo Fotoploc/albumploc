@@ -9,17 +9,13 @@
     <section class="section section--f-start">
       <%= render "albums/show", album: @album%>
     </section>
+    <div class="header" style="justify-content: space-between">
+      <div></div>
+      <h4> Stickers </h4>
+      <div></div>
+    </div>
     <section class="section section--f-start">
-      <div class="header" style="justify-content: space-between">
-        <div></div>
-        <h4> Stickers </h4>
-        <div></div>
-      </div>
-      <div class="container__cards album__card album__card--big effect-shadow-1 padding-05">
-        <% @stickers.each do |sticker| %>
-          <%= render "stickers/sticker", sticker: sticker %>
-        <% end %>
-      </div>
+      <%= render "stickers/show", stickers: @stickers%>
   </section>
   </container>
 </div>

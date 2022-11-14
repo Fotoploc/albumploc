@@ -1,0 +1,5 @@
+<div class="container__cards album__card album__card--big effect-shadow-1 padding-05">
+  <% @stickers.each do |sticker| %>
+    <%= render "stickers/sticker", sticker: sticker %>
+  <% end %>
+</div>
