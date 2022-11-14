@@ -1,7 +1,7 @@
 class CreateStickers < ActiveRecord::Migration[7.0]
   def change
     create_table :stickers do |t|
-      t.integer :code
+      t.string :code
       t.text :description
       t.string :picture
       t.boolean :is_active, default: true

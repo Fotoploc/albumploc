@@ -38,9 +38,12 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_11_141350) do
   end
 
   create_table "stickers", force: :cascade do |t|
-    t.integer "code"
+    t.string "code"
     t.text "description"
     t.string "picture"
+    t.boolean "is_active", default: true
+    t.boolean "is_favorite", default: false
+    t.boolean "is_open_to_trade", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
