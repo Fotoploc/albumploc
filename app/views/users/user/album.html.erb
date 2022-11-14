@@ -4,7 +4,7 @@
     <div class="header" style="justify-content: space-between">
       <%= link_to "Back", user_profile_path, class:"btn btn--secondary" %>
       <h4> Album </h4>
-      <div></div>
+      <div class="btn btn--primary modal__open">Participantes</div>
     </div>
     <section class="section section--f-start">
       <%= render "albums/show", album: @album%>
@@ -18,4 +18,19 @@
       <%= render "stickers/show", stickers: @stickers%>
   </section>
   </container>
+</div>
+
+<div class="modal effect-shadow-1 modal--hidden">
+  <header class="modal__header">
+    <button class="modal__close btn btn--secondary"> X </button>
+
+    <h3> Participantes </h3>
+  </header>
+  <% @participants.each do |participant|%>
+    <div class="modal__body">
+      <div class="modal__body__text">
+        <p> <%= participant.email %> </p>
+      </div>
+    </div>
+  <% end %>
 </div>

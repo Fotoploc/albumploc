@@ -25,6 +25,6 @@ class Users::UserController < ApplicationController
     @user = User.find(current_user.id)
     @album = Album.find(params[:id])
     @stickers = @album.stickers.all
+    @participants = @album.users.all.reject { |user| user.id == current_user.id }
   end
-
 end

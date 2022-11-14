@@ -8,6 +8,7 @@
     puts "Seeding database..."
     puts "Creating users..."
     User.create!(email: "bazinga@fotoploc.com", password: "123456", password_confirmation: "123456")
+    User.create!(email: "contato@fotoploc.com", password: "123456", password_confirmation: "123456")
     puts "Done!"
     puts "Creating stickers..."
     Sticker.create!(code: "FTP1", description: "Sticker 1 description", picture: "https://i.imgur.com/1Z1Z1Z1.jpg")
@@ -18,6 +19,7 @@
     puts "Done!"
     puts "Adding stickers to users..."
     User.first.stickers.push(Sticker.all)
+    User.last.stickers.push(Sticker.all)
     puts "Done!"
     puts "Creating albums..."
     Album.create!(name: "Album 1", description: "Album 1 description", picture: "https://i.imgur.com/1Z1Z1Z1.jpg")
@@ -28,6 +30,7 @@
     puts "Done!"
     puts "Adding albums to users..."
     User.first.albums.push(Album.all)
+    User.last.albums.push(Album.all)
     puts "Done!"
     puts "Adding stickers to albums..."
     Album.find(1).stickers.push(Sticker.first(2))
