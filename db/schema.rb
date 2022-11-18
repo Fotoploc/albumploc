@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_18_085438) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_18_111443) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -30,6 +30,32 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_18_085438) do
     t.index ["user_id"], name: "index_albums_users_on_user_id"
   end
 
+  create_table "exchanges", force: :cascade do |t|
+    t.bigint "sender_id"
+    t.bigint "receiver_id"
+    t.string "status"
+    t.index ["receiver_id"], name: "index_exchanges_on_receiver_id"
+    t.index ["sender_id"], name: "index_exchanges_on_sender_id"
+  end
+
+  create_table "receiver_stickers", force: :cascade do |t|
+    t.bigint "exchange_id", null: false
+    t.bigint "r_sticker_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["exchange_id"], name: "index_receiver_stickers_on_exchange_id"
+    t.index ["r_sticker_id"], name: "index_receiver_stickers_on_r_sticker_id"
+  end
+
+  create_table "sender_stickers", force: :cascade do |t|
+    t.bigint "exchange_id", null: false
+    t.bigint "s_sticker_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["exchange_id"], name: "index_sender_stickers_on_exchange_id"
+    t.index ["s_sticker_id"], name: "index_sender_stickers_on_s_sticker_id"
+  end
+
   create_table "stickers", force: :cascade do |t|
     t.string "code"
     t.text "description"
@@ -43,25 +69,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_18_085438) do
     t.index ["album_id"], name: "index_stickers_on_album_id"
   end
 
-  create_table "stickers_exchanges", id: false, force: :cascade do |t|
-    t.bigint "exchange_id", null: false
-    t.bigint "sticker_id", null: false
-    t.index ["sticker_id"], name: "index_stickers_exchanges_on_sticker_id"
-    t.index ["exchange_id"], name: "index_stickers_exchanges_on_exchange_id"
-  end
-
   create_table "stickers_users", id: false, force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "sticker_id", null: false
     t.index ["sticker_id"], name: "index_stickers_users_on_sticker_id"
     t.index ["user_id"], name: "index_stickers_users_on_user_id"
-  end
-
-  create_table "exchanges", force: :cascade do |t|
-    t.bigint "sender_id"
-    t.bigint "receiver_id"
-    t.index ["receiver_id"], name: "index_exchanges_on_receiver_id"
-    t.index ["sender_id"], name: "index_exchanges_on_sender_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -76,7 +88,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_18_085438) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "stickers", "albums"
   add_foreign_key "exchanges", "users", column: "receiver_id"
   add_foreign_key "exchanges", "users", column: "sender_id"
+  add_foreign_key "receiver_stickers", "exchanges"
+  add_foreign_key "receiver_stickers", "stickers", column: "r_sticker_id"
+  add_foreign_key "sender_stickers", "exchanges"
+  add_foreign_key "sender_stickers", "stickers", column: "s_sticker_id"
+  add_foreign_key "stickers", "albums"
 end
