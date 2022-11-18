@@ -23,13 +23,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_11_141350) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "albums_stickers", id: false, force: :cascade do |t|
-    t.bigint "album_id", null: false
-    t.bigint "sticker_id", null: false
-    t.index ["album_id"], name: "index_albums_stickers_on_album_id"
-    t.index ["sticker_id"], name: "index_albums_stickers_on_sticker_id"
-  end
-
   create_table "albums_users", id: false, force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "album_id", null: false
@@ -44,8 +37,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_11_141350) do
     t.boolean "is_active", default: true
     t.boolean "is_favorite", default: false
     t.boolean "is_open_to_trade", default: false
+    t.bigint "album_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["album_id"], name: "index_stickers_on_album_id"
   end
 
   create_table "stickers_users", id: false, force: :cascade do |t|
@@ -56,12 +51,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_11_141350) do
   end
 
   create_table "transactions", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.bigint "sticker_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["sticker_id"], name: "index_transactions_on_sticker_id"
-    t.index ["user_id"], name: "index_transactions_on_user_id"
+    t.bigint "sender_id"
+    t.bigint "receiver_id"
+    t.index ["receiver_id"], name: "index_transactions_on_receiver_id"
+    t.index ["sender_id"], name: "index_transactions_on_sender_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -76,6 +69,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_11_141350) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "transactions", "stickers"
-  add_foreign_key "transactions", "users"
+  add_foreign_key "stickers", "albums"
+  add_foreign_key "transactions", "users", column: "receiver_id"
+  add_foreign_key "transactions", "users", column: "sender_id"
 end

@@ -24,7 +24,19 @@ class Users::UserController < ApplicationController
   def album
     @user = User.find(current_user.id)
     @album = Album.find(params[:id])
-    @stickers = @album.stickers.all
+    @stickers = @user.stickers.where(album_id: @album.id)
+    @participants = @album.users.all.reject { |user| user.id == current_user.id }
+  end
+
+  def specific_user_albums
+    @user = User.find(params[:id])
+    @albums = @user.albums.all
+  end
+
+  def specific_user_album
+    @user = User.find(params[:id])
+    @album = Album.find(params[:album_id])
+    @stickers = @user.stickers.where(album_id: @album.id)
     @participants = @album.users.all.reject { |user| user.id == current_user.id }
   end
 end
