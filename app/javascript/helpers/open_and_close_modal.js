@@ -1,7 +1,11 @@
+const openModal = document.querySelector('.modal__open')
+const closeModal = document.querySelector('.modal__close')
+const modal = document.querySelector('.modal')
 
-document.querySelector('.modal__open').addEventListener('click', function() {
-  document.querySelector('.modal').classList.remove('modal--hidden');
+openModal.addEventListener('click', function() {
+  modal.classList.remove('modal--hidden');
 });
-document.querySelector('.modal__close').addEventListener('click', function() {
-  document.querySelector('.modal').classList.add('modal--hidden');
+
+closeModal.addEventListener('click', function() {
+  modal.classList.add('modal--hidden');
 });
