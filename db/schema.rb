@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_11_141350) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_18_085438) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -43,6 +43,13 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_11_141350) do
     t.index ["album_id"], name: "index_stickers_on_album_id"
   end
 
+  create_table "stickers_exchanges", id: false, force: :cascade do |t|
+    t.bigint "exchange_id", null: false
+    t.bigint "sticker_id", null: false
+    t.index ["sticker_id"], name: "index_stickers_exchanges_on_sticker_id"
+    t.index ["exchange_id"], name: "index_stickers_exchanges_on_exchange_id"
+  end
+
   create_table "stickers_users", id: false, force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "sticker_id", null: false
@@ -50,11 +57,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_11_141350) do
     t.index ["user_id"], name: "index_stickers_users_on_user_id"
   end
 
-  create_table "transactions", force: :cascade do |t|
+  create_table "exchanges", force: :cascade do |t|
     t.bigint "sender_id"
     t.bigint "receiver_id"
-    t.index ["receiver_id"], name: "index_transactions_on_receiver_id"
-    t.index ["sender_id"], name: "index_transactions_on_sender_id"
+    t.index ["receiver_id"], name: "index_exchanges_on_receiver_id"
+    t.index ["sender_id"], name: "index_exchanges_on_sender_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -70,6 +77,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_11_141350) do
   end
 
   add_foreign_key "stickers", "albums"
-  add_foreign_key "transactions", "users", column: "receiver_id"
-  add_foreign_key "transactions", "users", column: "sender_id"
+  add_foreign_key "exchanges", "users", column: "receiver_id"
+  add_foreign_key "exchanges", "users", column: "sender_id"
 end
