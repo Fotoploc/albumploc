@@ -34,6 +34,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_18_111443) do
     t.bigint "sender_id"
     t.bigint "receiver_id"
     t.string "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["receiver_id"], name: "index_exchanges_on_receiver_id"
     t.index ["sender_id"], name: "index_exchanges_on_sender_id"
   end

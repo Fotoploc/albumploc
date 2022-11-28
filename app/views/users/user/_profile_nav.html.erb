@@ -3,10 +3,13 @@
   </div>
   <ul>
     <li class="btn nav__link">
-      <%= link_to "Home" %>  
+      <%= link_to "Home", user_profile_path %>  
     </li>
     <li class="btn nav__link">
-      <%= link_to "Profile" , user_profile_path %>
+      <%= link_to "Albums" , user_albums_path %>
+    </li>
+    <li class="btn nav__link">
+      <%= link_to "Exchanges" , all_exchanges_path %>
     </li>
     <li class="btn nav__link">
       <%= link_to "Settings" , edit_user_registration_path %>

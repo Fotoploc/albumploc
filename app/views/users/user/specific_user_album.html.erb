@@ -16,6 +16,7 @@
     </div>
     <section class="section section--f-start">
       <%= render "stickers/show", stickers: @stickers%>
+      <%= link_to "Trocar figurinhas", exchange_path(user_id:@user.id, album_id:@album.id), class:"btn btn--primary" %>
   </section>
   </container>
 </div>

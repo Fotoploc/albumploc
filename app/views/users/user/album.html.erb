@@ -28,7 +28,7 @@
   <% @participants.each do |participant|%>
     <div class="modal__body">
       <div class="modal__body__text">
-        <%= link_to participant.email, specific_user_album_path(id: participant.id, album_id:@album.id), class:"btn btn--primary" %>
+        <%= link_to participant.email, specific_user_album_path(user_id: participant.id, album_id:@album.id), class:"btn btn--primary" %>
       </div>
     </div>
   <% end %>

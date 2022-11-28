@@ -56,6 +56,18 @@
   box-sizing: border-box;
 }
 
-.position-relative{
+.position-relative {
   position: relative;
+}
+
+.position-absolute {
+  position: absolute;
+}
+
+.position-fixed {
+  position: fixed;
+}
+
+.cursor-pointer {
+  cursor: pointer;
 }

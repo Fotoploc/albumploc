@@ -1,0 +1,38 @@
+<%= turbo_frame_tag "first_turbo_frame" do %>
+<div class="specific-user-profile">
+  <%= render 'users/user/profile_nav' %>
+  <section class="section section--f-start">
+    <container class="container container--list effect-shadow-1">
+      <div class="header" style="justify-content: space-between">
+        <%= link_to "Back", user_profile_path, class:"btn btn--secondary" %>
+        <h4> Your Exchanges </h4>
+        <div></div>
+      </div>  
+      <div class="container container--list">
+        <% @exchanges.reverse_each do |exchange| %>
+          <% if exchange.sender.id == current_user.id %>
+            <div class="effect-border-1 padding-05 gap-1" >
+              <p>Você está trocando <%= exchange.sender_stickers.all.length() %> x <%=exchange.receiver_stickers.all.length() %> figurinhas com <%= exchange.receiver.email %></p>
+              <p> Status: <%= exchange.status %></p>
+              <p> Data: <%= exchange.created_at.strftime("%d/%m/%Y") %> </p>
+            </div>
+            <div>
+              <%= button_to "Cancelar", cancel_exchange_path(exchange.id), method: :put, class:"btn btn--secondary" %>
+            </div>
+          <% else %>
+            <div class="effect-border-1 padding-05 gap-1" >
+              <p><%= exchange.sender.email %> quer trocar <%= exchange.sender_stickers.all.length() %> x <%=exchange.receiver_stickers.all.length() %> figurinhas com você</p>
+              <p> Status: <%= exchange.status %></p>
+              <p> Data: <%= exchange.created_at.strftime("%d/%m/%Y") %> </p>
+            </div>
+            <div>
+              <%= button_to "Aceitar", accept_exchange_path(exchange.id), method: :put, class:"btn btn--secondary" %>
+              <%= button_to "Recusar", refuse_exchange_path(exchange.id), method: :put, class:"btn btn--secondary"%>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    </container>
+  </section>
+</div>
+<% end %>
