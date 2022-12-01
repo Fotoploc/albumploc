@@ -2,7 +2,7 @@
   <%= render 'users/user/profile_nav' %>
   <section class="section section--f-start">
     <div class="header" style="justify-content: space-between">
-      <%= link_to "Back", user_album_path(album_id: @album.id), class:"btn btn--secondary" %>
+      <%= link_to "Voltar", user_album_path(album_id: @album.id), class:"btn btn--secondary" %>
       <h4> Trocar figurinhas </h4>
       <div></div>
     </div>  
@@ -10,7 +10,7 @@
     <%= form_with(url: exchange_new_path, method:"post", :html => {:class => "form"}) do |f| %>
       <container class="container container--list effect-shadow-1 form__field">
         <div class="header" style="justify-content: center">
-          <h4> Suas Stickers </h4>
+          <h4> Suas Figurinhas </h4>
         </div>  
         <div class="container__cards">
           <% @sender_stickers.each do |sticker| %>
@@ -23,7 +23,7 @@
       </container>
       <container class="container container--list effect-shadow-1 form__field">
         <div class="header" style="justify-content: center">
-          <h4><%= @receiver.email %> Stickers </h4>
+          <h4>Figurinhas de <%= @receiver.email %></h4>
         </div>
         <div class="container__cards">
           <% @receiver_stickers.each do |sticker| %>

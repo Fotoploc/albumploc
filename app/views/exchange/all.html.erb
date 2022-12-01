@@ -4,8 +4,8 @@
   <section class="section section--f-start">
     <container class="container container--list effect-shadow-1">
       <div class="header" style="justify-content: space-between">
-        <%= link_to "Back", user_profile_path, class:"btn btn--secondary" %>
-        <h4> Your Exchanges </h4>
+        <%= link_to "Voltar", user_profile_path, class:"btn btn--secondary" %>
+        <h4> Suas Trocas </h4>
         <div></div>
       </div>  
       <div class="container container--list">
@@ -29,10 +29,12 @@
                 <p> Status: <%= exchange.status %></p>
                 <p> Data: <%= exchange.created_at.strftime("%d/%m/%Y") %> </p>
               </div>
-              <div class="gap-1 display-flex display-flex--row align-items-center">
-                <%= button_to "Aceitar", accept_exchange_path(exchange.id), method: :put, class:"btn btn--primary" %>
-                <%= button_to "Recusar", refuse_exchange_path(exchange.id), method: :put, class:"btn btn--secondary"%>
-              </div>
+              <% if exchange.status === "Pendente" %>
+                <div class="gap-1 display-flex display-flex--row align-items-center">
+                  <%= button_to "Aceitar", accept_exchange_path(exchange.id), method: :put, class:"btn btn--primary" %>
+                  <%= button_to "Recusar", refuse_exchange_path(exchange.id), method: :put, class:"btn btn--secondary"%>
+                </div>
+              <% end %>
             </div>
             
           <% end %>
