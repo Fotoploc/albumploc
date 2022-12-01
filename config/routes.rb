@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
   resources :stickers
   resources :albums
+  get '/', to: 'users/user#profile'
   get 'user/profile' => 'users/user#profile'
   get 'user/stickers' => 'users/user#stickers'
   get 'user/albums' => 'users/user#albums'

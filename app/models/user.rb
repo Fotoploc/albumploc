@@ -1,6 +1,6 @@
 class User < ApplicationRecord
-  has_and_belongs_to_many :stickers, join_table: 'stickers_users'
   has_and_belongs_to_many :albums, join_table: 'albums_users'
+  has_many :stickers, class_name: 'UserSticker', foreign_key: 'user_id'
   # has_many :exchanges, foreign_key: 'sender_id'
   # has_many :exchanges, foreign_key: 'receiver_id'
   has_many :sent_exchanges, class_name: 'Exchange', foreign_key: 'sender_id'

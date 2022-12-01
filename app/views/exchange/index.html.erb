@@ -15,7 +15,7 @@
         <div class="container__cards">
           <% @sender_stickers.each do |sticker| %>
             <div class="cursor-pointer position-relative" onClick="this.children[0].click()">
-              <input type="checkbox" name="sender_sticker_ids[]" value="<%= sticker.id %>" class="checkbox position-absolute">
+              <input type="checkbox" name="sendesticker_ids[]" value="<%= sticker.id %>" class="checkbox position-absolute">
               <%= render "stickers/sticker", sticker: sticker %>
             </div>
           <% end %>
@@ -28,7 +28,7 @@
         <div class="container__cards">
           <% @receiver_stickers.each do |sticker| %>
             <div class="cursor-pointer position-relative" onClick="this.children[0].click()">
-              <input type="checkbox" name="receiver_sticker_ids[]" value="<%= sticker.id %>" class="checkbox position-absolute">
+              <input type="checkbox" name="receivesticker_ids[]" value="<%= sticker.id %>" class="checkbox position-absolute">
               <%= render "stickers/sticker", sticker: sticker %>
             </div>
           <% end %>

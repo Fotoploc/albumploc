@@ -42,20 +42,20 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_18_111443) do
 
   create_table "receiver_stickers", force: :cascade do |t|
     t.bigint "exchange_id", null: false
-    t.bigint "r_sticker_id"
+    t.bigint "sticker_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["exchange_id"], name: "index_receiver_stickers_on_exchange_id"
-    t.index ["r_sticker_id"], name: "index_receiver_stickers_on_r_sticker_id"
+    t.index ["sticker_id"], name: "index_receiver_stickers_on_sticker_id"
   end
 
   create_table "sender_stickers", force: :cascade do |t|
     t.bigint "exchange_id", null: false
-    t.bigint "s_sticker_id"
+    t.bigint "sticker_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["exchange_id"], name: "index_sender_stickers_on_exchange_id"
-    t.index ["s_sticker_id"], name: "index_sender_stickers_on_s_sticker_id"
+    t.index ["sticker_id"], name: "index_sender_stickers_on_sticker_id"
   end
 
   create_table "stickers", force: :cascade do |t|
@@ -63,19 +63,22 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_18_111443) do
     t.text "description"
     t.string "picture"
     t.boolean "is_active", default: true
-    t.boolean "is_favorite", default: false
-    t.boolean "is_open_to_trade", default: false
     t.bigint "album_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["album_id"], name: "index_stickers_on_album_id"
   end
 
-  create_table "stickers_users", id: false, force: :cascade do |t|
+  create_table "user_stickers", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "sticker_id", null: false
-    t.index ["sticker_id"], name: "index_stickers_users_on_sticker_id"
-    t.index ["user_id"], name: "index_stickers_users_on_user_id"
+    t.boolean "is_active", default: true
+    t.boolean "is_favorite", default: false
+    t.boolean "is_open_to_trade", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["sticker_id"], name: "index_user_stickers_on_sticker_id"
+    t.index ["user_id"], name: "index_user_stickers_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -93,8 +96,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_18_111443) do
   add_foreign_key "exchanges", "users", column: "receiver_id"
   add_foreign_key "exchanges", "users", column: "sender_id"
   add_foreign_key "receiver_stickers", "exchanges"
-  add_foreign_key "receiver_stickers", "stickers", column: "r_sticker_id"
+  add_foreign_key "receiver_stickers", "stickers"
   add_foreign_key "sender_stickers", "exchanges"
-  add_foreign_key "sender_stickers", "stickers", column: "s_sticker_id"
+  add_foreign_key "sender_stickers", "stickers"
   add_foreign_key "stickers", "albums"
+  add_foreign_key "user_stickers", "stickers"
+  add_foreign_key "user_stickers", "users"
 end

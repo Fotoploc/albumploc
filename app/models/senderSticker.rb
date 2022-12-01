@@ -1,4 +1,4 @@
 class SenderSticker < ApplicationRecord
   belongs_to :exchange
-  belongs_to :s_sticker, class_name: 'Sticker', foreign_key: 's_sticker_id'
+  belongs_to :sticker, class_name: 'Sticker', foreign_key: 'sticker_id'
 end

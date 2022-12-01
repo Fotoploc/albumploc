@@ -45,12 +45,24 @@
     Album.fifth.stickers.new(code: "FTP25", description: "Sticker 25 description", picture: "https://i.imgur.com/25Z25Z25.jpg").save
     puts "Done!"
     puts "Adding stickers to users..."
-    User.first.stickers.push(Sticker.first(12))
-    User.last.stickers.push(Sticker.last(13))
+    Sticker.first(12).each do |sticker|
+        User.first.stickers << UserSticker.new(sticker_id: sticker.id, user_id: User.first.id)
+    end
+    Sticker.last(13).each do |sticker|
+        User.second.stickers << UserSticker.new(sticker_id: sticker.id, user_id: User.second.id)
+    end
     puts "Done!"
     puts "Adding albums to users..."
     User.first.albums.push(Album.all)
     User.last.albums.push(Album.all)
     puts "Done!"
-
+    puts "Creating trades..."
+    Exchange.create!(sender_id: User.first.id, receiver_id: User.second.id, status: "Pendente")
+    SenderSticker.create!(exchange_id: Exchange.first.id, sticker_id: 11)
+    SenderSticker.create!(exchange_id: Exchange.first.id, sticker_id: 12)
+    ReceiverSticker.create!(exchange_id: Exchange.first.id, sticker_id: 14)
+    Exchange.create!(sender_id: User.second.id, receiver_id: User.first.id, status: "Pendente")
+    SenderSticker.create!(exchange_id: Exchange.last.id, sticker_id: 15)
+    ReceiverSticker.create!(exchange_id: Exchange.last.id, sticker_id: 11)
+    puts "Done!"
     puts "Seeding database complete!"
