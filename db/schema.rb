@@ -10,9 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_09_143106) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_05_180057) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "album_pages", force: :cascade do |t|
+    t.bigint "album_id", null: false
+    t.integer "page_number", null: false
+    t.string "background_image", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["album_id"], name: "index_album_pages_on_album_id"
+  end
 
   create_table "albums", force: :cascade do |t|
     t.string "name"
@@ -23,13 +32,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_09_143106) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "albums_stickers", id: false, force: :cascade do |t|
-    t.bigint "album_id", null: false
-    t.bigint "sticker_id", null: false
-    t.index ["album_id"], name: "index_albums_stickers_on_album_id"
-    t.index ["sticker_id"], name: "index_albums_stickers_on_sticker_id"
-  end
-
   create_table "albums_users", id: false, force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "album_id", null: false
@@ -37,19 +39,67 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_09_143106) do
     t.index ["user_id"], name: "index_albums_users_on_user_id"
   end
 
-  create_table "stickers", force: :cascade do |t|
-    t.integer "code"
-    t.text "description"
-    t.string "picture"
+  create_table "exchanges", force: :cascade do |t|
+    t.bigint "sender_id"
+    t.bigint "receiver_id"
+    t.string "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["receiver_id"], name: "index_exchanges_on_receiver_id"
+    t.index ["sender_id"], name: "index_exchanges_on_sender_id"
   end
 
-  create_table "stickers_users", id: false, force: :cascade do |t|
+  create_table "page_stickers", force: :cascade do |t|
+    t.bigint "album_pages_id", null: false
+    t.bigint "stickers_id", null: false
+    t.float "position_x"
+    t.float "position_y"
+    t.float "rotation"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["album_pages_id"], name: "index_page_stickers_on_album_pages_id"
+    t.index ["stickers_id"], name: "index_page_stickers_on_stickers_id"
+  end
+
+  create_table "receiver_stickers", force: :cascade do |t|
+    t.bigint "exchange_id", null: false
+    t.bigint "sticker_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["exchange_id"], name: "index_receiver_stickers_on_exchange_id"
+    t.index ["sticker_id"], name: "index_receiver_stickers_on_sticker_id"
+  end
+
+  create_table "sender_stickers", force: :cascade do |t|
+    t.bigint "exchange_id", null: false
+    t.bigint "sticker_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["exchange_id"], name: "index_sender_stickers_on_exchange_id"
+    t.index ["sticker_id"], name: "index_sender_stickers_on_sticker_id"
+  end
+
+  create_table "stickers", force: :cascade do |t|
+    t.string "code"
+    t.text "description"
+    t.string "picture"
+    t.boolean "is_active", default: true
+    t.bigint "album_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["album_id"], name: "index_stickers_on_album_id"
+  end
+
+  create_table "user_stickers", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "sticker_id", null: false
-    t.index ["sticker_id"], name: "index_stickers_users_on_sticker_id"
-    t.index ["user_id"], name: "index_stickers_users_on_user_id"
+    t.boolean "is_active", default: true
+    t.boolean "is_favorite", default: false
+    t.boolean "is_open_to_trade", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["sticker_id"], name: "index_user_stickers_on_sticker_id"
+    t.index ["user_id"], name: "index_user_stickers_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -64,4 +114,16 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_09_143106) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "album_pages", "albums"
+  add_foreign_key "exchanges", "users", column: "receiver_id"
+  add_foreign_key "exchanges", "users", column: "sender_id"
+  add_foreign_key "page_stickers", "album_pages", column: "album_pages_id"
+  add_foreign_key "page_stickers", "stickers", column: "stickers_id"
+  add_foreign_key "receiver_stickers", "exchanges"
+  add_foreign_key "receiver_stickers", "stickers"
+  add_foreign_key "sender_stickers", "exchanges"
+  add_foreign_key "sender_stickers", "stickers"
+  add_foreign_key "stickers", "albums"
+  add_foreign_key "user_stickers", "stickers"
+  add_foreign_key "user_stickers", "users"
 end

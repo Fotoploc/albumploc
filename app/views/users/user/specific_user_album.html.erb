@@ -2,7 +2,7 @@
   <%= render 'profile_nav' %>
   <container class="container container--list">
     <div class="header" style="justify-content: space-between">
-      <%= link_to "Voltar", user_profile_path, class:"btn btn--secondary" %>
+      <%= link_to "Voltar para seu album", user_album_path(id: @album.id), class:"btn btn--secondary" %>
       <h4> Album </h4>
       <div class="btn btn--primary modal__open">Participantes</div>
     </div>
@@ -16,6 +16,7 @@
     </div>
     <section class="section section--f-start">
       <%= render "stickers/show", stickers: @stickers%>
+      <%= link_to "Trocar figurinhas", exchange_path(user_id:@user.id, album_id:@album.id), class:"btn btn--primary" %>
   </section>
   </container>
 </div>
@@ -28,7 +29,7 @@
   <% @participants.each do |participant|%>
     <div class="modal__body">
       <div class="modal__body__text">
-        <%= link_to participant.email, specific_user_album_path(user_id: participant.id, album_id:@album.id), class:"btn btn--primary" %>
+        <%= link_to participant.email, specific_user_album_path(id: participant.id, album_id:@album.id), class:"btn btn--primary" %>
       </div>
     </div>
   <% end %>

@@ -1,10 +1,10 @@
 <container class="container container--list effect-shadow-1">
   <div class="header" style="justify-content: space-between">
-    <%= link_to "Back", user_profile_path, class:"btn btn--secondary" %>
-    <h4> Stickers </h4>
+    <%= link_to "Voltar", user_profile_path, class:"btn btn--secondary" %>
+    <h4> Figurinhas </h4>
     <div></div>
   </div>
-  <div class="sticker">
+  <div class="container__cards">
     <% @stickers.each do |sticker| %>
       <%= render "stickers/sticker", sticker: sticker %>
     <% end %>

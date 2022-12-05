@@ -4,40 +4,8 @@
   box-shadow: -2px 2px 12px -1px rgba(0,0,0,0.75);
 }
 
-.gap-035 {
-  gap: 0.35rem;
-}
-
-.gap-05{
-  gap: 0.5rem;
-}
-
-.gap-1 {
-  gap: 1rem;
-}
-
-.gap-2 {
-  gap: 2rem;
-}
-
-.gap-3 {
-  gap: 3rem;
-}
-
-.padding-05 {
-  padding: 0.5rem;
-}
-
-.padding-1 {
-  padding: 1rem;
-}
-
-.padding-2 {
-  padding: 2rem;
-}
-
-.padding-3 {
-  padding: 3rem;
+.effect-border-1 {
+  border: var(--border);
 }
 
 .border-radius-05 {
@@ -46,8 +14,4 @@
 
 .border-box {
   box-sizing: border-box;
-}
-
-.position-relative{
-  position: relative;
 }

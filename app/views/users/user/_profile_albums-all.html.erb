@@ -1,10 +1,10 @@
 <container class="container container--list">
   <div class="header" style="justify-content: space-between">
-    <%= link_to "Back", user_profile_path, class:"btn btn--secondary" %>
+    <%= link_to "Voltar", user_profile_path, class:"btn btn--secondary" %>
     <h4> Albums </h4>
     <div></div>
   </div>
-  <div class="album">
+  <div class="container__cards">
     <% @albums.each do |album| %>
       <%= render "albums/album", album: album %>
     <% end %>

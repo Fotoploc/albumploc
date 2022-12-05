@@ -1,0 +1,2 @@
+class AlbumPage < ApplicationRecord
+end
