@@ -10,9 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_18_111443) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_05_180057) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "album_pages", force: :cascade do |t|
+    t.bigint "album_id", null: false
+    t.integer "page_number", null: false
+    t.string "background_image", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["album_id"], name: "index_album_pages_on_album_id"
+  end
 
   create_table "albums", force: :cascade do |t|
     t.string "name"
@@ -38,6 +47,18 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_18_111443) do
     t.datetime "updated_at", null: false
     t.index ["receiver_id"], name: "index_exchanges_on_receiver_id"
     t.index ["sender_id"], name: "index_exchanges_on_sender_id"
+  end
+
+  create_table "page_stickers", force: :cascade do |t|
+    t.bigint "album_pages_id", null: false
+    t.bigint "stickers_id", null: false
+    t.float "position_x"
+    t.float "position_y"
+    t.float "rotation"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["album_pages_id"], name: "index_page_stickers_on_album_pages_id"
+    t.index ["stickers_id"], name: "index_page_stickers_on_stickers_id"
   end
 
   create_table "receiver_stickers", force: :cascade do |t|
@@ -93,8 +114,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_18_111443) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "album_pages", "albums"
   add_foreign_key "exchanges", "users", column: "receiver_id"
   add_foreign_key "exchanges", "users", column: "sender_id"
+  add_foreign_key "page_stickers", "album_pages", column: "album_pages_id"
+  add_foreign_key "page_stickers", "stickers", column: "stickers_id"
   add_foreign_key "receiver_stickers", "exchanges"
   add_foreign_key "receiver_stickers", "stickers"
   add_foreign_key "sender_stickers", "exchanges"
