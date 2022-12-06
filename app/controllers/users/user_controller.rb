@@ -13,12 +13,4 @@ class Users::UserController < ApplicationController
       @stickers << Sticker.find(userSticker.id)
     end
   end
-
-  def stickers
-    @user = User.find(current_user.id)
-    @stickers = []
-    @user.stickers.each do |userSticker|
-      @stickers << Sticker.find(userSticker.id)
-    end
-  end
 end
