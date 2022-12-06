@@ -50,15 +50,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_05_180057) do
   end
 
   create_table "page_stickers", force: :cascade do |t|
-    t.bigint "album_pages_id", null: false
-    t.bigint "stickers_id", null: false
+    t.bigint "album_page_id", null: false
+    t.bigint "sticker_id", null: false
     t.float "position_x"
     t.float "position_y"
     t.float "rotation"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["album_pages_id"], name: "index_page_stickers_on_album_pages_id"
-    t.index ["stickers_id"], name: "index_page_stickers_on_stickers_id"
+    t.index ["album_page_id"], name: "index_page_stickers_on_album_page_id"
+    t.index ["sticker_id"], name: "index_page_stickers_on_sticker_id"
   end
 
   create_table "receiver_stickers", force: :cascade do |t|
@@ -117,8 +117,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_05_180057) do
   add_foreign_key "album_pages", "albums"
   add_foreign_key "exchanges", "users", column: "receiver_id"
   add_foreign_key "exchanges", "users", column: "sender_id"
-  add_foreign_key "page_stickers", "album_pages", column: "album_pages_id"
-  add_foreign_key "page_stickers", "stickers", column: "stickers_id"
+  add_foreign_key "page_stickers", "album_pages"
+  add_foreign_key "page_stickers", "stickers"
   add_foreign_key "receiver_stickers", "exchanges"
   add_foreign_key "receiver_stickers", "stickers"
   add_foreign_key "sender_stickers", "exchanges"

@@ -1,2 +1,2 @@
-class PageSticker < ApplicationRecord
+class PageSticker < ApplicationRecor
 end
