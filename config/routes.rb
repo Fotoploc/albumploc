@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   get 'user/profile' => 'users/user#profile'
   get 'user/stickers' => 'stickers#stickers'
   get 'user/albums' => 'albums#albums'
+  get 'albums/:album_id/stickers' => 'stickers#index'
+  get 'albums/:album_id/stickers/new' => 'stickers#new', as: 'stickers_new'
   get 'user/albums/:album_id' => 'albums#album', as: 'user_album'
   get 'user/albums/:album_id/edit-pages' => 'album_pages#edit_pages', as: 'edit_album_pages'
   get 'user/:user_id/albums' => 'albums#specific_user_albums', as: 'specific_user_albums'
