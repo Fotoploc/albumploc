@@ -119,6 +119,10 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
+    dotenv (2.8.1)
+    dotenv-rails (2.8.1)
+      dotenv (= 2.8.1)
+      railties (>= 3.2)
     erubi (1.11.0)
     excon (0.94.0)
     ffi (1.15.5)
@@ -304,6 +308,7 @@ DEPENDENCIES
   carrierwave (~> 2.0)
   debug
   devise (~> 4.8.1)
+  dotenv-rails
   fog-aws
   importmap-rails
   jbuilder
