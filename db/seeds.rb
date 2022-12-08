@@ -65,4 +65,14 @@
     SenderSticker.create!(exchange_id: Exchange.last.id, sticker_id: 15)
     ReceiverSticker.create!(exchange_id: Exchange.last.id, sticker_id: 11)
     puts "Done!"
+    puts "Creating an admin user..."
+    User.create!(email: "admin@fotoploc.com.br", password: "123456", password_confirmation: "123456")
+    User.last.permission.update(is_admin: true)
+    User.last.albums.push(Album.all)
+    Sticker.all.each do |sticker|
+        User.last.stickers << UserSticker.new(sticker_id: sticker.id, user_id: User.first.id)
+    end
+    puts "Done!"
+
     puts "Seeding database complete!"
+
