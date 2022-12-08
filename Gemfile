@@ -35,6 +35,10 @@ gem 'devise', '~> 4.8.1'
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
 
+#Storage files on AWS S3
+gem 'carrierwave', '~> 2.0'
+gem "fog-aws"
+
 # Linter
 gem 'rubocop', require: false
 
@@ -69,6 +73,9 @@ group :development do
 
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
+
+  #Use AWS S3 Service
+  gem 'aws-sdk-s3'
 end
 
 group :test do
