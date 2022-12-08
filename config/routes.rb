@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get 'user/stickers' => 'stickers#stickers'
   get 'user/albums' => 'albums#albums'
   get 'user/albums/:album_id' => 'albums#album', as: 'user_album'
+  get 'user/albums/:album_id/edit-pages' => 'album_pages#edit_pages', as: 'edit_album_pages'
   get 'user/:user_id/albums' => 'albums#specific_user_albums', as: 'specific_user_albums'
   get 'user/:user_id/albums/:album_id' => 'albums#specific_user_album', as: 'specific_user_album'
   get 'user/:user_id/albums/:album_id/exchange' => 'exchange#index', as: 'exchange'

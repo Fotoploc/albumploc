@@ -36,6 +36,15 @@ class AlbumsController < ApplicationController
       redirect_to albums_path.alert = 'Album creation failed'
     end
   end
+
+  def update
+    @album = Album.find(params[:id])
+    if @album.update(album_params)
+      redirect_to album_path(@album)
+    else
+      redirect_to album_path(@album).alert = 'Album update failed'
+    end
+  end
   
   private
   def get_user_stickers_by_album(user, album)
