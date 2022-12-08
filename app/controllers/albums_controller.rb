@@ -3,12 +3,14 @@ class AlbumsController < ApplicationController
   def albums
     @user = User.find(current_user.id)
     @albums = @user.albums.all
+    @album_new = Album.new
   end
 
   def album
     @user = User.find(current_user.id)
     @album = Album.find(params[:album_id])
-    @stickers = @stickers = get_user_stickers_by_album(@user, @album)
+    @album_pages = @album.album_page.all
+    @stickers = get_user_stickers_by_album(@user, @album)
     @participants = @album.users.all.reject { |user| user.id == current_user.id }
   end
 
@@ -25,7 +27,16 @@ class AlbumsController < ApplicationController
     @participants = @album.users.all.reject { |user| user.id == current_user.id }
   end
 
-
+  def create
+    @album = Album.new(album_params)
+    if @album.save
+      @album.users << current_user
+      redirect_to albums_path
+    else
+      redirect_to albums_path.alert = 'Album creation failed'
+    end
+  end
+  
   private
   def get_user_stickers_by_album(user, album)
     stickers_of_album = Sticker.where(album_id: album.id)
@@ -37,5 +48,9 @@ class AlbumsController < ApplicationController
       end
     end
     stickers
+  end
+
+  def album_params
+    params.require(:album).permit(:name, :description, :picture, :code)
   end
 end

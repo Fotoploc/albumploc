@@ -24,10 +24,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_08_085023) do
   end
 
   create_table "albums", force: :cascade do |t|
-    t.string "name"
+    t.string "name", null: false
     t.integer "code"
     t.text "description"
-    t.string "picture"
+    t.string "picture", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -10,7 +10,7 @@ class Users::UserController < ApplicationController
     @albums = @user.albums.first(5)
     @stickers = []
     @user.stickers.first(5).each do |userSticker|
-      @stickers << Sticker.find(userSticker.id)
+      @stickers << Sticker.find(userSticker.sticker_id)
     end
   end
 end
