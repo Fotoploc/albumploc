@@ -5,8 +5,8 @@ class User < ApplicationRecord
   # has_many :exchanges, foreign_key: 'receiver_id'
   has_many :sent_exchanges, class_name: 'Exchange', foreign_key: 'sender_id'
   has_many :received_exchanges, class_name: 'Exchange', foreign_key: 'receiver_id'
-
-
+  has_one :permission, class_name: 'Permission', foreign_key: 'user_id'
+  
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,

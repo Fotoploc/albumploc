@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_05_180057) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_08_085023) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -59,6 +59,14 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_05_180057) do
     t.datetime "updated_at", null: false
     t.index ["album_page_id"], name: "index_page_stickers_on_album_page_id"
     t.index ["sticker_id"], name: "index_page_stickers_on_sticker_id"
+  end
+
+  create_table "permissions", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.boolean "is_admin", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_permissions_on_user_id"
   end
 
   create_table "receiver_stickers", force: :cascade do |t|
@@ -119,6 +127,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_05_180057) do
   add_foreign_key "exchanges", "users", column: "sender_id"
   add_foreign_key "page_stickers", "album_pages"
   add_foreign_key "page_stickers", "stickers"
+  add_foreign_key "permissions", "users"
   add_foreign_key "receiver_stickers", "exchanges"
   add_foreign_key "receiver_stickers", "stickers"
   add_foreign_key "sender_stickers", "exchanges"
