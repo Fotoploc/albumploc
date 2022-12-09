@@ -19,4 +19,8 @@ class User < ApplicationRecord
     Permission.create(user_id: self.id)
   end
 
+  def admin?
+    self.permission.is_admin
+  end
+
 end
