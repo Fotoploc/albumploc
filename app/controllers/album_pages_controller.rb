@@ -9,7 +9,7 @@ class AlbumPagesController < ApplicationController
 
   def edit_pages
     @album = Album.find(params[:album_id])
-    @album_pages = @album.album_page.all
+    @album_pages = @album.album_page.all.order(:page_number)
     @album_page_new = AlbumPage.new
   end
   
