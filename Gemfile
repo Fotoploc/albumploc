@@ -87,3 +87,6 @@ group :test do
   gem 'selenium-webdriver'
   gem 'webdrivers'
 end
+
+#To use ENV['']
+gem 'dotenv-rails', groups: [:development, :test]
