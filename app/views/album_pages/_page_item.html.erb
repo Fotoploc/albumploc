@@ -1,5 +1,5 @@
-<div class="sticker__card effect-border-1 padding-01">
-  <div class="sticker__card__picture position-relative">
+<div class="page-card effect-border-1 padding-01">
+  <div class="page-card__picture position-relative">
     <div class="page-card__menu position-absolute">
       <%= button_to edit_album_page_path(page) do %>
         <div class="page-card__menu__icon btn">
@@ -12,7 +12,7 @@
         </div>
       <% end %>
     </div>
-    <%= image_tag "https://i.imgur.com/removed.png", alt:"Album Image", class:"album__card__picture__img", loading:"lazy" %>
+    <%= image_tag "https://i.imgur.com/removed.png", alt:"Album Image", class:"page-card__picture__img" %>
   </div>
   <p class="sticker__card_code">
     <strong><%=page.page_number%></strong>
