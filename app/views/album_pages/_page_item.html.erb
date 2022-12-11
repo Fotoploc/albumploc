@@ -1,9 +1,20 @@
 <div class="sticker__card effect-border-1 padding-01">
-  <div class="sticker__card__picture">
-    <%= image_tag "https://i.imgur.com/removed.png", alt:"Album Image", class:"album__card__picture__img" %>
+  <div class="sticker__card__picture position-relative">
+    <div class="page-card__menu position-absolute">
+      <%= button_to edit_album_page_path(page) do %>
+        <div class="page-card__menu__icon btn">
+          <%= show_svg("/icons/edit.svg")%>
+        </div>
+      <% end %>
+      <%= button_to album_page_path(page), method: :delete do %>
+        <div class="page-card__menu__icon btn">
+          <%= show_svg("/icons/trash.svg")%>
+        </div>
+      <% end %>
+    </div>
+    <%= image_tag "https://i.imgur.com/removed.png", alt:"Album Image", class:"album__card__picture__img", loading:"lazy" %>
   </div>
   <p class="sticker__card_code">
     <strong><%=page.page_number%></strong>
   </p>
-
 </div>

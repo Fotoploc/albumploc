@@ -12,13 +12,17 @@ class AlbumPagesController < ApplicationController
     @album_pages = @album.album_page.all.order(:page_number)
     @album_page_new = AlbumPage.new
   end
+
+  def edit
+    @album_page = AlbumPage.find(params[:id])
+  end
   
   def create
     @album_page = AlbumPage.new(album_page_params)
     if @album_page.save
       redirect_to edit_album_pages_path(@album_page.album_id)
     else
-
+      render edit_album_pages_path(@album_page.album_id), @album_page.erros = "Error"
     end
   end
 
@@ -27,7 +31,7 @@ class AlbumPagesController < ApplicationController
     if @album_page.update(album_page_params)
       redirect_to edit_album_pages_path(@album_page.album_id)
     else
-      render edit_album_pages_path(@album_page.album_id), @album_page_new.erros = "Error"
+      render edit_album_pages_path(@album_page.album_id), @album_page.error = "Error"
     end
   end
 
