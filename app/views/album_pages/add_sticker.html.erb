@@ -1,0 +1,47 @@
+<div class="specific-user-profile">
+  <%= render 'users/user/profile_nav' %>
+  <container class="container container--list">
+    <div class="header" style="justify-content: space-between">
+      <%= link_to "Voltar", :back, class:"btn btn--secondary" %>
+      <h4> Adicionar figurinhas a Página </h4>
+      <div></div>
+    </div
+    <%
+=begin%>
+ section--f-d-row 
+<%
+=end%>
+        <%
+=begin%>
+ <%= image_tag @album_page.background_image, class: "page-card__background-image" %> 
+<%
+=end%>
+    <section class="section ">
+      <div class="page-card"
+      style="
+        height: 700px;
+        width: 700px;
+        background-color: blue;
+        position: relative;
+      "
+      >
+        <div  class="drag_and_drop"
+        style="
+        height: 90px;
+        width: 90px;
+        background-color: red;
+      ">
+        <p id="escreva__aqui">Values</p>
+        </div>
+      </div>
+      <div>
+        <div class="container__cards">
+          <% @stickers.each do |sticker| %>
+            <%= render "stickers/sticker", sticker: sticker %>
+          <% end %>
+        </div>
+      </div>
+    </section>
+  </container>
+</div>
+<%= javascript_include_tag("helpers/drag_and_drop.js") %>
