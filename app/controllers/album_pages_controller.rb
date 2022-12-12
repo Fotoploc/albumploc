@@ -13,6 +13,13 @@ class AlbumPagesController < ApplicationController
     @album_page_new = AlbumPage.new
   end
 
+  def add_sticker
+    @user = current_user 
+    @album = Album.find(params[:album_id])
+    @album_page = @album.album_page.find(params[:page_id])
+    @stickers = get_user_stickers_by_album(@user, @album)
+  end
+
   def edit
     @album_page = AlbumPage.find(params[:id])
   end
@@ -42,6 +49,18 @@ class AlbumPagesController < ApplicationController
   end
 
   private
+  def get_user_stickers_by_album(user, album)
+    stickers_of_album = Sticker.where(album_id: album.id)
+    user_active_stickers = user.stickers.where(is_active: true)
+    stickers = []
+    user_active_stickers.each do |userSticker|
+      stickers_of_album.each do |sticker|
+        sticker.id == userSticker.sticker_id ? stickers << sticker : nil
+      end
+    end
+    stickers
+  end
+
   def album_page_params
     params.require(:album_page).permit(:album_id, :page_number, :background_image)
   end
