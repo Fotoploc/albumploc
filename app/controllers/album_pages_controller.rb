@@ -20,6 +20,16 @@ class AlbumPagesController < ApplicationController
     @stickers = get_user_stickers_by_album(@user, @album)
   end
 
+  def add_sticker_to_page
+    @user = current_user
+    @album = Album.find(params[:album_id])
+    @album_page = @album.album_page.where(page_number: params[:page_number]).first
+    Sticker.find(params[:sticker_id]).each do |sticker|
+      @album_page.stickers.new(sticker_id: sticker.id, position_x: params[:position_x][sticker.id.to_s], position_y: params[:position_y][sticker.id.to_s]).save
+    end
+    redirect_to edit_album_pages_path(@album.id)
+  end
+
   def edit
     @album_page = AlbumPage.find(params[:id])
   end
