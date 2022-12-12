@@ -1,0 +1,31 @@
+<div class="specific-user-profile">
+  <%= render 'users/user/profile_nav' %>
+  <container class="container container--list">
+    <div class="header" style="justify-content: space-between">
+      <%= link_to "Voltar", :back, class:"btn btn--secondary" %>
+      <h4> Adicionar figurinhas a Página </h4>
+      <div></div>
+    </div>
+    <section class="section "> 
+      <div class="page__show position-relative">
+        <%= image_tag @album_page.background_image, class: "page__show__background-image" %>
+      </div>
+      <div>
+        <div class="container__cards">
+        <%= form_with url: album_page_path(@album_page), method: :post, local: true do |f| %>
+          <% @stickers.each do |sticker| %>
+          <div class="form__form__field">
+            <%= f.check_box :sticker_id, { multiple: true }, sticker.id, nil %>
+            <% f.hidden_field :sticker_id, as: :hidden, input_html: { value: sticker.id } %>
+            <%= render "stickers/sticker", sticker: sticker %>
+          </div>
+          <% end %>
+          <%= f.submit "Adicionar", class: "btn btn--primary" %>
+        <% end %>
+        </div>
+      </div>
+    </section>
+  </container>
+</div>
+<%= javascript_include_tag("helpers/drag_and_drop.js") %>
+<%= javascript_include_tag("helpers/clone_by_check.js")%>

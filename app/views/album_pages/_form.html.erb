@@ -1,0 +1,18 @@
+<%= form_with model: album_page do |form| %>
+  <div class="field form__field">
+    <%= form.label :page_number, style: "display: block" %>
+    <%= form.number_field :page_number %>
+  </div>
+
+  <div class="field form__field">
+    <%= form.label :background_image, style: "display: block" %>
+    <%= form.text_field :background_image %>
+  </div>
+
+  <%= form.hidden_field :album_id, value: album_page.album_id %>
+
+  <div class="field form__field">
+    <%= form.submit "Pronto", class:"btn btn--primary"%>
+  </div>
+
+<% end %>
