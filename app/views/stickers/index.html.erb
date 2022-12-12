@@ -3,10 +3,9 @@
   <section class="section section--f-start">
     <container class="container container--list effect-shadow-1">
       <div class="header" style="justify-content: space-between">
-        <%= link_to "Voltar", user_profile_path, class:"btn btn--secondary" %>
-        <h4> Figurinhas </h4>
+        <%= link_to "Voltar", user_album_path, class:"btn btn--secondary" %>
+        <h4> Figurinhas do Álbum: <%= @album.name %> </h4>
         <div class="btn btn--primary modal__open">Nova figurinha</div>
-
       </div>
       <div class="container__cards">
         <% @stickers.each do |sticker| %>
@@ -16,9 +15,6 @@
     </container>
   </section>
 </div>
-
-
-
 <div class="modal effect-shadow-1 modal--hidden">
   <header class="modal__header">
     <button class="modal__close btn btn--secondary"> X </button>
