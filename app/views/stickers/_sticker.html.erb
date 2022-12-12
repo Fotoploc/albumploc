@@ -1,11 +1,6 @@
-<div class="sticker__card effect-border-1 padding-01">
+<div class="sticker__card effect-border-1 padding-01" id="sticker-<%= sticker.id %>" value="<%= sticker.id %>">
   <div class="sticker__card__picture">
     <%= image_tag "https://albumploc-bucket.s3.sa-east-1.amazonaws.com/"+sticker.picture.file.path, alt:"Album Image", class:"album__card__picture__img" if sticker.picture.file != nil%>
     <%= image_tag "https://i.imgur.com/removed.png", alt:"Album Image", class:"album__card__picture__img" if sticker.picture == nil%>
   </div>
-  <p class="sticker__card_code">
-    <strong>Code:</strong>
-    <%= sticker.code %>
-  </p>
-
 </div>

@@ -10,13 +10,13 @@ class AlbumPagesController < ApplicationController
   def edit_pages
     @album = Album.find(params[:album_id])
     @album_pages = @album.album_page.all.order(:page_number)
-    @album_page_new = AlbumPage.new
+    @album_page_new = @album.album_page.new
   end
 
   def add_sticker
     @user = current_user 
     @album = Album.find(params[:album_id])
-    @album_page = @album.album_page.find(params[:page_id])
+    @album_page = @album.album_page.where(page_number: params[:page_number]).first
     @stickers = get_user_stickers_by_album(@user, @album)
   end
 
