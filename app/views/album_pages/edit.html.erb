@@ -2,7 +2,7 @@
   <%= render 'users/user/profile_nav' %>
   <container class="container container--list">
     <div class="header" style="justify-content: space-between">
-      <%= link_to "Voltar", :back, class:"btn btn--secondary" %>
+      <%= link_to "Voltar", edit_album_pages_path(@album_page.album_id), class:"btn btn--secondary" %>
       <h4> Editar Página </h4>
       <div></div>
     </div>
