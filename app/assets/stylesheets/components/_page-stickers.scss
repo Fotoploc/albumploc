@@ -1,0 +1,16 @@
+.page_stickers{
+
+    &__container {
+     position: relative;
+     display: flex;
+     height: inherit;
+    }
+
+    &__card {
+        position: absolute;
+        width: 20%;
+        height: 20%;
+        aspect-ratio: 5.5/6.8;
+    }
+
+}
