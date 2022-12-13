@@ -1,11 +1,10 @@
-<%= turbo_frame_tag "first_turbo_frame" do %>
   <div class="specific-user-profile">
     <%= render 'users/user/profile_nav' %>
     <container class="container container--list">
       <div class="header" style="justify-content: space-between">
         <%= link_to "Voltar", edit_album_pages_path(@album.id), class:"btn btn--secondary" %>
-        <h4> Adicionar figurinhas a Página </h4>
-        <%= link_to "Editar já posicionadas", edit_sticker_position_album_page_path(@album.id, @album_page.page_number), class:"btn btn--secondary" %>
+        <h4> Editar figurinhas da Página </h4>
+        <div></div>
       </div>
       <section class="section "> 
         <div class="page__show position-relative">
@@ -13,14 +12,19 @@
         </div>
         <div>
           <div class="container__cards">
-          <%= form_with(url: add_sticker_to_page_album_page_path(album_id: @album_page[:album_id], page_number: @album_page[:page_number]), method:"post", :html => {:class => "form display-flex--row"}) do |f| %>
+          <%= form_with(url: add_sticker_to_page_album_page_path(@album_page[:album_id], @album_page[:page_number]), method:"post", :html => {:class => "form display-flex--row"}) do |f| %>
             <div class="form__field__positions">
             </div>
             <% @stickers.each do |sticker| %>
-            <div class="sticker__form__field">
+            <div class="sticker__form__field position-relative">
               <%= f.check_box :sticker_id, { multiple: true }, sticker.id, nil %>
               <% f.hidden_field :sticker_id, as: :hidden, input_html: { value: sticker.id } %>
               <%= render "stickers/sticker", sticker: sticker %>
+              <%= button_to remove_sticker_from_page_album_page_path(@album_page[:album_id], @album_page[:page_number], sticker.id), method: :delete, class:"position-absolute right-0 top-0" do %>
+                <div class="page__card__menu__icon btn">
+                  <%= show_svg("/icons/trash.svg")%>
+                </div>
+              <% end %>
             </div>
             <% end %>
             <%= f.hidden_field :album_id, as: :hidden, input_html: { value: @album.id } %>
@@ -31,5 +35,4 @@
       </section>
     </container>
   </div>
-<% end %>
 <%= javascript_include_tag("helpers/drag_and_drop.js") %>
