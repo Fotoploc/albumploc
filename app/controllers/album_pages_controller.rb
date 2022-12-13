@@ -24,7 +24,7 @@ class AlbumPagesController < ApplicationController
     @user = current_user
     @album = Album.find(params[:album_id])
     @album_page = @album.album_page.where(page_number: params[:page_number]).first
-    Sticker.find(params[:sticker_id]).each do |sticker|
+    Sticker.where(id: params[:sticker_id]).each do |sticker|
       if @album_page.stickers.find_by(sticker_id: sticker.id).nil?
         @album_page.stickers.new(sticker_id: sticker.id, position_x: params[:position_x][sticker.id.to_s], position_y: params[:position_y][sticker.id.to_s]).save
       else
@@ -32,6 +32,14 @@ class AlbumPagesController < ApplicationController
       end
     end
     redirect_to edit_album_pages_path(@album.id)
+  end
+
+  def edit_sticker_position
+    @user = current_user
+    @album = Album.find(params[:album_id])
+    @album_page = @album.album_page.where(page_number: params[:page_number]).first
+    @stickers_positons = @album_page.stickers
+    @stickers = get_stickers_by_stickers_positions(@stickers_positons)
   end
 
   def edit
@@ -71,6 +79,14 @@ class AlbumPagesController < ApplicationController
       stickers_of_album.each do |sticker|
         sticker.id == userSticker.sticker_id ? stickers << sticker : nil
       end
+    end
+    stickers
+  end
+
+  def get_stickers_by_stickers_positions(stickers_positons)
+    stickers = []
+    stickers_positons.each do |sticker_position|
+      stickers << Sticker.find(sticker_position.sticker_id)
     end
     stickers
   end

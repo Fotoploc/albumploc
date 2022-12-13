@@ -1,11 +1,10 @@
-<%= turbo_frame_tag "first_turbo_frame" do %>
   <div class="specific-user-profile">
     <%= render 'users/user/profile_nav' %>
     <container class="container container--list">
       <div class="header" style="justify-content: space-between">
         <%= link_to "Voltar", edit_album_pages_path(@album.id), class:"btn btn--secondary" %>
-        <h4> Adicionar figurinhas a Página </h4>
-        <%= link_to "Editar já posicionadas", edit_sticker_position_album_page_path(@album.id, @album_page.page_number), class:"btn btn--secondary" %>
+        <h4> Editar figurinhas da Página </h4>
+        <div></div>
       </div>
       <section class="section "> 
         <div class="page__show position-relative">
@@ -31,5 +30,4 @@
       </section>
     </container>
   </div>
-<% end %>
 <%= javascript_include_tag("helpers/drag_and_drop.js") %>
