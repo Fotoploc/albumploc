@@ -1,0 +1,19 @@
+<% album_pages = @album.album_page.order(id: :desc)
+    index = 0
+%>
+
+<%= while index < album_pages.size do %>
+    <div class="right">
+        <figure class="back" style="background-image: url('<%= album_pages[index].background_image %>');">
+            <div class="page_stickers__container">
+                <%= render "page_stickers", album_page: album_pages[index], album: @album %>
+            </div>
+        </figure>
+        <figure class="front" style="background-image: url('<%= album_pages[index+1].background_image %>');">
+            <div class="page_stickers__container">
+                <%= render "page_stickers", album_page: album_pages[index+1], album: @album %>
+            </div>
+        </figure>
+    </div>
+    <% index+=2 %>
+<% end %>

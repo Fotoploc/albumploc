@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get 'albums/:album_id/stickers' => 'stickers#index', as: 'album_stickers'
   get 'albums/:album_id/stickers/new' => 'stickers#new', as: 'stickers_new'
   get 'user/albums/:album_id' => 'albums#album', as: 'user_album'
+  get 'user/albums/:album_id/pages' => 'album_pages#index', as: 'show_album_pages'
   get 'user/albums/:album_id/edit-pages' => 'album_pages#edit_pages', as: 'edit_album_pages'
   get 'user/albums/:album_id/edit-pages/:page_number/add-sticker' => 'album_pages#add_sticker', as: 'add_sticker_album_page'
   post 'user/albums/:album_id/edit-pages/:page_number/add-sticker' => 'album_pages#add_sticker_to_page', as: 'add_sticker_to_page_album_page'
