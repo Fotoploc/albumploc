@@ -16,14 +16,25 @@ class AlbumPagesController < ApplicationController
   def add_sticker
     @user = current_user 
     @album = Album.find(params[:album_id])
-    @album_page = @album.album_page.where(page_number: params[:page_number]).first
-    @stickers = get_user_stickers_by_album(@user, @album)
+    @album_page = @album.album_page.find_by(page_number: params[:page_number])
+    @stickers = get_user_stickers_by_album(@user, @album).reject { |sticker| PageSticker.find_by(sticker_id: sticker.id) }
+  end
+
+  def remove_sticker_from_page
+    album = Album.find(params[:album_id])
+    puts "achou o album" + album.id.to_s
+    album_page = album.album_page.find_by(page_number: params[:page_number])
+    puts "achou a pagina" + album_page.id.to_s
+    stickers_positoned = album_page.stickers.find_by(sticker_id: params[:sticker_id])
+    puts "achou o sticker" + stickers_positoned.id.to_s
+    stickers_positoned.destroy
+    redirect_to edit_sticker_position_album_page_path(params[:album_id], params[:page_number])
   end
 
   def add_sticker_to_page
     @user = current_user
     @album = Album.find(params[:album_id])
-    @album_page = @album.album_page.where(page_number: params[:page_number]).first
+    @album_page = @album.album_page.find_by(page_number: params[:page_number])
     Sticker.where(id: params[:sticker_id]).each do |sticker|
       if @album_page.stickers.find_by(sticker_id: sticker.id).nil?
         @album_page.stickers.new(sticker_id: sticker.id, position_x: params[:position_x][sticker.id.to_s], position_y: params[:position_y][sticker.id.to_s]).save
