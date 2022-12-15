@@ -46,6 +46,7 @@ h5,
 h6 {
   color: inherit;
   line-height: var(--line-height-headers);
+  font-family: var(--font-family-Averia)
 }
 
 h1 {
@@ -68,6 +69,10 @@ a {
   color: inherit;
   text-decoration: none;
   transition: color 200ms;
+}
+
+p {
+  font-family: var(--font-family-Mulish);
 }
 
 ul, 

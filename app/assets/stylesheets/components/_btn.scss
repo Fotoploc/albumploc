@@ -9,7 +9,8 @@
   cursor: pointer;
   outline: none;
   transition: filter 400ms, color 200ms;
-
+  border-radius: 40px;
+  
   &:disabled {
     cursor: not-allowed;
     filter: grayscale(100%);
