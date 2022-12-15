@@ -55,7 +55,7 @@ class StickersController < ApplicationController
   
       new_sticker = newest_stickers.sample
       stickers_pack = album_stickers.sample(4)
-      stickers_pack.push(new_sticker)
+      stickers_pack.push(new_sticker) if new_sticker != nil
       
       stickers_pack.each do |pack_sticker|
         hasSticker = false
@@ -66,8 +66,9 @@ class StickersController < ApplicationController
         if hasSticker
           user_sticker = user_stickers.find_by(sticker_id: pack_sticker.id)
           p user_sticker
-          user_sticker.quantity = 0 if user_sticker.quantity == nil
+          user_sticker.quantity = 1 if user_sticker.quantity == nil
           user_sticker.quantity = user_sticker.quantity + 1
+          user_sticker.save
         else
           user_stickers.create(sticker_id: pack_sticker.id, quantity: 1)
         end
