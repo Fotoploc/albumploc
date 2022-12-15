@@ -17,7 +17,6 @@ Rails.application.routes.draw do
   delete 'user/albums/:album_id/edit-pages/:page_number/remove-sticker/:sticker_id' => 'album_pages#remove_sticker_from_page', as: 'remove_sticker_from_page_album_page'
   post 'user/albums/:album_id/edit-pages/:page_number/add-sticker' => 'album_pages#add_sticker_to_page', as: 'add_sticker_to_page_album_page'
   get 'user/:user_id/albums' => 'albums#specific_user_albums', as: 'specific_user_albums'
-  get 'user/albums/:album_id/edit-pages/:page_number/add-sticker' => 'album_pages#add_sticker', as: 'add_sticker_album_page'
   get 'user/:user_id/albums/:album_id' => 'albums#specific_user_album', as: 'specific_user_album'
   get 'user/:user_id/albums/:album_id/exchange' => 'exchange#index', as: 'exchange'
   post 'user/:user_id/albums/:album_id/exchange' => 'exchange#new', as: 'exchange_new'
@@ -25,6 +24,9 @@ Rails.application.routes.draw do
   put 'user/exchanges/:exchange_id/cancel' => 'exchange#cancel', as: 'cancel_exchange'
   put 'user/exchanges/:exchange_id/refuse' => 'exchange#refuse', as: 'refuse_exchange'
   put 'user/exchanges/:exchange_id/accept' => 'exchange#accept', as: 'accept_exchange'
+
+
+  post '/user/albums/:album_id/pages' => 'stickers#open_sticker_pack', as: 'open_sticker_pack'
 
   devise_for :users, controllers: {
     sessions: 'users/sessions'

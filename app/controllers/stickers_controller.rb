@@ -34,6 +34,30 @@ class StickersController < ApplicationController
     end
   end
 
+  def open_sticker_pack
+    user = User.find(current_user.id)
+    album = Album.find(params[:album_id])
+
+    user_stickers = UserSticker.where(user_id: user.id)
+    album_stickers = Sticker.where(album_id: album.id)
+
+    newest_stickers = []
+    album_stickers.each do |album_sticker|
+      isEquals = false
+      user_stickers.each do |user_sticker|
+        isEquals = true if user_sticker.sticker_id == album_sticker.id
+      end
+      newest_stickers.push(album_sticker) unless isEquals
+    end
+
+    new_sticker = newest_stickers.sample
+    stickers_pack = album_stickers.sample(4)
+    stickers_pack.push(new_sticker)
+    stickers_pack.each do |sticker|
+      p sticker
+    end
+  end
+
   # PATCH/PUT /stickers/1 or /stickers/1.json
   def update
     respond_to do |format|
