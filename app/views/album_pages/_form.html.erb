@@ -6,7 +6,7 @@
 
   <div class="field form__field">
     <%= form.label :background_image, style: "display: block" %>
-    <%= form.text_field :background_image %>
+    <%= form.file_field :background_image %>
   </div>
 
   <%= form.hidden_field :album_id, value: album_page.album_id %>
