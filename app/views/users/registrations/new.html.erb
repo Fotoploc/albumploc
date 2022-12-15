@@ -1,6 +1,6 @@
 <section class="section">
   <header class="header header--title">
-    <h1> AlbumPloc  </h1>
+    <h1> Digiploc  </h1>
   </header>
   <div class="container container--xs">
     <div class="container">
@@ -17,7 +17,17 @@
         </div>
 
         <div class="field form__field">
-          <%= f.label :password %>
+          <%= f.label "Nome" %><br />
+          <%= f.text_field :name, class:"form__input", autofocus: true, autocomplete: "name", placeholder:"seu nome", required: true %>
+        </div>
+
+        <div class="field form__field">
+          <%= f.label "Código" %><br />
+          <%= f.text_field :code, class:"form__input", autofocus: true, autocomplete: "code", placeholder:"código da empresa", required: true %>
+        </div>
+
+        <div class="field form__field">
+          <%= f.label "Senha" %>
           <% if @minimum_password_length %>
           <em>(<%= @minimum_password_length %> characters minimum)</em>
           <% end %><br />
@@ -26,7 +36,7 @@
         </div>
 
         <div class="field form__field">
-          <%= f.label :password_confirmation %><br />
+          <%= f.label "Confirmar Senha" %><br />
           <%= f.password_field :password_confirmation, id:"form__field__password__confirmation", class:"form__input", autocomplete: "new-password", placeholder:"password", required: true, minlength: "6"%>
           <div id="password_confirmation" class="form__error"></div>
         </div>

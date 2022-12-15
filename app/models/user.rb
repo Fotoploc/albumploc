@@ -15,11 +15,18 @@ class User < ApplicationRecord
   validates :email, presence: true, uniqueness: true
   validates :password, presence: true, length: { minimum: 6 }
   after_create :set_permission
-  
+  after_create :set_code
+
   def set_permission
     Permission.create(user_id: self.id)
   end
+
+  def set_code
+    self.albums << Album.where(code: self.code)
+  end
+
   def admin?
     self.permission.is_admin
   end
+  
 end
