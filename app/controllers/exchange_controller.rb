@@ -84,9 +84,9 @@ class ExchangeController < ApplicationController
   private
   def get_user_stickers_by_ids(user, sticker_ids)
     stickers = []
-    user_stickers = user.stickers.find(sticker_ids)
-    user_stickers.each do |sticker|
-      Sticker.find(sticker.id) ? stickers << sticker : nil
+    sticker_ids.each do |sticker_id|
+      user_stickers = user.stickers.find_by(sticker_id: sticker_id)
+      stickers << Sticker.find(user_stickers.sticker_id)
     end
     stickers
   end
