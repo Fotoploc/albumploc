@@ -25,6 +25,9 @@ Rails.application.routes.draw do
   put 'user/exchanges/:exchange_id/refuse' => 'exchange#refuse', as: 'refuse_exchange'
   put 'user/exchanges/:exchange_id/accept' => 'exchange#accept', as: 'accept_exchange'
 
+
+  post '/user/albums/:album_id/pages' => 'stickers#open_sticker_pack', as: 'open_sticker_pack'
+
   devise_for :users, controllers: {
     sessions: 'users/sessions'
   }

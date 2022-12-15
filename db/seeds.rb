@@ -46,10 +46,10 @@
     puts "Done!"
     puts "Adding stickers to users..."
     Sticker.first(12).each do |sticker|
-        User.first.stickers << UserSticker.new(sticker_id: sticker.id, user_id: User.first.id)
+        User.first.stickers << UserSticker.new(sticker_id: sticker.id, user_id: User.first.id, quantity: 1)
     end
     Sticker.last(13).each do |sticker|
-        User.second.stickers << UserSticker.new(sticker_id: sticker.id, user_id: User.second.id)
+        User.second.stickers << UserSticker.new(sticker_id: sticker.id, user_id: User.second.id, quantity: 1)
     end
     puts "Done!"
     puts "Adding albums to users..."
@@ -70,7 +70,7 @@
     User.last.permission.update(is_admin: true)
     User.last.albums.push(Album.all)
     Sticker.all.each do |sticker|
-        User.last.stickers << UserSticker.new(sticker_id: sticker.id, user_id: User.first.id)
+        User.last.stickers << UserSticker.new(sticker_id: sticker.id, user_id: User.first.id, quantity: 1)
     end
     puts "Done!"
 

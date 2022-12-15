@@ -3,6 +3,7 @@ class CreateUserSticker  < ActiveRecord::Migration[7.0]
     create_table :user_stickers do |t|
       t.references :user, null: false, foreign_key: true
       t.references :sticker, null: false, foreign_key: true
+      t.integer :quantity
       t.boolean :is_active, default: true
       t.boolean :is_favorite, default: false
       t.boolean :is_open_to_trade, default: false
