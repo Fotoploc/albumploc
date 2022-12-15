@@ -1,6 +1,10 @@
 .album_pages{
     width: 100vw;
 
+    .album_page {
+        background-size: cover;
+    }
+
     .container {
         width: 100%;
     }
@@ -44,7 +48,7 @@
         position: absolute;
         left:0;
         top:0;
-        background-size: 200%;
+        background-size: contain;
         background-repeat: no-repeat;
         backface-visibility: hidden;
         background-color: white;

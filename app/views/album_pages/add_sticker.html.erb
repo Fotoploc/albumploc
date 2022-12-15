@@ -17,11 +17,11 @@
             <div class="form__field__positions">
             </div>
             <% @stickers.each do |sticker| %>
-            <div class="sticker__form__field">
-              <%= f.check_box :sticker_id, { multiple: true }, sticker.id, nil %>
-              <% f.hidden_field :sticker_id, as: :hidden, input_html: { value: sticker.id } %>
-              <%= render "stickers/sticker", sticker: sticker %>
-            </div>
+              <div class="sticker__form__field">
+                <%= f.check_box :sticker_id, { multiple: true }, sticker.id, nil %>
+                <% f.hidden_field :sticker_id, as: :hidden, input_html: { value: sticker.id } %>
+                <%= render "stickers/sticker", sticker: sticker %>
+              </div>
             <% end %>
             <%= f.hidden_field :album_id, as: :hidden, input_html: { value: @album.id } %>
             <%= f.submit "Adicionar", class: "btn btn--primary" %>
