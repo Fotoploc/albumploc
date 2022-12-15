@@ -87,8 +87,6 @@ class StickersController < ApplicationController
     else
       p "Sem pacote de figurinhas"
     end
-
-
   end
 
   # PATCH/PUT /stickers/1 or /stickers/1.json
