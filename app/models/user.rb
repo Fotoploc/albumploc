@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_many :received_exchanges, class_name: 'Exchange', foreign_key: 'receiver_id'
   has_one :permission, class_name: 'Permission', foreign_key: 'user_id'
   
+  has_many :stickers_packs
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
