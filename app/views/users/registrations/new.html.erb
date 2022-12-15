@@ -1,54 +1,27 @@
-<section class="section">
-  <header class="header header--title">
-    <h1> Digiploc  </h1>
-  </header>
-  <div class="container container--xs">
-    <div class="container">
-      <%= link_to "Login", new_user_session_path, method: :get, class: "btn btn--nav"%>
-      <button class="btn btn--nav btn--nav--active">SignUp</button>
+<section class="section register-section">
+  <div class="container left">
+    <%= render "users/shared/error_messages", resource: resource %>
+    <br/>
+    <br/>
+    <div class="logo-container">
+      <%= image_tag "fotoploc-logotipo.png" %> 
     </div>
-    <%= turbo_frame_tag "first_turbo_frame" do %>
-      <%= form_for(resource, as: resource_name, url: registration_path(resource_name), :html => {:class => "form"}) do |f| %>
-        <%= render "users/shared/error_messages", resource: resource %>
-
-        <div class="field form__field">
-          <%= f.label :email %><br />
-          <%= f.email_field :email, class:"form__input", autofocus: true, autocomplete: "email", placeholder:"example@email.com", required: true %>
-        </div>
-
-        <div class="field form__field">
-          <%= f.label "Nome" %><br />
-          <%= f.text_field :name, class:"form__input", autofocus: true, autocomplete: "name", placeholder:"seu nome", required: true %>
-        </div>
-
-        <div class="field form__field">
-          <%= f.label "Código" %><br />
-          <%= f.text_field :code, class:"form__input", autofocus: true, autocomplete: "code", placeholder:"código da empresa", required: true %>
-        </div>
-
-        <div class="field form__field">
-          <%= f.label "Senha" %>
-          <% if @minimum_password_length %>
-          <em>(<%= @minimum_password_length %> characters minimum)</em>
-          <% end %><br />
-          <%= f.password_field :password, id:"form__field__password", class:"form__input", autocomplete: "new-password", placeholder:"password", required: true, minlength: "6"%>
-          <div id="minimum_password_length" class="form__error"></div>
-        </div>
-
-        <div class="field form__field">
-          <%= f.label "Confirmar Senha" %><br />
-          <%= f.password_field :password_confirmation, id:"form__field__password__confirmation", class:"form__input", autocomplete: "new-password", placeholder:"password", required: true, minlength: "6"%>
-          <div id="password_confirmation" class="form__error"></div>
-        </div>
-
-        <div class="actions form__action form__action--spaced ">
-          <%= f.submit "Sign up", class:"btn btn--primary", id:"form__action__submit"%>
-        </div>
-      <% end %>
-    <% end %>
+    <br/>
+    <br/>
+    <header class="header-container">
+      <h1>Criar conta</h1>
+      <p>Crie sua nova conta</p>
+    </header>
+    <br/>
+    <div class="form-container">
+      <%= render "form" %>
+    </div>
     <%= render "users/shared/links" %>
+    <%= render "users/shared/footer-basic"%>
+  </div>
+  <div class="container right">
+    <%= image_tag "login-picture.png" %>
   </div>
 </section>
-<%= render "users/shared/footer-basic"%>
 <%= javascript_include_tag("helpers/password_confirmation.js") %>
 
