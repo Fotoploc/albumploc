@@ -1,0 +1,12 @@
+.text{
+  &--underlined {
+    text-decoration: underline;
+  }
+  
+}
+
+.text-top-left {
+  position: absolute;
+  top: 0.1rem;
+  left: 0.3rem;
+}

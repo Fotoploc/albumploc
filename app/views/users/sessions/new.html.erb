@@ -1,0 +1,27 @@
+
+<section class="section login-section">
+  <div class="container left">
+    <%= render "users/shared/error_messages", resource: resource %>
+    <br/>
+    <br/>
+    <div class="logo-container">
+      <%= image_tag "fotoploc-logotipo" %> 
+    </div>
+    <br/>
+    <br/>
+    <header class="header-container">
+      <h1>Fazer login</h1>
+      <p>Faço login para acessar seu álbum virtual</p>
+    </header>
+    <br/>
+    <div class="form-container">
+      <%= render "form" %>
+    </div>
+    <%= render "users/shared/links" %>
+    <%= render "users/shared/footer-basic"%>
+  </div>
+  <div class="container right">
+    <%= image_tag "login-picture.png" %>
+  </div>
+</section>
+

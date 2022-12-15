@@ -1,0 +1,11 @@
+<% 
+    stickers = []
+    album_page.stickers.each do |sticker|
+        stickers.push(Sticker.find(sticker.sticker_id))
+    end
+%>
+<% stickers.each_with_index do |sticker, index| %>
+    <div class="page_stickers__card" style="left: <%= album_page.stickers[index].position_x%>px; top: <%= album_page.stickers[index].position_y%>px">
+        <%= image_tag sticker.picture.path != nil ? bucket_url+sticker.picture.path : '' , class:"album__card__picture__img"%>
+    </div>
+<% end %>  

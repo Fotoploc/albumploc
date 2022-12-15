@@ -1,0 +1,25 @@
+<div class="page__card effect-border-1 padding-01">
+  <div class="page__card__picture position-relative">
+    <div class="page__card__menu position-absolute">
+     <%= button_to add_sticker_album_page_path(page_number: page.page_number), method: :get do %>
+        <div class="page__card__menu__icon btn">
+          <%= show_svg("/icons/stickers.svg")%>
+        </div>
+      <% end %>
+      <%= button_to edit_album_page_path(page), method: :get do %>
+        <div class="page__card__menu__icon btn">
+          <%= show_svg("/icons/edit.svg")%>
+        </div>
+      <% end %>
+      <%= button_to album_page_path(page), method: :delete do %>
+        <div class="page__card__menu__icon btn">
+          <%= show_svg("/icons/trash.svg")%>
+        </div>
+      <% end %>
+    </div>
+    <%= image_tag bucket_url+page.background_image.path, alt:"Album Image", class:"page__card__picture__img" %>
+  </div>
+  <p class="sticker__card_code">
+    <strong><%=page.page_number%></strong>
+  </p>
+</div>

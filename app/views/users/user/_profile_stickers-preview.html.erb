@@ -1,0 +1,11 @@
+<container class="container container--list effect-shadow-1">
+  <div class="header" style="justify-content: space-between">
+    <h4> Figurinhas </h4>
+    <%= link_to "Ver todos", user_stickers_path, class: "btn btn--primary" %>
+  </div>
+  <div class="container__cards">
+    <% @stickers.each do |sticker| %>
+      <%= render "stickers/sticker", sticker: sticker %>
+    <% end %>
+  </div>
+</container>

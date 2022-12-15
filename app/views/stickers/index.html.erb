@@ -1,0 +1,25 @@
+<div class="specific-user-profile">
+  <%= render 'users/user/profile_nav' %>
+  <section class="section section--f-start">
+    <container class="container container--list effect-shadow-1">
+      <div class="header" style="justify-content: space-between">
+        <%= link_to "Voltar", user_album_path, class:"btn btn--secondary" %>
+        <h4> Figurinhas do Álbum: <%= @album.name %> </h4>
+        <div class="btn btn--primary modal__open">Nova figurinha</div>
+      </div>
+      <div class="container__cards">
+        <% @stickers.each do |sticker| %>
+          <%= render "stickers/sticker", sticker: sticker %>
+        <% end %>
+      </div>
+    </container>
+  </section>
+</div>
+<div class="modal effect-shadow-1 modal--hidden">
+  <header class="modal__header">
+    <button class="modal__close btn btn--secondary"> X </button>
+    <h3> Nova figurinha </h3>
+  </header>
+  <%= render "form", sticker: @album.stickers.new %>
+</div>
+<%= javascript_include_tag("helpers/open_and_close_modal.js") %>

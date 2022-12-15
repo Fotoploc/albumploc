@@ -1,0 +1,30 @@
+<div class="container">
+  <%= form_with model: sticker, multipart: true, :html => {:class => "form"} do |form| %>
+    <% if sticker.errors.any? %>
+      <div style="color: red">
+        <h2><%= pluralize(sticker.errors.count, "error") %> prohibited this Sticker from being saved:</h2>
+        <ul>
+          <% sticker.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <div class="field form__field">
+      <%= form.label :code, "Código" %><br />
+      <%= form.text_field :code, class:"form__input", autofocus: true%>
+    </div>
+    <div class="field form__field">
+      <%= form.label :description, "Descrição" %><br />
+      <%= form.text_field :description, class:"form__input"%>
+    </div>
+    <div class="field form__field">
+      <%= form.label :picture, "Imagem" %><br />
+      <%= form.file_field :picture, class:"form__input", required: true%>
+    </div>
+    <%= form.hidden_field :album_id, value: params[:album_id] %>
+    <div class="actions form__action form__action--spaced ">
+      <%= form.submit "Nova figurinha", class:"btn btn--primary", id:"form__action__submit"%>
+    </div>
+  <% end %>
+</div>

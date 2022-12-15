@@ -1,0 +1,42 @@
+<div class="specific-user-profile">
+  <%= render 'users/user/profile_nav' %>
+  <section class="section section--f-start">
+    <div class="header" style="justify-content: space-between">
+      <%= link_to "Voltar", user_album_path(album_id: @album.id), class:"btn btn--secondary" %>
+      <h4> Trocar figurinhas </h4>
+      <div></div>
+    </div>  
+  
+    <%= form_with(url: exchange_new_path, method:"post", :html => {:class => "form"}) do |f| %>
+      <container class="container container--list effect-shadow-1 form__field">
+        <div class="header" style="justify-content: center">
+          <h4> Suas Figurinhas </h4>
+        </div>  
+        <div class="container__cards">
+          <% @sender_stickers.each do |sticker| %>
+            <div class="cursor-pointer position-relative" onClick="this.children[0].click()">
+              <input type="checkbox" name="sendesticker_ids[]" value="<%= sticker.id %>" class="checkbox position-absolute">
+              <%= render "stickers/sticker", sticker: sticker %>
+            </div>
+          <% end %>
+        </div>
+      </container>
+      <container class="container container--list effect-shadow-1 form__field">
+        <div class="header" style="justify-content: center">
+          <h4>Figurinhas de <%= @receiver.email %></h4>
+        </div>
+        <div class="container__cards">
+          <% @receiver_stickers.each do |sticker| %>
+            <div class="cursor-pointer position-relative" onClick="this.children[0].click()">
+              <input type="checkbox" name="receivesticker_ids[]" value="<%= sticker.id %>" class="checkbox position-absolute">
+              <%= render "stickers/sticker", sticker: sticker %>
+            </div>
+          <% end %>
+        </div>
+  
+      </container>
+      <input type="submit" value="Send" class="btn btn--primary form__field form__input">
+    <% end %>
+  </section>
+</div>
+  

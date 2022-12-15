@@ -1,0 +1,46 @@
+<%= turbo_frame_tag "first_turbo_frame" do %>
+<div class="specific-user-profile">
+  <%= render 'users/user/profile_nav' %>
+  <section class="section section--f-start">
+    <container class="container container--list effect-shadow-1">
+      <div class="header" style="justify-content: space-between">
+        <%= link_to "Voltar", user_profile_path, class:"btn btn--secondary" %>
+        <h4> Suas Trocas </h4>
+        <div></div>
+      </div>  
+      <div class="container container--list">
+        <% @exchanges.reverse_each do |exchange| %>
+          <% if exchange.sender.id == current_user.id %>
+            <div class="effect-border-1 padding-05 gap-1 display-flex display-flex--row justify-content-space-between " >
+              <div>
+
+                <p>Você está trocando <%= exchange.sender_stickers.all.length() %> x <%=exchange.receiver_stickers.all.length() %> figurinhas com <%= exchange.receiver.email %></p>
+                <p> Status: <%= exchange.status %></p>
+                <p> Data: <%= exchange.created_at.strftime("%d/%m/%Y") %> </p>
+              </div>
+              <div class="gap-1 display-flex display-flex--row align-items-center">
+                <%= button_to "Cancelar", cancel_exchange_path(exchange.id), method: :put, class:"btn btn--secondary" %>
+              </div>
+            </div>
+          <% else %>
+            <div class="effect-border-1 padding-05 gap-1 display-flex display-flex--row justify-content-space-between " >
+              <div>
+                <p><%= exchange.sender.email %> quer trocar <%= exchange.sender_stickers.all.length() %> x <%=exchange.receiver_stickers.all.length() %> figurinhas com você</p>
+                <p> Status: <%= exchange.status %></p>
+                <p> Data: <%= exchange.created_at.strftime("%d/%m/%Y") %> </p>
+              </div>
+              <% if exchange.status === "Pendente" %>
+                <div class="gap-1 display-flex display-flex--row align-items-center">
+                  <%= button_to "Aceitar", accept_exchange_path(exchange.id), method: :put, class:"btn btn--primary" %>
+                  <%= button_to "Recusar", refuse_exchange_path(exchange.id), method: :put, class:"btn btn--secondary"%>
+                </div>
+              <% end %>
+            </div>
+            
+          <% end %>
+        <% end %>
+      </div>
+    </container>
+  </section>
+</div>
+<% end %>

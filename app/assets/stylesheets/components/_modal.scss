@@ -1,0 +1,40 @@
+.modal {
+  background-color: var(--color-background);
+  padding: 10px;
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 300px;
+  box-sizing: border-box;
+  height: 100vh;
+  z-index: 1;
+
+  &--hidden {
+    display: none;
+  }
+
+  &--show {
+    display: block;
+  }
+
+  &__close{
+    position: absolute;
+    left: 5px;
+    top: 5px;
+  }
+
+  &__header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+
+  &__body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+  }
+}

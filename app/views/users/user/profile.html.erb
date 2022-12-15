@@ -1,0 +1,19 @@
+<div class="specific-user-profile">
+  <%= render 'profile_nav' %>
+  <section class="section section--f-start">
+
+    <container class="container container--list effect-shadow-1">
+      <h4>User</h4>
+      <h5><%= @user.name %></h5>
+      <%= @user.email %><br>
+      <% if @user.code.present? %>
+        <%= @user.code %><br>
+      <% end %>
+    </container>
+
+    <%= render "users/user/profile_albums-preview"%>
+
+    <%= render "users/user/profile_stickers-preview"%>
+
+  </section>
+</div>

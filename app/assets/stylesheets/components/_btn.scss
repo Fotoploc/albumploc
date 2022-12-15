@@ -1,0 +1,89 @@
+.btn {
+  display: inline-block;
+  padding: var(--space-xxs) var(--space-m);
+  background-origin: border-box; // Invisible borders with linear gradients
+  background-color: transparent;
+  border: solid 2px transparent;
+  font-weight: var(--font-weight-normal);
+  text-decoration: none;
+  cursor: pointer;
+  outline: none;
+  transition: filter 400ms, color 200ms;
+  border-radius: 40px;
+  &:disabled {
+    cursor: not-allowed;
+    filter: grayscale(100%);
+  }
+
+  &--primary {
+    color: var(--color-white);
+    background-color: var(--vermelho);
+    font-family: 'Ubuntu';
+    &:hover,
+    &:focus,
+    &:focus-within,
+    &:active {
+      filter: brightness(1.2);
+    }
+  }
+
+  &--secondary {
+    color: var(--color-white);
+    background-color: var(--color-secondary-light);
+    &:hover,
+    &:focus,
+    &:focus-within,
+    &:active {
+      filter: brightness(1.1);
+    }
+  }
+
+  &--outline {
+    color: var(--vermelho);
+    border: var(--border);
+    border-color: var(--vermelho);
+    background-color: none;
+    font-family: 'Ubuntu';
+    &:hover,
+    &:focus,
+    &:focus-within,
+    &:active {
+      filter: brightness(1.1);
+    }
+  }
+
+  &--nav {
+    color: var(--color-black);
+    padding: 0;
+    &:hover,
+    &:focus,
+    &:focus-within,
+    &:active {
+      filter: brightness(1.1);
+    }
+
+    &--active {
+      color: var(--color-primary-light);
+      font-weight: var(--font-weight-bold);
+      border-bottom: solid 2px var(--color-primary-light);
+    }
+  }
+
+}
+
+.link {
+  display: inline-block;
+  background-color: transparent;
+  font-weight: var(--font-weight-normal);
+  text-decoration: underline;
+  color: var(--azul);
+  cursor: pointer;
+  outline: none;
+  transition: filter 400ms, color 200ms;
+  text-align: left;
+  &:disabled {
+    cursor: not-allowed;
+    filter: grayscale(100%);
+  }
+
+}

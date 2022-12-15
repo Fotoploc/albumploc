@@ -1,0 +1,48 @@
+.container {
+  width: 100%;
+  height: fit-content;
+  &__cards{
+    display: flex;
+    gap: var(--space-xs);
+    height: 100%;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: flex-start;
+  }
+  
+  &--list {
+    padding: var(--space-l);
+    border-radius: var(--border-radius);
+  }
+
+  &--card {
+    max-width: 400px;
+  }
+
+  &--xxs {
+    max-width: 20rem;
+  }
+  &--xs {
+    max-width: 25rem;
+  }
+  &--s {
+    max-width: 37.5rem;
+  }
+
+  &--m {
+    max-width: 50rem;
+  }
+
+  &--l {
+    max-width: 62.5rem;
+  }
+
+  &--xl {
+    max-width: 75rem;
+  }
+
+  &--xxl {
+    max-width: 87.5rem;
+  }
+
+}

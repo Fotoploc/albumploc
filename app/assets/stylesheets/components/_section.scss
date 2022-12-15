@@ -1,0 +1,17 @@
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-s);
+  margin-bottom: var(--space-m);
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-xs);
+  background-color: var(--color-background);
+  width: 100%;
+  &--f-start {
+    justify-content: flex-start;
+  }
+  &--f-d-row {
+    flex-direction: row;
+  }
+}

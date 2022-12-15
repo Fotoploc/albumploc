@@ -1,0 +1,21 @@
+<nav class="nav nav--side">
+  <div class="nav__header">
+  </div>
+  <ul>
+    <li class="btn nav__link">
+      <%= link_to "Home", user_profile_path %>  
+    </li>
+    <li class="btn nav__link">
+      <%= link_to "Albuns" , user_albums_path %>
+    </li>
+    <li class="btn nav__link">
+      <%= link_to "Trocas" , all_exchanges_path %>
+    </li>
+    <li class="btn nav__link">
+      <%= link_to "Configurações" , edit_user_registration_path %>
+    </li>
+    <li class="btn nav__link">
+      <%= link_to "Sign out" , destroy_user_session_path, data: { turbo_method: :delete } %>
+    </li>
+  </ul>
+</nav>

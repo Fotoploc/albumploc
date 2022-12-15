@@ -1,0 +1,36 @@
+<div class="specific-user-profile">
+  <%= render 'users/user/profile_nav' %>
+  <section class="section section--f-start">
+    <div class="header" style="justify-content: space-between">
+      <%= link_to "Voltar", user_album_path(album_id: @album.id), class:"btn btn--secondary" %>
+      <div>
+      </div>
+      <div class="btn btn--primary modal__open">Abrir figurinha</div>
+    </div>
+    <div class="album_pages">
+      <div class="book-section">
+          <div class="container">
+            <%= render "page", album: @album %>
+          </div>
+          <button onclick="turnLeft()">Prev</button> 
+          <button onclick="turnRight()">Next</button>
+          <br/>
+      </div>
+    </div>
+  </section>
+</div>
+
+
+<div class="modal effect-shadow-1 modal--hidden">
+  <header class="modal__header">
+    <button class="modal__close btn btn--secondary"> X </button>
+    <h3> Participantes </h3>
+    <%= button_to "Abrir pacotinho", :method=> "open_sticker_pack", class:"btn btn--secondary", remote: true %>
+  </header>
+</div>
+
+
+<%= javascript_include_tag("helpers/flip_effect.js") %>
+<%= javascript_include_tag("helpers/open_and_close_modal.js") %>
+
+  

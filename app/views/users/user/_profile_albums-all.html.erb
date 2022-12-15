@@ -1,0 +1,28 @@
+<container class="container container--list">
+  <div class="header" style="justify-content: space-between">
+    <%= link_to "Voltar", user_profile_path, class:"btn btn--secondary" %>
+    <h4> Albums </h4>
+    <% if @user.permission.is_admin %>
+      <div class="btn btn--primary modal__open">Novo</div>
+      <div class="modal effect-shadow-1 modal--hidden">
+        <header class="modal__header">
+          <button class="modal__close btn btn--secondary"> X </button>
+          <h3> Novo Album </h3>
+        </header>
+          <div class="modal__body">
+            <div class="modal__body__text">
+              <%= render "form", album: @album_new%>
+            </div>
+          </div>
+      </div>
+      <%= javascript_include_tag("helpers/open_and_close_modal.js") %>
+    <% else %>
+      <div></div>
+    <% end %>
+  </div>
+  <div class="container__cards">
+    <% @albums.each do |album| %>
+      <%= render "albums/album", album: album %>
+    <% end %>
+  </div>
+</container>

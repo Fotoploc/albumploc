@@ -11,27 +11,27 @@
     </div>
   <% end %>
 
-  <div>
+  <div class="field form__field">
     <%= form.label :name, style: "display: block" %>
     <%= form.text_field :name %>
   </div>
 
-  <div>
+  <div class="field form__field">
     <%= form.label :code, style: "display: block" %>
     <%= form.number_field :code %>
   </div>
 
-  <div>
+  <div class="field form__field">
     <%= form.label :description, style: "display: block" %>
     <%= form.text_area :description %>
   </div>
 
-  <div>
+  <div class="field form__field">
     <%= form.label :picture, style: "display: block" %>
-    <%= form.text_field :picture %>
+    <%= form.file_field :picture %>
   </div>
 
-  <div>
-    <%= form.submit %>
+  <div class="field form__field">
+    <%= form.submit "Pronto", class:"btn btn--primary"%>
   </div>
 <% end %>
