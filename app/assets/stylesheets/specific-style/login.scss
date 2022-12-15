@@ -1,0 +1,46 @@
+.login-section {
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    .container {
+        &.left {
+            width: 50%;
+            padding: 0 10rem;
+
+            display: flex;
+            align-items: flex-start;
+            flex-direction: column;
+
+            .logo-container {
+                display: flex;
+                justify-content: left;
+            }
+
+            .header-container {
+                h1 {
+                    color: var(--azul);
+                }
+                p {
+                    color: var(--preto);
+                }
+            }
+
+
+            .form-container {
+                width: 100%;
+                
+            }
+
+            .btn {
+                width: 100%;
+                text-align: center;
+            }
+        }
+        
+        &.right {
+            width: 50%;
+            text-align: -webkit-center;
+        }
+    }
+}

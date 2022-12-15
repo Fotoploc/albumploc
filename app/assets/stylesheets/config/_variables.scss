@@ -1,3 +1,8 @@
+@font-face {
+  font-family:'Averia Sans Libre';
+  src: url('https://fonts.googleapis.com/css2?family=Averia+Sans+Libre:wght@400;700&display=swap');
+}
+
 :root {
   //Main Colors
   --color-primary: #3B38B4;
@@ -11,6 +16,25 @@
   --color-text-light: #FFFFFF;
   --color-text-header: #000000;
   --color-text-footer: #a3a2a2;
+
+
+  --roxo: #8F38F4;
+  --roxo-escuro: #4E3CC9;
+  --azul: #3B38B4;
+  --azul-claro: #41B2EC;
+  --verde: #77E0A4;
+  --vermelho: #FF5F69;
+  --rosa: #F583AE;
+  --rosa-claro: #F6CEC8;
+  --bege: #FEF5E4;
+  --lilas-30: #7667D8;
+  --lilas-50: #CFC9FF;
+  --lilas-claro: #E8E5FB;
+  --branco: #FFFFFF;
+  --cinza: #F3F3F5;
+  --cinza-azulado: #9DA2C1;
+  --cinza-medio: #828282;
+  --preto: #434343;
 
   // Neutral Colors
   --color-white: #FFFFFF;
@@ -26,9 +50,10 @@
   
   // Font Familys
   --font-family-sans-serif: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  --font-family-Averia: 'Averia Sans Libre';
-  --font-family-Mulish: 'Mulish';
   --font-family-monospace: "SFMono-Regular", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  --font-family-ubuntu: 'Ubuntu';
+  --font-family-averia: 'Averia Sans Libre';
+  --font-family-mulish: 'Mulish';
   
   // Font Sizes
   --font-size-xs: 0.75rem;   // 12px
@@ -67,7 +92,7 @@
   --transition-fast: all 0.1s ease-in-out;
 
   // Border
-  --border: solid 2px var(--color-gray-light);
+  --border: solid 2px var(--lilas-claro);
 
   // Spacing
   --space-xxs: 0.25rem; // 4px

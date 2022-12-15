@@ -1,36 +1,27 @@
-<section class="section">
-  <header class="header header--title">
-    <h1> Digiploc  </h1>
-  </header>
-  <div class="container container--xs">
+
+<section class="section login-section">
+  <div class="container left">
     <%= render "users/shared/error_messages", resource: resource %>
-    <div class="container">
-      <button class="btn btn--nav btn--nav--active">Login</button>
-      <%= link_to "SignUp", new_user_registration_path, method: :get, class: "btn btn--nav"%>
+    <br/>
+    <br/>
+    <div class="logo-container">
+      <%= image_tag "fotoploc-logotipo" %> 
     </div>
-    <%= form_for(resource, as: resource_name, url: session_path(resource_name), data: { turbo: false }, :html => {:class => "form"}) do |f| %>
-      <div class="field form__field">
-        <%= f.label :email %><br />
-        <%= f.email_field :email, class:"form__input", autofocus: true, autocomplete: "email", placeholder:"example@email.com" %>
-      </div>
-
-      <div class="field form__field">
-        <%= f.label "Senha" %><br />
-        <%= f.password_field :password, class:"form__input", autocomplete: "current-password", placeholder:"password" %>
-      </div>
-
-      <% if devise_mapping.rememberable? %>
-        <div class="field form__field">
-          <%= f.check_box :remember_me %>
-          <%= f.label "Lembrar de mim" %>
-        </div>
-      <% end %>
-
-      <div class="actions form__action">
-        <%= f.submit "Log in" , class:"btn btn--primary"%>
-      </div>
-    <% end %>
+    <br/>
+    <br/>
+    <header class="header-container">
+      <h1>Fazer login</h1>
+      <p>Faço login para acessar seu álbum virtual</p>
+    </header>
+    <br/>
+    <div class="form-container">
+      <%= render "form" %>
+    </div>
     <%= render "users/shared/links" %>
+    <%= render "users/shared/footer-basic"%>
+  </div>
+  <div class="container right">
+    <%= image_tag "login-picture.png" %>
   </div>
 </section>
-<%= render "users/shared/footer-basic"%>
+
