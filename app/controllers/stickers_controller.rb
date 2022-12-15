@@ -24,9 +24,9 @@ class StickersController < ApplicationController
   # POST /stickers or /stickers.json
   def create
     @sticker = Sticker.new(sticker_params)
-
     respond_to do |format|
       if @sticker.save
+        User.find(current_user.id).stickers << UserSticker.new(sticker_id: @sticker.id)
         format.json { render :show, status: :created, location: @sticker }
       else
         format.json { render json: @sticker.errors, status: :unprocessable_entity }
