@@ -21,14 +21,21 @@
 </div>
 
 
-<div class="modal effect-shadow-1 modal--hidden">
+<div class="modal effect-shadow-2 modal--hidden">
   <header class="modal__header">
     <button class="modal__close btn btn--secondary"> X </button>
-    <h3> Participantes </h3>
-    <%= button_to "Abrir pacotinho", :method=> "open_sticker_pack", class:"btn btn--secondary", remote: true %>
+    <h3> Nova figurinha </h3>
   </header>
+  <div class="modal__body">
+    <div class="modal__body__info">
+      <p> Você ainda tem <strong> <%= @user.stickers_packs.find_by(album_id: 1).quantity %> </strong> pacotes de figurinhas. </p>
+    </div>
+    <div class="modal__body__image">
+      <%= image_tag "stickers-packs.png" %>
+    </div>
+    <%= button_to "Abrir um novo pacote", :method=> "open_sticker_pack", class:"btn btn--secondary" if @user.stickers_packs.find_by(album_id: 1).quantity > 0%>
+  </div>
 </div>
-
 
 <%= javascript_include_tag("helpers/flip_effect.js") %>
 <%= javascript_include_tag("helpers/open_and_close_modal.js") %>
