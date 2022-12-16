@@ -70,13 +70,13 @@ class ExchangeController < ApplicationController
 
       @exchange.sender_stickers.each do |sender_sticker|
         sticker = @sender.stickers.find_by(sticker_id: sender_sticker.sticker_id)
-        sticker.update(is_active: false)
+        sticker.delete
         turn_others_exchanges_unavailable(sticker, @sender)
       end
 
       @exchange.receiver_stickers.each do |receiver_sticker|
         sticker = @receiver.stickers.find_by(sticker_id: receiver_sticker.sticker_id)
-        sticker.update(is_active: false)
+        sticker.delete
         turn_others_exchanges_unavailable(sticker, @receiver)
       end
       @exchange.update(status: "Aceito")
