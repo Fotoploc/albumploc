@@ -9,6 +9,7 @@ function dragAndDrop() {
     checkboxes.forEach(function(checkbox){
       checkbox.addEventListener('change', function(e){
         if (e.target.checked) {
+          boxParent.classList.add("sticker_on_page")
           generateElements(e, boxParent)
           positions.push({id: e.target.value, x: 0, y: 0})
           dragAndDrop(e)
@@ -32,7 +33,8 @@ function dragAndDrop() {
   }
 
   function generateElements(e, boxParent){
-    let clone = e.target.parentNode.children[1].cloneNode(true)
+    let clone = e.target.parentNode.children[1].cloneNode(true) 
+    clone.children[1].remove()
     clone.classList.add('page__show__drag-and-drop')
     clone.classList.add('clone')
     boxParent.appendChild(clone)

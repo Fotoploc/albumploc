@@ -3,6 +3,7 @@ class AlbumPagesController < ApplicationController
   load_and_authorize_resource
 
   def index
+    @user = current_user
     @album = Album.find(params[:album_id])
     @album_pages = @album.album_page.all
   end

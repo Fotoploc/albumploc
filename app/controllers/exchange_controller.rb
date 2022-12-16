@@ -29,6 +29,21 @@ class ExchangeController < ApplicationController
     redirect_to all_exchanges_path
   end
 
+  def show
+    @user = User.find(current_user.id)
+    @exchange = Exchange.find(params[:exchange_id])
+    @sender = User.find(@exchange.sender_id)
+    @receiver = User.find(@exchange.receiver_id)
+    @sender_stickers = []
+    @exchange.sender.stickers.each do |userSticker|
+      @sender_stickers << Sticker.find(userSticker.sticker_id)
+    end
+    @receiver_stickers = []
+    @exchange.receiver.stickers.each do |userSticker|
+      @receiver_stickers << Sticker.find(userSticker.sticker_id)
+    end
+  end
+
   def cancel
     @exchange = Exchange.find(params[:exchange_id])
     @exchange.update(status: "Cancelado")
@@ -54,13 +69,13 @@ class ExchangeController < ApplicationController
       end
 
       @exchange.sender_stickers.each do |sender_sticker|
-        sticker = @sender.stickers.find(sender_sticker.sticker_id)
+        sticker = @sender.stickers.find_by(sticker_id: sender_sticker.sticker_id)
         sticker.update(is_active: false)
         turn_others_exchanges_unavailable(sticker, @sender)
       end
 
       @exchange.receiver_stickers.each do |receiver_sticker|
-        sticker = @receiver.stickers.find(receiver_sticker.sticker_id)
+        sticker = @receiver.stickers.find_by(sticker_id: receiver_sticker.sticker_id)
         sticker.update(is_active: false)
         turn_others_exchanges_unavailable(sticker, @receiver)
       end

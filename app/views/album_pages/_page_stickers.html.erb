@@ -1,12 +1,16 @@
 <% 
+    #Refact
     stickers = []
-    album_page.stickers.each do |sticker|
-        stickers.push(Sticker.find(sticker.sticker_id))
+    album_page.stickers.each do |album_sticker|
+        @user.stickers.each do |user_sticker|
+            if album_sticker.sticker_id == user_sticker.sticker_id
+                stickers.push(Sticker.find(album_sticker.sticker_id))
+            end
+        end
     end
 %>
 <% stickers.each_with_index do |sticker, index| %>
     <div class="page_stickers__card" style="left: <%= album_page.stickers[index].position_x%>px; top: <%= album_page.stickers[index].position_y%>px">
         <%= image_tag bucket_url+sticker.picture.path , class:"album__card__picture__img"%>
     </div>
-        <p class="page_stickers__card__code"><%= sticker.code %></p>
 <% end %>  

@@ -15,7 +15,7 @@
       &__img{
         width: 100%;
         height: 100%;
-        object-fit: cover;
+        object-fit: contain;
       }
     }
     &__menu {
@@ -38,8 +38,8 @@
   &__show{
     display: flex;
     &__background-image{
-      width: 420px;
-      height: 594px;
+      width: 445.5px;
+      height: 630px;
     }
 
     &__drag-and-drop{

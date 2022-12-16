@@ -1,5 +1,14 @@
 .album_pages{
-    width: 100vw;
+    width: 90vw;
+
+    .album_page {
+        background-size: cover;
+
+        p {
+            font-size: 0;
+            display: none;
+        }
+    }
 
     .container {
         width: 100%;
@@ -17,7 +26,7 @@
     }
     .book-section > .container{
         height: 630px;
-        width: 870px;
+        width: 889px;
         position: relative;
         left: 50%;
         transform: translateX(-50%);
@@ -44,7 +53,7 @@
         position: absolute;
         left:0;
         top:0;
-        background-size: 200%;
+        background-size: contain;
         background-repeat: no-repeat;
         backface-visibility: hidden;
         background-color: white;

@@ -1,0 +1,50 @@
+<div class="specific-user-profile">
+  <%= render 'users/user/profile_nav' %>
+  <section class="section section--f-start">
+    <div class="header" style="justify-content: space-between">
+      <%= link_to "Voltar", all_exchanges_path(), class:"btn btn--secondary" %>
+      <h4> Figurinhas da Troca </h4>
+      <div></div>
+    </div>  
+  
+      <container class="container container--list effect-shadow-1 form__field">
+        <div class="header" style="justify-content: center">
+          <% if @sender.id == current_user.id %>
+            <h4> Suas Figurinhas </h4>
+          <% else %>
+            <h4> Figurinhas de <%= @sender.email %> </h4>
+          <% end %>
+        </div>  
+        <div class="container__cards">
+          <% @sender_stickers.each do |sticker| %>
+            <div class="cursor-pointer position-relative" onClick="this.children[0].click()">
+              <%= render "stickers/sticker", sticker: sticker %>
+            </div>
+          <% end %>
+        </div>
+      </container>
+      <container class="container container--list effect-shadow-1 form__field position-relative">
+        <div class="header" style="justify-content: center">
+          <% if @receiver.id == current_user.id %>
+            <h4> Suas Figurinhas </h4>
+          <% else %>
+            <h4> Figurinhas de <%= @sender.email %> </h4>
+          <% end %>
+        </div>
+        <div class="container__cards">
+          <% @receiver_stickers.each do |sticker| %>
+            <div class="cursor-pointer position-relative" onClick="this.children[0].click()">
+              <%= render "stickers/sticker", sticker: sticker %>
+            </div>
+          <% end %>
+        </div>
+  
+        <% if @exchange.status === "Pendente" && @receiver.id == current_user.id %>
+          <div class="gap-1 display-flex display-flex--row align-items-center position-absolute top-10 right-10">          
+            <%= button_to "Aceitar", accept_exchange_path(@exchange.id), method: :put, class:"btn btn--primary" %>
+            <%= button_to "Recusar", refuse_exchange_path(@exchange.id), method: :put, class:"btn btn--secondary"%>
+          </div>
+        <% end %>
+      </container>
+  </section>
+</div>

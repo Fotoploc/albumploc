@@ -22,7 +22,9 @@
       <div></div>
     </div>
     <section class="section section--f-start">
-      <%= link_to "Adicionar novas Figurinhas", album_stickers_path, class:"btn btn--primary" %>
+      <% if @user.permission.is_admin %>
+        <%= link_to "Adicionar novas Figurinhas", album_stickers_path, class:"btn btn--primary" %>
+      <% end %>
       <%= render "stickers/show", stickers: @stickers%>
   </section>
   </container>
