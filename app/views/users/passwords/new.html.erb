@@ -1,16 +1,27 @@
-<h2>Forgot your password?</h2>
-
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-  <%= render "users/shared/error_messages", resource: resource %>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+<section class="section register-section">
+  <div class="container left">
+    <%= render "users/shared/error_messages", resource: resource %>
+    <br/>
+    <br/>
+    <div class="logo-container">
+      <%= image_tag "fotoploc-logotipo.png" %> 
+    </div>
+    <br/>
+    <br/>
+    <header class="header-container">
+      <h1>Esqueceu sua senha?</h1>
+      <p>Receba um link para uma nova senha</p>
+    </header>
+    <br/>
+    <div class="form-container">
+      <%= render "form" %>
+    </div>
+    <%= render "users/shared/links" %>
+    <%= render "users/shared/footer-basic"%>
   </div>
-
-  <div class="actions">
-    <%= f.submit "Send me reset password instructions" %>
+  <div class="container right">
+    <%= image_tag "login-picture.png" %>
   </div>
-<% end %>
+</section>
+<%= javascript_include_tag("helpers/password_confirmation.js") %>
 
-<%= render "users/shared/links" %>
