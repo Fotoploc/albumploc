@@ -5,7 +5,6 @@
       <div class="header" style="justify-content: space-between">
         <%= link_to "Voltar", user_album_path, class:"btn btn--secondary" %>
         <h4> Suas novas figurinhas do Álbum: <%= @album.name %> </h4>
-        <div class="btn btn--primary modal__open">Nova figurinha</div>
       </div>
       <div class="container__cards">
         <% @new_stickers.each do |sticker| %>
