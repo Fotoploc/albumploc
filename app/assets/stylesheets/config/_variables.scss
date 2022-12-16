@@ -11,7 +11,7 @@
   --color-secondary-light: #ff6b6b;
   --color-tertiary: #FFC300;
   --color-tertiary-light: #ffcd3a;
-  --color-background: #F5F5F5;
+  --color-background: linear-gradient(180deg, #E8E5FB 0%, #E8E5FB 49.48%, #FFFFFF 98.96%);
   --color-text: #000000;
   --color-text-light: #FFFFFF;
   --color-text-header: #000000;
@@ -27,6 +27,7 @@
   --rosa: #F583AE;
   --rosa-claro: #F6CEC8;
   --bege: #FEF5E4;
+  --lilas: #A093EF;
   --lilas-30: #7667D8;
   --lilas-50: #CFC9FF;
   --lilas-claro: #E8E5FB;
@@ -78,7 +79,7 @@
   --line-height-l: 1.75;
 
   // Border Radius
-  --border-radius: 0.25rem;
+  --border-radius: 1.115rem;
   --border-radius-circle: 50%;
   --border-radius-pill: 50rem;
 

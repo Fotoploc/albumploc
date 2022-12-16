@@ -1,10 +1,10 @@
-<div class="album__card">
+<div class="album__card effect-shadow-2">
   <div class="album__card__picture">
     <%= link_to user_album_url(album.id) do %>
       <%= image_tag bucket_url+album.picture.path, alt:"Album Image", class:"album__card__picture__img"%>
     <% end %>
   </div>
-  <p class="album__card_code">
+  <p class="album__card__title">
     <strong>Name:</strong>
     <%= link_to album.name, user_album_url(album.id), album: album%>
   </p>
