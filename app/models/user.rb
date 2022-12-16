@@ -28,10 +28,9 @@ class User < ApplicationRecord
 
   def set_album
     if self.code.nil? || self.code == ''
+      p "Usuário sem Código"
+    else
       self.albums << Album.where(code: self.code)
-      album = Album.find_by(code: self.code.to_i)
-      album.users << self
-      album.save
     end
   end
 
