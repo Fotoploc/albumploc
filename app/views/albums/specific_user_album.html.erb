@@ -3,7 +3,7 @@
   <container class="container container--list">
     <div class="header" style="justify-content: space-between">
       <%= link_to "Voltar para seu album", user_album_path(id: @album.id), class:"btn btn--secondary" %>
-      <h4> Album de <%= @user.name == "" ? @user.email : @user.name%> </h4>
+      <h4> Álbum </h4>
       <div class="btn btn--primary modal__open">Participantes</div>
     </div>
     <section class="section section--f-start">
