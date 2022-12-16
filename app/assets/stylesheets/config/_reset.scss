@@ -18,7 +18,7 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  background-color: var(--color-background);
+  background-image: var(--color-background);
   color: var(--color-text);
   line-height: var(--line-height-body);
   font-family: var(--font-family-sans-serif);

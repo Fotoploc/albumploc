@@ -1,13 +1,20 @@
 .container {
   width: 100%;
   height: fit-content;
+  background-color: #ffff;
+
+
+  .header {
+    margin: 0.5rem 0;
+  }
+
   &__cards{
     display: flex;
     gap: var(--space-xs);
-    height: 100%;
     flex-direction: row;
     flex-wrap: wrap;
     align-content: flex-start;
+    padding-bottom: 1rem;
   }
   
   &--list {

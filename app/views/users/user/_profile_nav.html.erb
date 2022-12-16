@@ -1,21 +1,30 @@
 <nav class="nav nav--side">
   <div class="nav__header">
+    <div class="logo-container">
+        <%= image_tag "fotoploc-logotipo.png" %> 
+    </div>
   </div>
   <ul>
     <li class="btn nav__link">
+      <%= show_svg("/icons/home-icon.svg")%>
       <%= link_to "Home", user_profile_path, style: "width: 100%; height: 100%" %>  
     </li>
     <li class="btn nav__link">
+      <%= show_svg("/icons/album-icon.svg")%>
       <%= link_to "Albuns" , user_albums_path, style: "width: 100%; height: 100%" %>
     </li>
     <li class="btn nav__link">
-      <%= link_to "Trocas" , all_exchanges_path, style: "width: 100%; height: 100%" %>
+      <%= show_svg("/icons/changes-icon.svg")%>
+      <%= link_to "Minhas trocas" , all_exchanges_path, style: "width: 100%; height: 100%" %>
     </li>
+    <hr>
     <li class="btn nav__link">
+      <%= show_svg("/icons/config-icon.svg")%>
       <%= link_to "Configurações" , edit_user_registration_path, style: "width: 100%; height: 100%" %>
     </li>
     <li class="btn nav__link">
-      <%= button_to "Signout" , destroy_user_session_path, class:"btn btn--navbar", method: :delete %>
+      <%= show_svg("/icons/sign-out-icon.svg")%>
+      <%= button_to "Sair" , destroy_user_session_path, style: "width: 100%; height: 100%", method: :delete %>
     </li>
   </ul>
 </nav>

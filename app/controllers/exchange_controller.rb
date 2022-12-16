@@ -35,11 +35,11 @@ class ExchangeController < ApplicationController
     @sender = User.find(@exchange.sender_id)
     @receiver = User.find(@exchange.receiver_id)
     @sender_stickers = []
-    @exchange.sender.stickers.each do |userSticker|
+    @exchange.sender_stickers.each do |userSticker|
       @sender_stickers << Sticker.find(userSticker.sticker_id)
     end
     @receiver_stickers = []
-    @exchange.receiver.stickers.each do |userSticker|
+    @exchange.receiver_stickers.each do |userSticker|
       @receiver_stickers << Sticker.find(userSticker.sticker_id)
     end
   end
