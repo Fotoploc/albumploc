@@ -20,7 +20,7 @@
               </div>
               <div class="gap-1 display-flex display-flex--row align-items-center">
                   <div>
-                    <%= button_to "Vizualizar", exchange_show_path(exchange.id), method: :get, class:"btn btn--primary" %>
+                    <%= button_to "Visualizar", exchange_show_path(exchange.id), method: :get, class:"btn btn--primary" %>
                   </div> 
                 <%= button_to "Cancelar", cancel_exchange_path(exchange.id), method: :put, class:"btn btn--secondary" %>
               </div>
@@ -35,7 +35,7 @@
               <% if exchange.status === "Pendente" %>
                 <div class="gap-1 display-flex display-flex--row align-items-center">
                   <div>
-                    <%= button_to "Vizualizar", exchange_show_path(exchange.id), method: :get, class:"btn btn--primary" %>
+                    <%= button_to "Visualizar", exchange_show_path(exchange.id), method: :get, class:"btn btn--primary" %>
                   </div>           
                   <%= button_to "Aceitar", accept_exchange_path(exchange.id), method: :put, class:"btn btn--primary" %>
                   <%= button_to "Recusar", refuse_exchange_path(exchange.id), method: :put, class:"btn btn--secondary"%>

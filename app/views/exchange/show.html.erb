@@ -28,7 +28,7 @@
           <% if @receiver.id == current_user.id %>
             <h4> Suas Figurinhas </h4>
           <% else %>
-            <h4> Figurinhas de <%= @sender.email %> </h4>
+            <h4> Figurinhas de <%= @receiver.name == "" ? @receiver.email : @receiver.name%> </h4>
           <% end %>
         </div>
         <div class="container__cards">
