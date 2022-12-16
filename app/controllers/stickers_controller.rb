@@ -87,6 +87,17 @@ class StickersController < ApplicationController
     else
       p "Sem pacote de figurinhas"
     end
+        
+    redirect_to new_stickers_page_path(params[:album_id], stickers_pack: stickers_pack)
+  end
+
+  def new_stickers
+    @new_stickers = []
+    @album = Album.find(params[:album_id])
+    
+    params[:stickers_pack].each do |sticker| 
+      @new_stickers.push(Sticker.find(sticker))
+    end
   end
 
   # PATCH/PUT /stickers/1 or /stickers/1.json

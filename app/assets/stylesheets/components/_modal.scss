@@ -1,5 +1,5 @@
 .modal {
-  background-color: var(--color-background);
+  background-color: #FFFFFF;
   padding: 10px;
   position: fixed;
   right: 0;
@@ -31,10 +31,31 @@
   }
 
   &__body{
+    height: 75vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     margin-top: 30px;
+
+    &__info {
+      text-align: center;
+      color: var(--azul);
+      font-weight: 700;
+    }
+
+    button {
+      background-color: var(--vermelho);
+      color: #FFFFFF;
+      border-radius: var(--border-radius);
+      border: none;
+      font-weight: 700px;
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+      transition: all 0.3s ease-in-out;
+      &:hover {
+        filter: brightness(1.2);
+      }
+    }
   }
 }
