@@ -15,7 +15,7 @@
       <%= link_to "Configurações" , edit_user_registration_path, style: "width: 100%; height: 100%" %>
     </li>
     <li class="btn nav__link">
-      <%= button_to "Signout" , destroy_user_session_path, class:"btn btn--navbar", method: :delete %>
+      <%= link_to "Sign out" , destroy_user_session_path, data: { turbo_method: :delete }, style: "width: 100%; height: 100%" %>
     </li>
   </ul>
 </nav>
