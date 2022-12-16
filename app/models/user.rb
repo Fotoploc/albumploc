@@ -23,6 +23,7 @@ class User < ApplicationRecord
 
   def set_code
     self.albums << Album.where(code: self.code)
+    Album.find_by(code: self.code) << self
   end
 
   def admin?
