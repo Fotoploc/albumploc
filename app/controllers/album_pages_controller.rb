@@ -1,6 +1,6 @@
 class AlbumPagesController < ApplicationController
   before_action :authenticate_user!
-  load_and_authorize_resource
+  load_and_authorize_resource only: [:edit, :update, :destroy, :edit_pages, :add_sticker, :add_sticker_to_page, :edit_sticker_position, :remove_sticker_from_page]
 
   def index
     @user = current_user
