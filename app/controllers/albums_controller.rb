@@ -10,7 +10,7 @@ class AlbumsController < ApplicationController
     @user = User.find(current_user.id)
     @album = Album.find(params[:album_id])
     @album_pages = @album.album_page.all
-    @stickers = get_user_stickers_by_album(@user, @album)
+    @stickers = get_user_stickers_duplicate_by_album(@user, @album)
     @participants = @album.users.all.reject { |user| user.id == current_user.id }
   end
 
@@ -22,7 +22,7 @@ class AlbumsController < ApplicationController
   def specific_user_album
     @user = User.find(params[:user_id])
     @album = Album.find(params[:album_id])
-    @stickers = get_user_stickers_by_album(@user, @album)
+    @stickers = get_user_stickers_duplicate_by_album(@user, @album)
     @stickers = @stickers.reject { |sticker| sticker.is_active == false }
     @participants = @album.users.all.reject { |user| user.id == current_user.id }
   end
@@ -59,6 +59,20 @@ class AlbumsController < ApplicationController
     stickers
   end
 
+  def get_user_stickers_duplicate_by_album(user, album)
+    stickers_of_album = Sticker.where(album_id: album.id)
+    user_active_stickers = user.stickers.where("quantity > ?", 1)
+    stickers = []
+    user_active_stickers.each do |userSticker|
+      stickers_of_album.each do |sticker|
+        if sticker.id == userSticker.sticker_id
+            stickers << sticker
+        end
+      end
+    end
+    stickers
+  end
+    
   def album_params
     params.require(:album).permit(:name, :description, :picture, :code)
   end
