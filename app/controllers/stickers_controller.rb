@@ -54,7 +54,7 @@ class StickersController < ApplicationController
       end
   
       new_sticker = newest_stickers.sample
-      stickers_pack = album_stickers.sample(4)
+      stickers_pack = album_stickers.sample(15)
       stickers_pack.push(new_sticker) if new_sticker != nil
       
       stickers_pack.each do |pack_sticker|
@@ -94,7 +94,7 @@ class StickersController < ApplicationController
   def new_stickers
     @new_stickers = []
     @album = Album.find(params[:album_id])
-    
+
     params[:stickers_pack].each do |sticker| 
       @new_stickers.push(Sticker.find(sticker))
     end
