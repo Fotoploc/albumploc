@@ -13,7 +13,7 @@
         </div>
         <div>
           <div class="container__cards">
-          <%= form_with(url: add_sticker_to_page_album_page_path(album_id: @album_page[:album_id], page_number: @album_page[:page_number]), method:"post", :html => {:class => "form display-flex--row"}) do |f| %>
+          <%= form_with(url: add_sticker_to_page_album_page_path(album_id: @album_page[:album_id], page_number: @album_page[:page_number]), method:"post", :html => {:class => "form display-flex--row display-flex--wrap"}) do |f| %>
             <div class="form__field__positions">
             </div>
             <% @stickers.each do |sticker| %>
