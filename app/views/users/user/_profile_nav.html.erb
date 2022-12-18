@@ -22,8 +22,8 @@
       <%= show_svg("/icons/config-icon.svg")%>
       <%= link_to "Configurações" , edit_user_registration_path, style: "width: 100%; height: 100%" %>
     </li>
-      <%= link_to destroy_user_session_path, data: { turbo_method: :delete }, id:"signout-button" do %>
-    <li class="btn nav__link">
+      <%= link_to destroy_user_session_path, data: { turbo_method: :delete } do %>
+    <li class="btn nav__link" id="signout-button">
       <%= show_svg("/icons/sign-out-icon.svg")%>
       <p> Sair </p>
     </li>
@@ -31,4 +31,4 @@
   </ul>
 </nav>
 
-<%= javascript_include_tag("helpers/refresh_page.js")
+<%= javascript_include_tag("helpers/refresh_page.js") %>
