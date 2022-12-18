@@ -26,7 +26,7 @@ Rails.application.routes.draw do
   put 'user/exchanges/:exchange_id/refuse' => 'exchange#refuse', as: 'refuse_exchange'
   put 'user/exchanges/:exchange_id/accept' => 'exchange#accept', as: 'accept_exchange'
   get 'user/albums/:album_id/new_stickers' => 'stickers#new_stickers', as: 'new_stickers_page'
-
+  # get 'users/sign_out' => 'users/user#
 
   post 'user/albums/:album_id/pages' => 'stickers#open_sticker_pack', as: 'open_sticker_pack'
 
