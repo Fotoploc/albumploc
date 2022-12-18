@@ -48,13 +48,20 @@
       <button class="modal__close btn btn--secondary"> X </button>
       <h3> Participantes </h3>
     </header>
-    <% @participants.each do |participant|%>
       <div class="modal__body">
-        <div class="modal__body__text">
-          <%= link_to participant.email, specific_user_album_path(user_id: participant.id, album_id:@album.id), class:"btn btn--primary" %>
+        <div class="modal__body__search">
+          <%= form_with url: "", method: :get, class: "form" do |form|%>
+            <%= form.text_field :query, class: "form__input" %>
+          <% end %>
+        </div>
+        <div class="modal__body__participants">
+          <% @participants.each do |participant|%>
+            <div class="modal__body__participants__button">
+              <%= link_to participant.name, specific_user_album_path(user_id: participant.id, album_id:@album.id), class:"btn btn--primary" %>
+            </div>
+          <% end %>
         </div>
       </div>
-    <% end %>
   </div>
 
 <% end %>

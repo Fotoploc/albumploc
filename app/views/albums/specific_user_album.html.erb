@@ -26,12 +26,12 @@
     <button class="modal__close btn btn--secondary"> X </button>
     <h3> Participantes </h3>
   </header>
-  <% @participants.each do |participant|%>
-    <div class="modal__body">
+  <div class="modal__body">
+    <% @participants.each do |participant|%>
       <div class="modal__body__text">
-        <%= link_to participant.email, specific_user_album_path(id: participant.id, album_id:@album.id), class:"btn btn--primary" %>
+        <%= link_to participant.name, specific_user_album_path(id: participant.id, album_id:@album.id), class:"btn btn--primary" %>
       </div>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
 </div>
 <%= javascript_include_tag("helpers/open_and_close_modal.js") %>

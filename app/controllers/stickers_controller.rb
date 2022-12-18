@@ -53,8 +53,8 @@ class StickersController < ApplicationController
         newest_stickers.push(album_sticker) unless isEquals
       end
   
-      new_sticker = newest_stickers.sample
-      stickers_pack = album_stickers.sample(15)
+      new_sticker = newest_stickers.sample(5)
+      stickers_pack = album_stickers.sample(10)
       stickers_pack.push(new_sticker) if new_sticker != nil
       
       stickers_pack.each do |pack_sticker|
