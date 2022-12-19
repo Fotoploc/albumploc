@@ -54,14 +54,22 @@ class StickersController < ApplicationController
       end
   
       new_sticker = newest_stickers.sample(5)
+      p new_sticker
       stickers_pack = album_stickers.sample(10)
-      stickers_pack.push(new_sticker) if new_sticker != nil
+      p stickers_pack
+      stickers_pack.push(new_sticker) if new_sticker.size != 0
       
       stickers_pack.each do |pack_sticker|
         hasSticker = false
-        
-        user_stickers.each do |user_sticker|
-          hasSticker = true if user_sticker.sticker_id == pack_sticker.id          
+        p "pack sticker "*10
+        p pack_sticker
+        next if pack_sticker == nil
+        if user_stickers.size != 0
+          user_stickers.each do |user_sticker|
+            hasSticker = true if user_sticker.sticker_id == pack_sticker.id          
+          end
+        else
+          hasSticker = false
         end
         if hasSticker
           user_sticker = user_stickers.find_by(sticker_id: pack_sticker.id)
