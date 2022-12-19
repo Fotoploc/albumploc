@@ -4,8 +4,4 @@
       <%= image_tag bucket_url+album.picture.path, alt:"Álbum Image", class:"album__card__picture__img"%>
     <% end %>
   </div>
-  <p class="album__card__title">
-    <strong>Name:</strong>
-    <%= link_to album.name, user_album_url(album.id), album: album%>
-  </p>
 </div>
