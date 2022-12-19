@@ -63,6 +63,14 @@
   &:hover {
     color: var(--roxo-escuro);
 
+    &.svg_fill {
+      svg {
+        path {
+          fill: var(--roxo-escuro)
+        }
+      }
+    }
+
     svg {
       path {
         stroke: var(--roxo-escuro);
