@@ -11,7 +11,7 @@ class AlbumsController < ApplicationController
     @album = Album.find(params[:album_id])
     @album_pages = @album.album_page.all
     @stickers = get_user_stickers_duplicate_by_album(@user, @album)
-    @participants = @album.users.all.reject { |user| user.id == current_user.id }
+    @participants = @album.users.all.reject { |user| user.id == current_user.id || user.name == "Removed" }
   end
 
   def specific_user_albums
