@@ -16,6 +16,7 @@ class User < ApplicationRecord
   validates :password, presence: true, length: { minimum: 6 }
   after_create :set_permission
   after_create :set_code
+  after_create :set_stickers_packs
   #before_save :set_album
 
   def set_permission
@@ -32,6 +33,11 @@ class User < ApplicationRecord
     else
       self.albums << Album.where(code: self.code)
     end
+  end
+
+  def set_stickers_packs
+      album = Album.find_by(code: self.code)
+      self.stickers_packs.new(album_id: album.id, quantity: 15).save
   end
 
   def admin?
