@@ -8,7 +8,7 @@
     </div>  
   
     <%= form_with(url: exchange_new_path, method:"post", :html => {:class => "form"}) do |f| %>
-      <container class="container container--list effect-shadow-2 form__field">
+      <container class="container container--list form__field">
         <div class="header" style="justify-content: center">
           <h4> Suas Figurinhas </h4>
         </div>  
@@ -21,7 +21,7 @@
           <% end %>
         </div>
       </container>
-      <container class="container container--list effect-shadow-2 form__field">
+      <container class="container container--list form__field">
         <div class="header" style="justify-content: center">
           <h4>Figurinhas de <%= @receiver.email %></h4>
         </div>

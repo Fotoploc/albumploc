@@ -1,22 +1,26 @@
 .sticker{
   &__card {
-    border-radius:  var(--border-radius);
     width: 10rem;
-    height: 12rem;
+    height: 14rem;
+    margin: 1.5rem;
+    border: solid 3px #f3f3f3 ;
+    box-shadow: 0px 72px 132px 0px #051D3D0F;
+
     &__picture{
-      border-top-left-radius:  var(--border-radius);
-      border-top-right-radius:  var(--border-radius);
       background-color: var(--color-grey-light);
       display: block;
       overflow: hidden;
-      width: 73%;
       aspect-ratio: 5.5/6.8;
       &__img{
         object-fit: contain;
       }
     }
     &__code {
+      font-size: var(--font-size-s);
+      padding: 0.25rem;
+      font-weight: 700;
       text-align: center;
+      color: var(--lilas-30);
     }
   }
 

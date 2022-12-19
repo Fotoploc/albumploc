@@ -6,6 +6,7 @@
     padding: 0.5rem;
     border-radius:  var(--border-radius);
     box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
+    height: 21rem;
     width: 15rem;
     display:flex;
     flex-direction: column;
@@ -36,6 +37,7 @@
       aspect-ratio: 5.5/6.8;
       &__img{
         object-fit: contain;
+        //height: -webkit-fill-available;
       }
     }
     &__infos{
