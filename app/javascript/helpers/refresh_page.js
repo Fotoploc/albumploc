@@ -3,6 +3,7 @@ function refreshPage() {
   signout.addEventListener('click', () => {
     setTimeout(() => {
       location.reload()
+      console.log('Page refreshed')
     }, 1000)
   })
 }
