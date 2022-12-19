@@ -54,10 +54,24 @@ class StickersController < ApplicationController
       end
   
       new_sticker = newest_stickers.sample(5)
-      p new_sticker
+      p "new Stickers "*10
+      new_sticker.each do |sticker|
+        p sticker
+      end
       stickers_pack = album_stickers.sample(10)
-      p stickers_pack
-      stickers_pack.push(new_sticker) if new_sticker.size != 0
+      p "Stickers pack  antes"*10
+      stickers_pack.each do |sticker|
+        p sticker
+      end
+      new_sticker.each do |sticker|
+        stickers_pack.push(sticker) if new_sticker.size != 0
+      end
+
+      p "Stickers pack  depois"*10
+      stickers_pack.each do |sticker|
+        p sticker
+      end
+
       
       stickers_pack.each do |pack_sticker|
         hasSticker = false
