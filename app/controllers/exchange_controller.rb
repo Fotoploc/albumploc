@@ -62,21 +62,29 @@ class ExchangeController < ApplicationController
       @sender = User.find(@exchange.sender_id)
       @receiver = User.find(@exchange.receiver_id)
       @exchange.sender_stickers.each do |sender_sticker|
-        @receiver.stickers << UserSticker.new(sticker_id: sender_sticker.sticker_id, user_id: @sender.id)
+        if @receiver.stickers.find_by(sticker_id: sender_sticker.sticker_id).nil?
+          @receiver.stickers << UserSticker.new(sticker_id: sender_sticker.sticker_id, user_id: @sender.id)
+        else
+          @receiver.stickers.find_by(sticker_id: sender_sticker.sticker_id).quantity += 1
+        end
       end
       @exchange.receiver_stickers.each do |receiver_sticker|
-        @sender.stickers << UserSticker.new(sticker_id: receiver_sticker.sticker_id, user_id: @receiver.id)
+        if @sender.stickers.find_by(sticker_id: receiver_sticker.sticker_id).nil?
+          @sender.stickers << UserSticker.new(sticker_id: receiver_sticker.sticker_id, user_id: @receiver.id)
+        else
+          @sender.stickers.find_by(sticker_id: receiver_sticker.sticker_id).quantity += 1
+        end
       end
 
       @exchange.sender_stickers.each do |sender_sticker|
         sticker = @sender.stickers.find_by(sticker_id: sender_sticker.sticker_id)
-        sticker.delete
+        sticker.quantity -= 1
         turn_others_exchanges_unavailable(sticker, @sender)
       end
 
       @exchange.receiver_stickers.each do |receiver_sticker|
         sticker = @receiver.stickers.find_by(sticker_id: receiver_sticker.sticker_id)
-        sticker.delete
+        sticker.quantity -= 1
         turn_others_exchanges_unavailable(sticker, @receiver)
       end
       @exchange.update(status: "Aceito")
