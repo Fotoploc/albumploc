@@ -5,6 +5,10 @@ class Users::UserController < ApplicationController
     @users = User.all
   end
 
+  def how_it_works
+    
+  end
+
   def profile
     @user = User.find(current_user.id)
     @albums = @user.albums.first(5)

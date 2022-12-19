@@ -28,6 +28,8 @@ Rails.application.routes.draw do
   get 'user/albums/:album_id/new_stickers' => 'stickers#new_stickers', as: 'new_stickers_page'
   # get 'users/sign_out' => 'users/user#
 
+  get 'how_it_works' => "users/user#how_it_works", as: "how_it_works"
+
   post 'user/albums/:album_id/pages' => 'stickers#open_sticker_pack', as: 'open_sticker_pack'
 
   devise_for :users, controllers: {
