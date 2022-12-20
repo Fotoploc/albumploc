@@ -56,50 +56,70 @@ class ExchangeController < ApplicationController
     redirect_to all_exchanges_path
   end
 
+  def increase_sender_quantity(receiver, exchange)
+    exchange.sender_stickers.each do |sender_sticker|
+      if receiver.stickers.find_by(sticker_id: sender_sticker.sticker_id).nil?
+        receiver.stickers << UserSticker.new(sticker_id: sender_sticker.sticker_id, user_id: sender.id, quantity: 1)
+      else
+        sticker = receiver.stickers.find_by(sticker_id: sender_sticker.sticker_id)
+        sticker.update(quantity: sticker.quantity + 1)
+      end
+    end
+  end
+
+  def increase_receiver_quantity(sender, exchange)
+    exchange.receiver_stickers.each do |receiver_sticker|
+      if sender.stickers.find_by(sticker_id: receiver_sticker.sticker_id).nil?
+        sender.stickers << UserSticker.new(sticker_id: receiver_sticker.sticker_id, user_id: receiver.id, quantity: 1)
+      else
+        sticker = sender.stickers.find_by(sticker_id: receiver_sticker.sticker_id)
+        sticker.update(quantity: sticker.quantity + 1)
+      end
+    end
+  end
+
+  def decrease_sender_quantity(sender, exchange)
+    exchange.sender_stickers.each do |sender_sticker|
+      sticker = sender.stickers.find_by(sticker_id: sender_sticker.sticker_id)
+      sticker.update(quantity: sticker.quantity - 1)
+      turn_others_exchanges_unavailable(sticker, sender)
+    end
+  end
+
+  def decrease_receiver_quantity(receiver, exchange)
+    exchange.receiver_stickers.each do |receiver_sticker|
+      sticker = receiver.stickers.find_by(sticker_id: receiver_sticker.sticker_id)
+      sticker.update(quantity: sticker.quantity - 1)
+      turn_others_exchanges_unavailable(sticker, receiver)
+    end
+  end
+
   def accept
     @exchange = Exchange.find(params[:exchange_id])
     if(@exchange.status == "Pendente")
       @sender = User.find(@exchange.sender_id)
       @receiver = User.find(@exchange.receiver_id)
-      @exchange.sender_stickers.each do |sender_sticker|
-        if @receiver.stickers.find_by(sticker_id: sender_sticker.sticker_id).nil?
-          @receiver.stickers << UserSticker.new(sticker_id: sender_sticker.sticker_id, user_id: @sender.id)
-        else
-          @receiver.stickers.find_by(sticker_id: sender_sticker.sticker_id).quantity += 1
-        end
-      end
-      @exchange.receiver_stickers.each do |receiver_sticker|
-        if @sender.stickers.find_by(sticker_id: receiver_sticker.sticker_id).nil?
-          @sender.stickers << UserSticker.new(sticker_id: receiver_sticker.sticker_id, user_id: @receiver.id)
-        else
-          @sender.stickers.find_by(sticker_id: receiver_sticker.sticker_id).quantity += 1
-        end
-      end
 
-      @exchange.sender_stickers.each do |sender_sticker|
-        sticker = @sender.stickers.find_by(sticker_id: sender_sticker.sticker_id)
-        sticker.quantity -= 1
-        turn_others_exchanges_unavailable(sticker, @sender)
-      end
-
-      @exchange.receiver_stickers.each do |receiver_sticker|
-        sticker = @receiver.stickers.find_by(sticker_id: receiver_sticker.sticker_id)
-        sticker.quantity -= 1
-        turn_others_exchanges_unavailable(sticker, @receiver)
-      end
+      increase_sender_quantity(@receiver, @exchange)
+      increase_receiver_quantity(@sender, @exchange)
+      decrease_sender_quantity(@sender, @exchange)
+      decrease_receiver_quantity(@receiver, @exchange)
+      
       @exchange.update(status: "Aceito")
     end
     redirect_to all_exchanges_path
   end
 
   def turn_others_exchanges_unavailable(sticker, user)
-    @exchanges = Exchange.where(sender_id: user.id).or(Exchange.where(receiver_id: user.id))
-    @exchanges.each do |exchange|
-      exchange.sender_stickers.each do |sender_sticker|
-        sender_sticker.sticker_id == sticker.id ? exchange.update(status: "Indisponível") : nil
-      end
-      exchange.receiver_stickers.each do |receiver_sticker|
-        receiver_sticker.sticker_id == sticker.id ? exchange.update(status: "Indisponível") : nil
+    if sticker.quantity < 2
+      @exchanges = Exchange.where(sender_id: user.id).or(Exchange.where(receiver_id: user.id))
+      @exchanges.each do |exchange|
+        exchange.sender_stickers.each do |sender_sticker|
+          sender_sticker.sticker_id == sticker.id ? exchange.update(status: "Indisponível") : nil
+        end
+        exchange.receiver_stickers.each do |receiver_sticker|
+          receiver_sticker.sticker_id == sticker.id ? exchange.update(status: "Indisponível") : nil
+        end
       end
     end
   end
