@@ -19,10 +19,12 @@
                 <p> Data: <%= exchange.created_at.strftime("%d/%m/%Y") %> </p>
               </div>
               <div class="gap-1 display-flex display-flex--row align-items-center">
+                  <% if exchange.status === "Pendente" %>
+                    <%= button_to "Cancelar", cancel_exchange_path(exchange.id), method: :put, class:"btn btn--secondary" %>
+                  <% end %>
                   <div>
                     <%= button_to "Visualizar", exchange_show_path(exchange.id), method: :get, class:"btn btn--primary" %>
-                  </div> 
-                <%= button_to "Cancelar", cancel_exchange_path(exchange.id), method: :put, class:"btn btn--secondary" %>
+                  </div>
               </div>
             </div>
           <% else %>
@@ -32,15 +34,15 @@
                 <p> Status: <%= exchange.status %></p>
                 <p> Data: <%= exchange.created_at.strftime("%d/%m/%Y") %> </p>
               </div>
-              <% if exchange.status === "Pendente" %>
                 <div class="gap-1 display-flex display-flex--row align-items-center">
+                  <% if exchange.status === "Pendente" %>
+                      <%= button_to "Aceitar", accept_exchange_path(exchange.id), method: :put, class:"btn btn--primary" %>
+                      <%= button_to "Recusar", refuse_exchange_path(exchange.id), method: :put, class:"btn btn--secondary"%>
+                  <% end %>
                   <div>
                     <%= button_to "Visualizar", exchange_show_path(exchange.id), method: :get, class:"btn btn--primary" %>
                   </div>           
-                  <%= button_to "Aceitar", accept_exchange_path(exchange.id), method: :put, class:"btn btn--primary" %>
-                  <%= button_to "Recusar", refuse_exchange_path(exchange.id), method: :put, class:"btn btn--secondary"%>
                 </div>
-              <% end %>
             </div>
           <% end %>
         <% end %>
