@@ -17,27 +17,22 @@ class User < ApplicationRecord
   after_create :set_permission
   after_create :set_code
   after_create :set_stickers_packs
-  #before_save :set_album
 
   def set_permission
     Permission.create(user_id: self.id)
   end
 
   def set_code
-    self.albums << Album.where(code: self.code)
-  end
-
-  def set_album
-    if self.code.nil? || self.code == ''
-      p "Usuário sem Código"
-    else
+    if self.code.present?
       self.albums << Album.where(code: self.code)
     end
   end
 
   def set_stickers_packs
+    if self.code.present?
       album = Album.find_by(code: self.code)
       self.stickers_packs.new(album_id: album.id, quantity: 15).save
+    end
   end
 
   def admin?

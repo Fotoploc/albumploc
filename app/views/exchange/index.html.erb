@@ -6,7 +6,11 @@
       <h4> Trocar figurinhas </h4>
       <div></div>
     </div>  
-  
+    <% flash.each do |type, msg| %>
+      <div>
+        <h4><%= msg %></h4>
+      </div>
+  <% end %>
     <%= form_with(url: exchange_new_path, method:"post", :html => {:class => "form"}) do |f| %>
       <container class="container container--list form__field">
         <div class="header" style="justify-content: center">
@@ -39,4 +43,3 @@
     <% end %>
   </section>
 </div>
-  
