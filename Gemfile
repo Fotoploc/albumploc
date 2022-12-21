@@ -42,6 +42,9 @@ gem 'cancancan'
 gem 'carrierwave', '~> 2.0'
 gem "fog-aws"
 
+# NewRelic
+gem 'newrelic_rpm'
+
 # Linter
 gem 'rubocop', require: false
 
