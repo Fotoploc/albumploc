@@ -6,33 +6,6 @@
         <h4> Editar figurinhas da Página </h4>
         <div></div>
       </div>
-      <section class="section "> 
-        <div class="page__show position-relative">
-          <%= image_tag bucket_url+@album_page.background_image.path, class: "page__show__background-image" %>
-        </div>
-        <div>
-          <div class="container__cards">
-          <%= form_with(url: add_sticker_to_page_album_page_path(album_id: @album_page[:album_id], page_number: @album_page[:page_number]), method:"post", :html => {:class => "form display-flex--row display-flex--wrap"}) do |f| %>
-            <div class="form__field__positions">
-            </div>
-            <% @stickers.each do |sticker| %>
-              <div class="sticker__form__field position-relative">
-                <%= f.check_box :sticker_id, { multiple: true }, sticker.id, nil %>
-                <% f.hidden_field :sticker_id, as: :hidden, input_html: { value: sticker.id } %>
-                <%= render "stickers/sticker", sticker: sticker %>
-                <%= link_to remove_sticker_from_page_album_page_path(@album_page[:album_id], @album_page[:page_number], sticker.id), data: { turbo_method: :delete } do %>
-                  <div class="page__card__menu__icon btn position-absolute right-40 top-0">
-                    <%= show_svg("/icons/trash.svg")%>
-                  </div>
-                <% end %>
-              </div>
-            <% end %>
-            <%= f.hidden_field :album_id, as: :hidden, input_html: { value: @album.id } %>
-            <%= f.submit "Adicionar", class: "btn btn--primary" %>
-          <% end %>
-          </div>
-        </div>
-      </section>
+      <%= render"/album_pages/position_stickers", album: @album, album_page: @album_page, stickers: @stickers, delete_btn: false  %>
     </container>
   </div>
-<%= javascript_include_tag("helpers/drag_and_drop.js") %>

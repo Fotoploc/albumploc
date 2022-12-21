@@ -76,6 +76,8 @@ function dragAndDrop() {
         function moveItem(e) {
           drag.style.left = e.pageX - shiftX + 'px';
           drag.style.top = e.pageY - shiftY + 'px';
+          document.querySelector('.position__notice__x').innerHTML = `X: ${e.pageX - shiftX - pageCardsClonesParentInfo.left}`
+          document.querySelector('.position__notice__y').innerHTML = `Y: ${e.pageY - shiftY - pageCardsClonesParentInfo.top}`
         }
         document.onmousemove = function(e) {
           moveItem(e);
