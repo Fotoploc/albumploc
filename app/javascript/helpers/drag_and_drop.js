@@ -64,7 +64,8 @@ function dragAndDrop() {
       drag.addEventListener('mousedown', function(e){  
         let coord = getCoord(drag);
 
-        console.log(`elementX:${coord.left}, boxX: ${pageCardsClonesParentInfo.left}, elementY: ${coord.top}, boxY: ${pageCardsClonesParentInfo.top}`)
+        document.querySelector('.final_position__x').innerHTML = `X final: ${coord.left - pageCardsClonesParentInfo.left}`
+        document.querySelector('.final_position__y').innerHTML = `Y final: ${coord.top - pageCardsClonesParentInfo.top}`
 
         let shiftX = e.pageX - coord.left;
         let shiftY = e.pageY - coord.top;
