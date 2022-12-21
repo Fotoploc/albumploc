@@ -27,17 +27,17 @@
         </div>
       <% end %>
       <%= f.hidden_field :album_id, as: :hidden, input_html: { value: album.id } %>
-      <%= f.submit "Adicionar", class: "btn btn--primary" %>
+      <%= f.submit "Confirmar", class: "btn btn--primary position-absolute right-40" %>
     <% end %>
     </div>
   </div>
 </section>
 
-<p class="position__notice" style="position: absolute; top: 20%; right: 70%">
+<p class="position__notice" style="position: absolute; top: 20%; left: 25%">
   <a class="position__notice__x">X:</a><br>
-  <a class="position__notice__y">Y:</a>
-  <a class="final_position__x"></a>
-  <a class="final_position__y"></a>
+  <a class="position__notice__y">Y:</a><br>
+  <a class="final_position__x"></a><br>
+  <a class="final_position__y"></a><br>
 </p>
 
 <%= javascript_include_tag("helpers/drag_and_drop.js") %>
