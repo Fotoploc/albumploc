@@ -56,7 +56,7 @@ class ExchangeController < ApplicationController
     redirect_to all_exchanges_path
   end
 
-  def increase_sender_quantity(receiver, exchange)
+  def increase_sender_receiver_quantity(receiver, exchange, sender)
     exchange.sender_stickers.each do |sender_sticker|
       if receiver.stickers.find_by(sticker_id: sender_sticker.sticker_id).nil?
         receiver.stickers << UserSticker.new(sticker_id: sender_sticker.sticker_id, user_id: sender.id, quantity: 1)
@@ -65,9 +65,7 @@ class ExchangeController < ApplicationController
         sticker.update(quantity: sticker.quantity + 1)
       end
     end
-  end
-
-  def increase_receiver_quantity(sender, exchange)
+    
     exchange.receiver_stickers.each do |receiver_sticker|
       if sender.stickers.find_by(sticker_id: receiver_sticker.sticker_id).nil?
         sender.stickers << UserSticker.new(sticker_id: receiver_sticker.sticker_id, user_id: receiver.id, quantity: 1)
@@ -100,8 +98,7 @@ class ExchangeController < ApplicationController
       @sender = User.find(@exchange.sender_id)
       @receiver = User.find(@exchange.receiver_id)
 
-      increase_sender_quantity(@receiver, @exchange)
-      increase_receiver_quantity(@sender, @exchange)
+      increase_sender_receiver_quantity(@receiver, @exchange, @sender)
       decrease_sender_quantity(@sender, @exchange)
       decrease_receiver_quantity(@receiver, @exchange)
       
