@@ -49,10 +49,12 @@
         <button class="modal__close btn btn--secondary"> X </button>
         <h3> Participantes </h3>
       </header>
+        <%= turbo_frame_tag "participants" do %>
         <div class="modal__body">
           <div class="modal__body__search">
-            <%= form_with url: "", method: :get, class: "form" do |form|%>
-              <%= form.text_field :query, class: "form__input" %>
+            <%= form_tag(user_album_path, method: :get, class:"display-flex") do %>
+              <%= text_field_tag(:search, params[:search], class:"form__input") %>
+              <%= submit_tag("Buscar", class:"btn btn--primary")%>
             <% end %>
           </div>
           <div class="modal__body__participants">
@@ -63,6 +65,7 @@
             <% end %>
           </div>
         </div>
+        <% end %>
     </div>
   </section>
   </div>
