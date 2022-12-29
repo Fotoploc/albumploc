@@ -1,0 +1,15 @@
+.album-card.album-card--narrow
+  .album-card__cover
+  .album-card__body
+    .album-card__body-header
+      h2.album-card__body-title Nome do álbum bem grande
+      .album-card__body-description Descritivo desse álbum aqui
+    .album-card__body-tag Faltam 10 figurinhas
+    .album-card__avatar-list
+      .album-card__avatar style="background-image: url(#{image_path('placeholders/avatar.png')})"
+      .album-card__avatar style="background-image: url(#{image_path('placeholders/avatar.png')})"
+      .album-card__avatar style="background-image: url(#{image_path('placeholders/avatar.png')})"
+      .album-card__avatar style="background-image: url(#{image_path('placeholders/avatar.png')})"
+      .album-card__avatar +2
+    .album-card__cta 
+      =link_to "Detalhes do álbum", album_detail_path("123"), class: "btn btn--outline"

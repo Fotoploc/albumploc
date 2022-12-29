@@ -1,0 +1,31 @@
+.changes-resume
+  padding-left: 4vw
+  +i(5.5/12)
+  +g(full)
+  gap: 1em
+
+  &__item
+    border: 1px solid $blue
+    padding: 1em
+    border-radius: 10px
+    +g(full, space-between, middle)
+    +i(1/1)
+    position: relative
+    gap: 1em
+    background: white
+    box-shadow: 0px 10px 20px rgba(151, 71, 255, 0.1), 0px 14px 32px -1px rgba(15, 5, 26, 0.10);
+    
+  &__icon
+    background-color: $blue
+    +g(full, center, middle)
+    width: 40px
+    height: 40px
+    border-radius: 50%
+    position: absolute
+    top: 50%
+    left: -20px
+    transform: translateY(-20px)
+
+  &__description
+    padding-left: 2em
+    +i(8.5/10)

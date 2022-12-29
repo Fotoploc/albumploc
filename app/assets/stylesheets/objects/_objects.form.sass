@@ -1,0 +1,60 @@
+form
+  +i(1/1)
+
+  .input
+    +i(1/1)
+    margin: 1em 0
+
+  input, textarea
+    margin: .5em 0
+    padding: 1em
+    +i(1/1)
+    border: 1px solid $color-gray
+
+  textarea
+    font-family: $mulish
+    min-height: 100px
+    font-size: .85em
+
+  label
+    color: $color-black
+    font-weight: 500
+    font-size: .85em
+    line-height: 1.4em
+    +i(1/1)
+    margin-top: .5em
+
+  abbr
+    display: none
+
+
+.form-group
+  +g(full, space-between)
+  .input
+    +i(3/10)
+
+.form-footer
+  +i(1/1)
+  +g(full, space-between, middle)
+  border-top: 1px solid $color-gray
+  padding-top: 2em
+  margin: 2em 0 0
+
+.form-content
+  margin: .5em 0
+  background: $color-light-gray
+  border-radius: 5px
+  padding: 1em 1em 0
+  +g(full, space-between)
+
+  &__title
+    background: $color-black
+    color: white
+    padding: 1em
+    font-weight: bold
+    +i(1/1)
+
+.form-group-sided
+  +i(3.9/12)
+  &:last-child
+    +i(7.5/12)

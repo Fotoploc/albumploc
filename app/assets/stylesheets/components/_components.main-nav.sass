@@ -1,0 +1,36 @@
+.main-nav
+  position: absolute
+  left: 0px
+  top: 0px
+  bottom: 0px
+  padding: 4vw
+  font-weight: 500
+  color: $blue
+  width: 20vw
+
+  &__brand
+    margin-bottom: 3em
+
+  &__links-group
+    +g(full)
+    +i(1/1)
+    margin-top: 1em
+    gap: 2em
+    border-bottom: 1px solid rgba($blue, .1)
+    padding-bottom: 2em
+
+  
+  &__link, &__links
+    +i(1/1)
+    +g(full, middle)
+    gap: 1em
+
+  &__link
+    opacity: .4
+
+    &:hover 
+      opacity: 1
+      color: $blue
+
+  &__link.active
+      opacity: 1

@@ -1,4 +1,4 @@
-function openModal() {
+function openOLDModal() {
   let openModal = document.querySelector('.modal__open')
   let closeModal = document.querySelector('.modal__close')
   let modal = document.querySelector('.modal')
@@ -11,5 +11,5 @@ function openModal() {
     modal.classList.add('modal--hidden');
   });
 }
-openModal();
+//openModal();
 

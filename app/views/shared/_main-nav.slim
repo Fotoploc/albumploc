@@ -1,0 +1,27 @@
+.main-nav
+  .main-nav__brand = inline_svg("fotoploc-logo.svg")
+  .main-nav__links
+    .main-nav__links-group
+      = active_link_to root_path, active: :exclusive, class: "main-nav__link" do 
+        .main-nav__link-icon = inline_svg("icons/home-icon.svg")
+        .main-nav__link-title Home
+      = active_link_to albums_path, class: "main-nav__link" do 
+        .main-nav__link-icon = inline_svg("icons/album-icon.svg")
+        .main-nav__link-title Albuns
+      = active_link_to all_exchanges_path, class: "main-nav__link" do 
+        .main-nav__link-icon = inline_svg("icons/change-icon.svg")
+        .main-nav__link-title Trocas
+      = active_link_to how_it_works_path, class: "main-nav__link" do 
+        /.main-nav__link-icon = inline_svg("icons/question-icon.svg")
+        .main-nav__link-title Como funciona?
+    .main-nav__links-group
+      = active_link_to edit_user_registration_path, class: "main-nav__link" do 
+        .main-nav__link-icon = inline_svg("icons/config-icon.svg")
+        .main-nav__link-title Configurações
+      = link_to destroy_user_session_path, class: "main-nav__link" do 
+        .main-nav__link-icon = inline_svg("icons/sign-out-icon.svg")
+        .main-nav__link-title Sair
+
+
+
+

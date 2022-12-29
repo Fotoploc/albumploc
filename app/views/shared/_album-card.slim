@@ -1,0 +1,23 @@
+
+.album-card
+  .album-card__cover 
+    = image_tag bucket_url+album.picture.path, :width => '100%'
+  .album-card__body
+    .album-card__body-header
+      h2.album-card__body-title = album.name
+      .album-card__body-description = album.description
+    .album-card__body-tag Faltam #{missing_stickers} figurinhas
+    .album-card__avatar-list
+      .album-card__avatar style="background-image: url(#{image_path('placeholders/avatar.png')})"
+      .album-card__avatar style="background-image: url(#{image_path('placeholders/avatar.png')})"
+      .album-card__avatar style="background-image: url(#{image_path('placeholders/avatar.png')})"
+      .album-card__avatar style="background-image: url(#{image_path('placeholders/avatar.png')})"
+      .album-card__avatar style="cursor:pointer" onclick="openModal(event)" +#{participants.count}
+      = render "shared/modal", users: participants, album: album
+    .album-card__cta 
+      - if navigate
+        =link_to "Navegar no álbum", show_album_pages_path(album.id), class: "btn btn--outline"
+      - else 
+        =link_to "Detalhes do álbum", user_album_path(album.id), class: "btn btn--outline"
+
+

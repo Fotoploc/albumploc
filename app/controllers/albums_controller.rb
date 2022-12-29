@@ -10,6 +10,7 @@ class AlbumsController < ApplicationController
     @user = User.find(current_user.id)
     @album = Album.find(params[:album_id])
     @album_pages = @album.album_page.all
+    @stickers_missing = @album.stickers.length - get_user_stickers_by_album(@user, @album).length
     @stickers = get_user_stickers_duplicate_by_album(@user, @album)
     @participants = @album.users.all.reject { |user| user.id == current_user.id || user.name == "Removed" }
     if params[:search]

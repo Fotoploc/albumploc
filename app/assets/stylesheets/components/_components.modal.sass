@@ -1,0 +1,79 @@
+.modal
+  +g(full, center, middle)
+  top: 0px
+  left: 0px
+  position: fixed
+  z-index: 100
+  width: 100%
+  height: 100%
+  opacity: 0
+  pointer-events: none
+  transition: ease-in-out .2s
+
+  &.active
+    opacity: 1
+    pointer-events: all
+
+  &__container
+    background-color: white
+    border-radius: 20px
+    +i(8/10, md 4/10)
+    z-index: 2
+    position: relative
+    padding: 2em
+    font-size: .8em
+    +bp(md)
+      font-size: .9em
+      padding: 4em
+
+
+  &__title
+    font-weight: 500
+    margin-bottom: 1em
+    font-size: 1.2em
+    border-bottom: 1px solid $gray
+    padding-bottom: 2em
+  
+
+  &__overlay
+    position: absolute
+    left: 0px
+    bottom: 0px
+    right: 0px
+    top: 0px
+    background-color: rgba(black, .4)
+    cursor: pointer
+
+  &__body
+    +g(full, middle)
+    gap: 1em
+  
+  &__search
+    margin-bottom: 1em
+    &__input
+      height: 2.5em
+      widthÇ 100%
+  &__user
+    +g(full, middle)
+    gap: 1em
+    +i(1/1)
+    position: relative
+    background-color: $light
+    padding: 1em
+    border-radius: 5px
+
+  &__user-avatar
+    width: 50px
+    height: 50px
+    border: 2px solid $light
+    border-radius: 50%
+    margin-right: -5px
+    background-position: center
+    background-size: cover
+    background-color: $blue
+    color: white
+    +g(full, middle, center)
+
+  .changes-resume__action
+    position: absolute
+    right: 1em
