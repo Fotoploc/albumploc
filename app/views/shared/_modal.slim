@@ -6,7 +6,7 @@
         .modal__search
           = form_tag(user_album_path, method: :get, class:"display-flex") do
             = text_field_tag(:search, params[:search], class:"form__input modal__search__input", placeholder: "Buscar por nome...")
-            = submit_tag("Buscar", class:"btn btn--primary")
+            = submit_tag("Buscar", class:"btn btn--outline")
         - users.each do |user|
           .modal__user
             .modal__user-avatar

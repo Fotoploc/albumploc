@@ -10,6 +10,7 @@
 
   &__brand
     margin-bottom: 3em
+    display: flex
 
   &__links-group
     +g(full)
@@ -34,3 +35,9 @@
 
   &__link.active
       opacity: 1
+
+  
+  &__link-title
+    visibility: hidden
+    +bp(md)
+      visibility: inherit

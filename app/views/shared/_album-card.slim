@@ -6,7 +6,10 @@
     .album-card__body-header
       h2.album-card__body-title = album.name
       .album-card__body-description = album.description
-    .album-card__body-tag Faltam #{missing_stickers} figurinhas
+    - if missing_stickers > 0
+      .album-card__body-tag Faltam #{missing_stickers} figurinhas
+    - else
+      .album-card__body-tag Album completo
     .album-card__avatar-list
       .album-card__avatar style="background-image: url(#{image_path('placeholders/avatar.png')})"
       .album-card__avatar style="background-image: url(#{image_path('placeholders/avatar.png')})"
