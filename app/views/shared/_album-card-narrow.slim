@@ -13,4 +13,5 @@
       .album-card__avatar style="background-image: url(#{image_path('placeholders/avatar.png')})"
       .album-card__avatar +#{album.users.count}
     .album-card__cta 
-      =link_to "Detalhes do álbum", user_album_url(album.id), class: "btn btn--outline"
+      - if navigate
+        =link_to "Detalhes do álbum", user_album_url(album.id), class: "btn btn--outline"

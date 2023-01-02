@@ -3,18 +3,20 @@
   .main-header__subtitle Confira a troca com #{@receiver.name}
   br
   br
-.photo-listd
-  .photo-list__title Suas figurinhas
-  .photo-list__carousel
-    - @sender_stickers.each do |sticker|
-      .photo-item
-        = image_tag bucket_url+sticker.picture.path, :width => '100%'
-hr
-.photo-list
-  .photo-list__title Figurinhas de #{@receiver.name == "" ? @receiver.email : @receiver.name}
-  .photo-list__carousel
-    - @receiver_stickers.each do |sticker|
-      .photo-item
-        = image_tag bucket_url+sticker.picture.path, :width => '100%'
-hr
-= link_to "Enviar solicitação de troca", "#" ,class: "btn btn--full"
+= form_with(url: exchange_new_path, method:"post", :html => {:class => "form"}) do |f|
+  .photo-listd
+    .photo-list__title Suas figurinhas
+    .photo-list__carousel
+      - @sender_stickers.each do |sticker|
+        .photo-item
+          input type="checkbox" name:"sendesticker_ids[]" value:#{sticker.id}
+          = image_tag bucket_url+sticker.picture.path, :width => '100%'
+  hr
+  .photo-list
+    .photo-list__title Figurinhas de #{@receiver.name == "" ? @receiver.email : @receiver.name}
+    .photo-list__carousel
+      - @receiver_stickers.each do |sticker|
+        .photo-item
+          = image_tag bucket_url+sticker.picture.path, :width => '100%'
+  hr
+  = link_to "Enviar solicitação de troca", "#" ,class: "btn btn--full"
