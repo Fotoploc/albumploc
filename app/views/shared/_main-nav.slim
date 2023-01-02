@@ -5,7 +5,7 @@
       = active_link_to root_path, active: :exclusive, class: "main-nav__link" do 
         .main-nav__link-icon = inline_svg("icons/home-icon.svg")
         .main-nav__link-title Home
-      = active_link_to albums_path, class: "main-nav__link" do 
+      = active_link_to user_albums_path, class: "main-nav__link" do 
         .main-nav__link-icon = inline_svg("icons/album-icon.svg")
         .main-nav__link-title Albuns
       = active_link_to all_exchanges_path, class: "main-nav__link" do 

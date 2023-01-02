@@ -1,0 +1,31 @@
+.main-header
+  h1.main-header__name Olá #{current_user.name}
+  - if @receiver.id == current_user.id
+    .main-header__subtitle Confira a troca com #{@sender.name}
+  - else
+    .main-header__subtitle Confira a troca com #{@receiver.name}
+  br
+  br
+.photo-list
+  - if @sender.id == current_user.id
+    .photo-list__title Suas figurinhas
+  - else 
+    .photo-list__title Figurinhas de #{@sender.name == "" ? @sender.email : @sender.name}
+  .photo-list__carousel
+    - @sender_stickers.each do |sticker|
+      .photo-item
+        = image_tag bucket_url+sticker.picture.path, :width => '100%'
+hr
+.photo-list
+  - if @receiver.id == current_user.id
+    .photo-list__title Suas figurinhas
+  - else
+    .photo-list__title Figurinhas de #{@receiver.name == "" ? @receiver.email : @receiver.name}
+  .photo-list__carousel
+    - @receiver_stickers.each do |sticker|
+      .photo-item
+        = image_tag bucket_url+sticker.picture.path, :width => '100%'
+hr
+- if @exchange.status === "Pendente" && @receiver.id == current_user.id
+  =link_to "Aceitar", accept_exchange_path(@exchange.id), method: :put, class:"btn btn--full"
+  =link_to "Recusar", refuse_exchange_path(@exchange.id), method: :put, class:"btn btn--full"

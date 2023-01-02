@@ -1,0 +1,20 @@
+.main-header
+  h1.main-header__name Olá #{current_user.name}
+  .main-header__subtitle Confira a troca com #{@receiver.name}
+  br
+  br
+.photo-listd
+  .photo-list__title Suas figurinhas
+  .photo-list__carousel
+    - @sender_stickers.each do |sticker|
+      .photo-item
+        = image_tag bucket_url+sticker.picture.path, :width => '100%'
+hr
+.photo-list
+  .photo-list__title Figurinhas de #{@receiver.name == "" ? @receiver.email : @receiver.name}
+  .photo-list__carousel
+    - @receiver_stickers.each do |sticker|
+      .photo-item
+        = image_tag bucket_url+sticker.picture.path, :width => '100%'
+hr
+= link_to "Enviar solicitação de troca", "#" ,class: "btn btn--full"

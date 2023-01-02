@@ -13,7 +13,7 @@ class Users::UserController < ApplicationController
     @user = User.find(current_user.id)
     @albums = @user.albums.first(5)
     @stickers = []
-    @user.stickers.first(5).each do |userSticker|
+    @user.stickers.last(5).each do |userSticker|
       @stickers << Sticker.find(userSticker.sticker_id)
     end
   end
