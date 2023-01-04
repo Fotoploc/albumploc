@@ -15,18 +15,22 @@ class ExchangeController < ApplicationController
   end
   
   def new
-    @sender = User.find(current_user.id)
-    @receiver = User.find(params[:user_id])
-    @sender_stickers = get_user_stickers_by_ids(@sender, params[:sendesticker_ids])
-    @receiver_stickers = get_user_stickers_by_ids(@receiver, params[:receivesticker_ids])
-    Exchange.create(sender_id: @sender.id, receiver_id: @receiver.id, status: "Pendente")
-    @sender_stickers.each do |sticker|
-      SenderSticker.create(exchange_id: Exchange.last.id, sticker_id: sticker.id)
+    if params[:sendesticker_ids].nil? || params[:receivesticker_ids].nil?
+      redirect_to exchange_path(user_id: params[:user_id], album_id: params[:album_id]), alert: "Selecione pelo menos um sticker para trocar de ambos"
+    else
+      @sender = User.find(current_user.id)
+      @receiver = User.find(params[:user_id])
+      @sender_stickers = get_user_stickers_by_ids(@sender, params[:sendesticker_ids])
+      @receiver_stickers = get_user_stickers_by_ids(@receiver, params[:receivesticker_ids])
+      Exchange.create(sender_id: @sender.id, receiver_id: @receiver.id, status: "Pendente")
+      @sender_stickers.each do |sticker|
+        SenderSticker.create(exchange_id: Exchange.last.id, sticker_id: sticker.id)
+      end
+      @receiver_stickers.each do |sticker|
+        ReceiverSticker.create(exchange_id: Exchange.last.id, sticker_id: sticker.id)
+      end
+      redirect_to all_exchanges_path
     end
-    @receiver_stickers.each do |sticker|
-      ReceiverSticker.create(exchange_id: Exchange.last.id, sticker_id: sticker.id)
-    end
-    redirect_to all_exchanges_path
   end
 
   def show
