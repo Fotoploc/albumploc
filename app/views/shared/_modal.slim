@@ -2,14 +2,13 @@
   .modal__container 
     .modal__title Participantes desse Album
     .modal__body
-      = turbo_frame_tag "participants", :style=>"width:100%" do
-        .modal__search
-          = form_tag(user_album_path, method: :get, class:"modal__search__form") do
-            = text_field_tag(:search, params[:search], class:"form__input modal__search__input", placeholder: "Buscar por nome...")
-            = submit_tag("Buscar", class:"btn btn--outline")
-        - users.each do |user|
-          .modal__user
-            .modal__user-avatar
-            .modal__user-name = user.name
-            =link_to  inline_svg("icons/arrow-right-circle.svg"), specific_user_album_path(user.id, album.id), class: "changes-resume__action"
+      .modal__search
+        = form_tag(user_album_path, method: :get, class:"modal__search__form", data: { turbo:false }) do
+          = text_field_tag(:search, params[:search], class:"form__input modal__search__input", placeholder: "Buscar por nome...")
+          = submit_tag("Buscar", class:"btn btn--outline")
+      - users.each do |user|
+        .modal__user
+          .modal__user-avatar
+          .modal__user-name = user.name
+          =link_to  inline_svg("icons/arrow-right-circle.svg"), specific_user_album_path(user.id, album.id), class: "changes-resume__action"
   .modal__overlay onclick="closeModal(event)"

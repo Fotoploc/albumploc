@@ -6,10 +6,13 @@
 
   .change-card__body
     /.change-card__avatar style="background-image: url(#{image_path('placeholders/avatar.png')})"
-    .change-card__body-description Você está trocando #{exchange.sender_stickers.all.length()}  x #{exchange.receiver_stickers.all.length()} figurinhas com #{exchange.receiver.email}
+    .change-card__body-description Você está trocando #{exchange.sender_stickers.all.length()}  x #{exchange.receiver_stickers.all.length()} figurinhas com #{exchange.receiver.name or exchange.receiver.email}
 
   .change-card__actions
     - if exchange.status === "Pendente"
-      = link_to "Aceitar", accept_exchange_path(exchange), class: "btn btn--green btn--small"
-      = link_to "Recusar", refuse_exchange_path(exchange), class: "btn btn--outline btn--small"
+      - if exchange.sender.id == current_user.id
+        = button_to "Cancelar", cancel_exchange_path(exchange), method: :put, class: "btn btn--outline btn--small"
+      - else
+        = button_to "Aceitar", accept_exchange_path(exchange), method: :put, class: "btn btn--green btn--small"
+        = button_to "Recusar", refuse_exchange_path(exchange), method: :put, class: "btn btn--outline btn--small"
     = link_to "Detalhes da troca", exchange_show_path(exchange.id), method: :get, class:"btn btn--gray btn--small btn--full"

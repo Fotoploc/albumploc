@@ -23,4 +23,8 @@
       - else 
         =link_to "Detalhes do álbum", user_album_path(album.id), class: "btn btn--outline"
 
-
+javascript:
+  const urlParams = new URLSearchParams(window.location.search);
+  if (urlParams.has('commit')) {;
+    document.querySelector('.modal').classList.toggle('active');
+  }

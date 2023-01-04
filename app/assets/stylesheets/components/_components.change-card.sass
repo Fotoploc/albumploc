@@ -7,7 +7,10 @@
   position: relative
   gap: 1em
   background: white
-  box-shadow: 0px 10px 20px rgba(151, 71, 255, 0.1), 0px 14px 32px -1px rgba(15, 5, 26, 0.10);
+  box-shadow: 0px 10px 20px rgba(151, 71, 255, 0.1), 0px 14px 32px -1px rgba(15, 5, 26, 0.10)
+  flex-direction: column
+  +bp(md)
+    flex-direction: row
   
   &__icon
     background-color: $blue
@@ -22,7 +25,9 @@
 
   &__header, &__body, &__actions
     +g(full, center)
-    +i(3/12)
+    +i(1/1)
+    +bp(md)
+      +i(3/12)
     gap: 1em
 
   &__header-data, &__body-description
