@@ -3,13 +3,16 @@
   .main-header__subtitle Confira a troca com #{@receiver.name}
   br
   br
+- flash.each do |key, value|
+  h2.flash.flash--#{key} = value
+
 = form_with(url: exchange_new_path, method:"post", :html => {:class => "form"}) do |f|
-    .photo-listd
+    .photo-list
       .photo-list__title Suas figurinhas
       .photo-list__carousel
         - @sender_stickers.each do |sticker|
           .photo-item onClick="this.children[0].click()"
-            = f.check_box :sendesticker_ids, {multiple: true}, sticker.id, nil
+            = f.check_box :sendesticker_ids, {multiple: true}, class: "photo-item__checkbox", sticker.id
             = image_tag bucket_url+sticker.picture.path, :width => '100%'
     hr
     .photo-list
