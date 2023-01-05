@@ -1,9 +1,12 @@
-.main-header
-  h1.main-header__name Olá #{@user.name or @user.email}
-  .main-header__subtitle Confira suas trocas
-  br
-  br
-.change-list
-  - @exchanges.reverse_each do |exchange|
-    = render "shared/change-card", exchange: exchange
- 
+.main-screen
+  = render "shared/main-nav"
+  .main-content
+    .main-header
+      h1.main-header__name Olá #{@user.name or @user.email}
+      .main-header__subtitle Confira suas trocas
+      br
+      br
+    .change-list
+      - @exchanges.reverse_each do |exchange|
+        = render "shared/change-card", exchange: exchange
+    

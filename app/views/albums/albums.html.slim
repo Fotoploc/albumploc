@@ -1,7 +1,10 @@
-.main-header
-  h1.main-header__name Olá #{@user.name or @user.email}
-  .main-header__subtitle Confira seus álbuns
+.main-screen
+  = render "shared/main-nav"
+  .main-content
+    .main-header
+      h1.main-header__name Olá #{@user.name or @user.email}
+      .main-header__subtitle Confira seus álbuns
 
-.album-list 
-  -  @albums.each do |album|
-    = render "shared/album-card-narrow", album: album, participants: @participants, missing_stickers: @stickers_missing, navigate: true
+    .album-list 
+      -  @albums.each do |album|
+        = render "shared/album-card-narrow", album: album, participants: @participants, missing_stickers: @stickers_missing, navigate: true

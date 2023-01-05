@@ -15,6 +15,11 @@
     filter: grayscale(100%);
   }
 
+  &__simple {
+    padding: var(--space-xxs) var(--space-m);
+    border-radius: 40px;
+  }
+
   &--primary {
     color: var(--color-white);
     background-color: var(--vermelho);

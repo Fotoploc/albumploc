@@ -1,15 +1,18 @@
-.main-header
-  h1.main-header__name FIgurinhas de #{@user.name or @user.email}
-  .main-header__subtitle Album
+.main-screen
+  = render "shared/main-nav"
+  .main-content
+    .main-header
+      h1.main-header__name FIgurinhas de #{@user.name or @user.email}
+      .main-header__subtitle Album
 
-.album-list
-  = render "shared/album-card-narrow", album: @album, participants: @participants, missing_stickers: @stickers_missing, navigate: false
+    .album-list
+      = render "shared/album-card-narrow", album: @album, participants: @participants, missing_stickers: @stickers_missing, navigate: false
 
-.photo-list
-  .photo-list__title Minhas figurinhas repetidas
-  .photo-list__carousel
-    - @stickers.each do |sticker|
-      .photo-item
-        = image_tag bucket_url+sticker.picture.path, :width => '100%'
-    = link_to "Trocar figurinhas",exchange_path(user_id:@user.id, album_id:@album.id) ,class: "btn btn--full"
-    
+    .photo-list
+      .photo-list__title Minhas figurinhas repetidas
+      .photo-list__carousel
+        - @stickers.each do |sticker|
+          .photo-item
+            = image_tag bucket_url+sticker.picture.path, :width => '100%'
+        = link_to "Trocar figurinhas",exchange_path(user_id:@user.id, album_id:@album.id) ,class: "btn btn--full"
+          

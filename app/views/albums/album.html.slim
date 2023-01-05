@@ -1,17 +1,20 @@
-.main-header
-  h1.main-header__name Olá #{@user.name or @user.email}
-  .main-header__subtitle Meu álbum
+.main-screen
+  = render "shared/main-nav"
+  .main-content
+    .main-header
+      h1.main-header__name Olá #{@user.name or @user.email}
+      .main-header__subtitle Meu álbum
 
-.album-list
-  = render "shared/album-card", album: @album, participants: @participants, missing_stickers: @stickers_missing, navigate: true
+    .album-list
+      = render "shared/album-card", album: @album, participants: @participants, missing_stickers: @stickers_missing, navigate: true
 
-.photo-list
-  .photo-list__title Minhas figurinhas repetidas
-  .photo-list__carousel
-    - @stickers.each do |sticker|
-      .photo-item
-        = image_tag bucket_url+sticker.picture.path, :width => '100%'
-    
+    .photo-list
+      .photo-list__title Minhas figurinhas repetidas
+      .photo-list__carousel
+        - @stickers.each do |sticker|
+          .photo-item
+            = image_tag bucket_url+sticker.picture.path, :width => '100%'
+      
 
 
 

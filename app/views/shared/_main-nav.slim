@@ -18,7 +18,7 @@
       = active_link_to edit_user_registration_path, class: "main-nav__link" do 
         .main-nav__link-icon = inline_svg("icons/config-icon.svg")
         .main-nav__link-title Configurações
-      = link_to destroy_user_session_path, class: "main-nav__link" do 
+      = link_to destroy_user_session_path, data: { turbo_method: :delete }, class: "main-nav__link" do 
         .main-nav__link-icon = inline_svg("icons/sign-out-icon.svg")
         .main-nav__link-title Sair
 

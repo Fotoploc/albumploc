@@ -1,16 +1,19 @@
-.main-header
-  h1.main-header__name Olá #{@user.name or @user.email}
-  .main-header__subtitle Confira seus ultimos álbuns
+.main-screen
+  = render "shared/main-nav"
+  .main-content
+    .main-header
+      h1.main-header__name Olá #{@user.name or @user.email}
+      .main-header__subtitle Confira seus ultimos álbuns
 
-.album-list 
-  -  @albums.each do |album|
-    = render "shared/album-card-narrow", album: album, participants: @participants, missing_stickers: @stickers_missing, navigate: true
-    - if @albums.count == 5
-      .album-card.album-card--narrow
-        .album-card__cover__link
-          = active_link_to user_albums_path
-            .div style="width: 100%; heigth:100%"
-              = inline_svg("icons/plus-icon.svg")
-        .album-card__body
-          .album-card__body-header
-            h2.album-card__body-title Ver Todos os Albums
+    .album-list 
+      -  @albums.each do |album|
+        = render "shared/album-card-narrow", album: album, participants: @participants, missing_stickers: @stickers_missing, navigate: true
+        - if @albums.count == 5
+          .album-card.album-card--narrow
+            .album-card__cover__link
+              = active_link_to user_albums_path
+                .div style="width: 100%; heigth:100%"
+                  = inline_svg("icons/plus-icon.svg")
+            .album-card__body
+              .album-card__body-header
+                h2.album-card__body-title Ver Todos os Albums
