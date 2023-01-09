@@ -1,9 +1,10 @@
 .album_pages{
-    width: 90vw;
+    width: 100%;
+    display: none;
 
     .album_page {
         background-size: cover;
-
+        margin-top: 20px
         p {
             font-size: 0;
             display: none;
@@ -12,6 +13,7 @@
 
     .container {
         width: 100%;
+        max-width: 100%;
     }
 
     .right {
@@ -19,11 +21,12 @@
     }
 
     .book-section{
-        height: 100vh;
-        width: 100%;
+        // height: 100vh;
+        // width: 100%;
         text-align: center;
     }
     .book-section > .container{
+        max-width: 100%;
         height: 630px;
         width: 889px;
         position: relative;
