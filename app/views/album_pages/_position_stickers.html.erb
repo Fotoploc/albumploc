@@ -8,7 +8,7 @@
       <div class="form__field__positions">
       </div>
       <% stickers.each do |sticker| %>
-        <div class="sticker__form__field">
+        <div class="sticker__form__field " style="position:relative;">
           <%= f.check_box :sticker_id, { multiple: true }, sticker.id, nil %>
           <% f.hidden_field :sticker_id, as: :hidden, input_html: { value: sticker.id } %>
           <div class="sticker__position__card " id="sticker-<%= sticker.id %>" value="<%= sticker.id %>">
@@ -19,7 +19,7 @@
           </div>
           <% if delete_btn %>
             <%= link_to remove_sticker_from_page_album_page_path(@album_page[:album_id], @album_page[:page_number], sticker.id), data: { turbo_method: :delete } do %>
-              <div class="page__card__menu__icon btn position-absolute right-40 top-0">
+              <div class="page__card__menu__icon btn" style="position:absolute; right:40px; top:0;">
                 <%= show_svg("/icons/trash.svg")%>
               </div>
             <% end %>
